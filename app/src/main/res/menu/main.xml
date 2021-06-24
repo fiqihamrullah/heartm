@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/ic_home"
+        android:title="Beranda"
+        app:cnb_iconColor="@color/home"/>
+
+    <item
+        android:id="@+id/heartbeat"
+        android:icon="@drawable/heartbeats"
+        android:title="Detak Jantung"
+        app:cnb_iconColor="@color/activity"/>
+
+
+
+    <item
+        android:id="@+id/sport"
+        android:icon="@drawable/footing"
+        android:title="Olahraga"
+        app:cnb_iconColor="@color/favorites" />
+
+
+
+    <item
+        android:id="@+id/drug"
+        android:icon="@drawable/meds"
+        android:title="Obat-obatan"
+        app:cnb_iconColor="@color/settings" />
+
+</menu>

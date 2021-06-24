@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/coorLayout"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    >
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@android:color/transparent"
+            app:contentInsetStartWithNavigation="0dp"
+            app:layout_scrollFlags="enterAlways"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:theme="@style/Toolbar.Light"
+            >
+
+
+
+
+            <ImageView
+                android:id="@+id/imgVBtnExcelExport"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:paddingLeft="@dimen/spacing_medium"
+
+                android:paddingRight="@dimen/spacing_medium"
+                android:layout_gravity="end"
+                />
+
+            <ImageView
+                android:id="@+id/imgVBtnPDFExport"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:paddingLeft="@dimen/spacing_medium"
+
+                android:paddingRight="@dimen/spacing_medium"
+                android:layout_gravity="end"
+                />
+
+        </androidx.appcompat.widget.Toolbar>
+
+
+
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+
+    <RelativeLayout
+
+
+        android:layout_marginTop="50dp"
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#182058"
+        android:orientation="vertical"
+        >
+
+        <ScrollView
+            android:id="@+id/rlayoutmain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="@dimen/spacing_large">
+
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="26.7dp">
+
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="312.3dp"
+                            android:layout_marginRight="30.3dp"
+                            android:layout_marginLeft="30.3dp"
+                            android:layout_marginBottom="35dp"
+                            android:background="@drawable/white_rounded_corner"
+                            android:orientation="vertical"
+                            android:paddingLeft="16dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="21.5dp"
+                                android:gravity="center_horizontal"
+                                android:text="LANGKAH KAKI ANDA"
+                                android:textColor="#333232"
+                                android:textSize="18sp" />
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="30.3dp"
+                                android:text="Jumlah Langkahmu Hari Ini"
+                                android:textColor="#9e9d9d"
+                                android:textSize="12.3sp" />
+
+                            <EditText
+                                android:id="@+id/edStepCount"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="12dp"
+                                android:layout_marginRight="@dimen/spacing_large"
+                                android:background="@android:color/transparent"
+                                android:maxLines="1"
+                                android:textColorHint="#c2c2c2"
+                                android:inputType="number"
+                                android:gravity="center"
+
+
+
+                                android:textSize="45sp" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginTop="6.7dp"
+                                android:layout_marginRight="17.3dp"
+
+                                android:background="#9e9e9e" />
+
+                            <Button
+                                android:id="@+id/btnSave"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/spacing_xlarge"
+                                android:background="@drawable/blue_fill__rounded_color"
+                                android:textColor="@color/white"
+                                android:text="Simpan" />
+
+
+                        </LinearLayout>
+
+
+                    </FrameLayout>
+
+
+                    <View
+                        android:layout_width="7dp"
+                        android:layout_height="33dp"
+                        android:layout_marginLeft="27dp"
+                        android:layout_marginTop="21.7dp"
+                        android:background="@drawable/rounded_corner" />
+
+
+                </FrameLayout>
+            </LinearLayout>
+        </ScrollView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="14dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:visibility="gone"
+                    android:textColor="#FFFFFF"
+                    android:textSize="13.3sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:gravity="center_horizontal"
+                    android:visibility="gone"
+                    android:textColor="#38b5f2"
+                    android:textSize="13.3sp" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

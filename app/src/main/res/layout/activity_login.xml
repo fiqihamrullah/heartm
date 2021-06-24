@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+  >
+
+    <!-- your  logo  -->
+    <ImageView
+        android:id="@+id/id_logo_ImageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="120dp"
+        android:layout_marginTop="63dp"
+        android:layout_marginRight="120dp"
+        android:contentDescription="For more visit www.materialuiux.com"
+        android:src="@drawable/logo_heartm_2" />
+
+    <!-- Sign in Linear Layout  -->
+    <LinearLayout
+        android:id="@+id/id_l1_LinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="118dp"
+        android:layout_above="@+id/id_Signin_Button"
+        android:layout_marginLeft="80dp"
+        android:layout_marginRight="80dp"
+        android:contentDescription="For more visit www.materialuiux.com"
+        android:orientation="vertical">
+
+        <com.google.android.material.textfield.TextInputLayout
+
+            android:id="@+id/id_Email_textInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="2dp"
+            android:background="@null"
+            android:contentDescription="For more visit www.materialuiux.com"
+            android:gravity="center"
+            android:textColorHint="@color/fontcolorpink">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edPhoneNumber"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="@null"
+                android:contentDescription="For more visit www.materialuiux.com"
+                android:gravity="center"
+                android:hint="@string/email"
+                android:inputType="phone"
+                android:textColor="@color/fontcolorgray"
+                android:textColorHint="@color/fontcolorpink"
+                android:textSize="16sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <View
+            android:id="@+id/id_view_1"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@drawable/line_view"
+            android:contentDescription="For more visit www.materialuiux.com" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/id_Email_textInputLayoutsss"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="2dp"
+            android:background="@null"
+
+            android:gravity="center"
+            android:textColorHint="@color/fontcolorpink">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edPassword"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="@null"
+                android:contentDescription="For more visit www.materialuiux.com"
+                android:gravity="center"
+                android:hint="@string/password"
+                android:inputType="textPassword"
+                android:textColor="@color/fontcolorgray"
+                android:textColorHint="@color/fontcolorpink"
+                android:textSize="16sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <View
+            android:id="@+id/id_view_2"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@drawable/line_view"
+            android:contentDescription="For more visit www.materialuiux.com" />
+
+        <TextView
+            android:id="@+id/id_ForgetPassword_TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:contentDescription="For more visit www.materialuiux.com"
+            android:gravity="center"
+            android:visibility="gone"
+            android:text="@string/forgot_password" />
+
+
+    </LinearLayout>
+
+    <!--   Sign in Button  -->
+
+    <Button
+        android:id="@+id/id_Signin_Button"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_above="@+id/id_Signup_LinearLayout"
+        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="56dp"
+        android:layout_marginTop="68dp"
+        android:layout_marginRight="56dp"
+        android:layout_marginBottom="33dp"
+        android:background="@drawable/bg_button"
+
+        android:gravity="center"
+        android:text="@string/sign_in"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@android:color/white" />
+
+
+    <!--   Sign Up Linear Layout   -->
+
+    <LinearLayout
+        android:id="@+id/id_Signup_LinearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="76dp"
+        android:contentDescription="For more visit www.materialuiux.com"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:visibility="invisible"
+        android:padding="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="For more visit www.materialuiux.com"
+            android:text="@string/don_t_have_an_account" />
+
+        <TextView
+            android:id="@+id/id_SignUp_TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:contentDescription="For more visit www.materialuiux.com"
+            android:text="@string/sign_up"
+            android:textColor="@color/fontcolorpink"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</RelativeLayout>
