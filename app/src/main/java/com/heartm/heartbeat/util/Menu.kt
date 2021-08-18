@@ -6,7 +6,6 @@ import android.view.ViewGroup
 
 import android.widget.ImageView
 
-import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.transition.ChangeBounds
 import androidx.transition.TransitionManager
@@ -50,7 +49,9 @@ class Menu(context: Context)
                 title.text = option.second*/
                 if (id==R.id.home)
                 {
-                    context.startActivity(Intent(context, DashboardActvity::class.java))
+                    context.startActivity(Intent(context, DashboardActivity::class.java))
+
+
                 }else if (id==R.id.heartbeat)
                 {
                     context.startActivity(Intent(context, HeartBeatActivity::class.java))
