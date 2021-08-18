@@ -22,7 +22,7 @@ class SplashActivity : AppCompatActivity()
 
             if (sm.isLoggedIn()) {
                 sm.createUserProfiles()
-                 startActivity(Intent(this, DashboardActvity::class.java))
+                 startActivity(Intent(this, DashboardActivity::class.java))
             }else {
                 startActivity(Intent(this, LoginActivity::class.java))
             }

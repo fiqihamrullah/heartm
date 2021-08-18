@@ -24,6 +24,14 @@ class SessionManager {
     private val USER_ID = "PASIEN_ID"
     private val ACCESS = "ACCESS"
 
+    private val STEP_TARGET = "STEP_TARGET"
+    private val TOTAL_STEP = "TOTAL_STEP"
+    private val NEXT_DATE_DRUG_TAKEN = "NEXT_DATE_DRUG_TAKEN"
+    private val TIME_DRUG_USAGE = "TIME_DRUG_USAGE"
+
+    private val LAST_STEP_SAVED = "LAST_STEP_SAVED"
+
+
 
     constructor(context: Context)
     {
@@ -32,6 +40,70 @@ class SessionManager {
         editor = pref.edit()
 
     }
+
+    fun saveStepTarget(step:Int)
+    {
+        editor.putInt(STEP_TARGET,step)
+        editor.commit()
+    }
+
+    fun getStepTarget():Int
+    {
+        return pref.getInt(STEP_TARGET,0)
+    }
+
+    fun saveNewStep(new_step:Int)
+    {
+        editor.putInt(TOTAL_STEP,new_step)
+        editor.commit()
+    }
+
+    fun saveStep(new_step:Int)
+    {
+        val step = pref.getInt(TOTAL_STEP,0) + new_step
+        editor.putInt(TOTAL_STEP,step)
+        editor.commit()
+    }
+
+    fun getTotalStep():Int
+    {
+        return pref.getInt(TOTAL_STEP,0)
+    }
+
+    fun saveNextDateDrugTaken(date:String)
+    {
+        editor.putString(NEXT_DATE_DRUG_TAKEN,date)
+        editor.commit()
+    }
+
+    fun getNextDateDrugTaken():String
+    {
+        return pref.getString(NEXT_DATE_DRUG_TAKEN,"").orEmpty()
+    }
+
+
+    fun saveLastStepSaved(date:String)
+    {
+        editor.putString(LAST_STEP_SAVED,date)
+        editor.commit()
+    }
+
+    fun getLastStepSaved():String
+    {
+        return pref.getString(LAST_STEP_SAVED,"").orEmpty()
+    }
+
+    fun saveTimeofDrugUsage(time:String)
+    {
+        editor.putString(TIME_DRUG_USAGE,time)
+        editor.commit()
+    }
+
+    fun getTimeofDrugUsage():String
+    {
+        return pref.getString(TIME_DRUG_USAGE,"").orEmpty()
+    }
+
 
     fun createLoginSession(
         ID: String,
