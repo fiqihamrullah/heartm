@@ -117,7 +117,7 @@ class LoginActivity : AppCompatActivity() {
                             registerSession(user, response.getString("api_token"))
 
 
-                            startActivity(Intent(this,DashboardActvity::class.java))
+                            startActivity(Intent(this,DashboardActivity::class.java))
                         } else {
 
                             SweetAlertDialog(this@LoginActivity, SweetAlertDialog.ERROR_TYPE)

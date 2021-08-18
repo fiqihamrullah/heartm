@@ -1,9 +1,12 @@
 package com.heartm.heartbeat
 
 import android.app.Application
+import androidx.core.app.NotificationManagerCompat
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.Volley
+
+import com.heartm.heartbeat.notification.NotificationHelper
 
 class MyApplication : Application()
 {
@@ -13,6 +16,10 @@ class MyApplication : Application()
     {
         super.onCreate()
         instance = this
+
+        NotificationHelper.createNotificationChannel(this,
+            NotificationManagerCompat.IMPORTANCE_DEFAULT, false,
+            getString(R.string.app_name), "AppHeartMChannel")
     }
 
     fun getRequestQueue(): RequestQueue? {
