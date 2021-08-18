@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
@@ -21,13 +22,18 @@ import com.heartm.heartbeat.models.DrugUsage
 import com.heartm.heartbeat.models.WalkingSport
 import com.heartm.heartbeat.util.Menu
 import com.ismaeldivita.chipnavigation.ChipNavigationBar
+import kotlinx.android.synthetic.main.activity_heart_beat_history.*
 import kotlinx.android.synthetic.main.activity_step_sport.*
+import kotlinx.android.synthetic.main.activity_step_sport.animationView
+import kotlinx.android.synthetic.main.activity_step_sport.recyclerView
 import kotlinx.android.synthetic.main.activity_tes.*
 import kotlinx.android.synthetic.main.activity_tes.fab
 import org.json.JSONException
 import org.json.JSONObject
 
-class DrugUsageActivity : AppCompatActivity() {
+class DrugUsageActivity : AppCompatActivity()
+{
+    private val REQUESTCODE_ADDDRUGUSAGE=1
 
     private val container by lazy { findViewById<ViewGroup>(R.id.container) }
     private val title by lazy { findViewById<TextView>(R.id.title) }
@@ -51,7 +57,7 @@ class DrugUsageActivity : AppCompatActivity() {
         fab.setOnClickListener { view ->
             // Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
             //   .setAction("Action", null).show()
-            startActivity(Intent(this, FormDrugUsageActivity::class.java))
+            startActivityForResult(Intent(this, FormDrugUsageActivity::class.java),REQUESTCODE_ADDDRUGUSAGE)
         }
 
         init()
@@ -74,6 +80,15 @@ class DrugUsageActivity : AppCompatActivity() {
         loadDrugUSage()
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?)
+    {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode==REQUESTCODE_ADDDRUGUSAGE)
+        {
+            loadDrugUSage()
+        }
+    }
+
 
     private fun loadDrugUSage() {
         val dialog = LoadingDialog.get(this).show()
@@ -93,8 +108,17 @@ class DrugUsageActivity : AppCompatActivity() {
                                 object :
                                     TypeToken<List<DrugUsage?>?>() {}.type
                             )
-                        drugUsageAdapter = DrugUsageAdapter(drugUsageList)
-                        recyclerView.setAdapter(drugUsageAdapter)
+
+                         if (drugUsageList.size > 0)
+                         {
+
+                            drugUsageAdapter = DrugUsageAdapter(drugUsageList)
+                            recyclerView.setAdapter(drugUsageAdapter)
+                        }else{
+                            recyclerView.visibility = View.GONE
+                            animationView.visibility = View.VISIBLE
+                        }
+
                     } catch (ex: JSONException) {
                     }
 

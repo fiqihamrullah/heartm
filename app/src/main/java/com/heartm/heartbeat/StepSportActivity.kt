@@ -23,14 +23,17 @@ import com.heartm.heartbeat.adapters.WalkingSportAdapter
 import com.heartm.heartbeat.models.WalkingSport
 import com.heartm.heartbeat.util.Menu
 import com.ismaeldivita.chipnavigation.ChipNavigationBar
+import kotlinx.android.synthetic.main.activity_heart_beat_history.*
 import kotlinx.android.synthetic.main.activity_step_sport.*
+import kotlinx.android.synthetic.main.activity_step_sport.animationView
+import kotlinx.android.synthetic.main.activity_step_sport.recyclerView
 import kotlinx.android.synthetic.main.activity_tes.*
 import kotlinx.android.synthetic.main.activity_tes.fab
 import org.json.JSONException
 import org.json.JSONObject
 
 class StepSportActivity : AppCompatActivity() {
-
+    private val REQUESTCODE_ADDSTEP = 1
     private val container by lazy { findViewById<ViewGroup>(R.id.container) }
     private val title by lazy { findViewById<TextView>(R.id.title) }
     private val button by lazy { findViewById<ImageView>(R.id.expand_button) }
@@ -52,11 +55,20 @@ class StepSportActivity : AppCompatActivity() {
         fab.setOnClickListener { view ->
            // Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
              //   .setAction("Action", null).show()
-            startActivity(Intent(this, FormStepSportActivity::class.java))
+            startActivityForResult(Intent(this, FormStepSportActivity::class.java),REQUESTCODE_ADDSTEP)
         }
 
         init()
 
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?)
+    {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode==REQUESTCODE_ADDSTEP)
+        {
+            loadStepSport()
+        }
     }
 
     private fun init()
@@ -94,8 +106,17 @@ class StepSportActivity : AppCompatActivity() {
                                 object :
                                     TypeToken<List<WalkingSport?>?>() {}.type
                             )
+
+                     if (stepSportList.size > 0)
+                     {
                         walkingSportAdapter = WalkingSportAdapter(stepSportList)
                         recyclerView.setAdapter(walkingSportAdapter)
+                    }else{
+                        recyclerView.visibility = View.GONE
+                        animationView.visibility = View.VISIBLE
+                    }
+
+
                     } catch (ex: JSONException) {
                     }
 
