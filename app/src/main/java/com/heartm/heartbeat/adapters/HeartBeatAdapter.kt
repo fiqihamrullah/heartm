@@ -59,7 +59,7 @@ class HeartBeatAdapter(
         viewType: Int
     ): ViewHolder {
         val v: View = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_row_sport_step, parent, false)
+            .inflate(R.layout.item_row_heartbeat, parent, false)
         return ViewHolder(v)
     }
 
@@ -71,18 +71,25 @@ class HeartBeatAdapter(
 
         val mydate = MyDateConverter()
 
-        val daymonth = mydate.convertfromLongDate(b.created_at, "dd MM")
-        val year = mydate.convertfromLongDate(b.created_at, "yyyy")
+        val daymonth = mydate.convertfromLongDate(b.created_at, "HH:ss")
+        val year = mydate.convertfromLongDate(b.created_at, "dd MMM yyyy")
         holder.tvDayMonth.setText(daymonth)
         holder.tvYear.setText("Tahun " + year)
 
         var status : String=""
 
+        if (b.bpm in 60..100)
+        {
+            status = "Sehat"
+        }else {
+            status = "Sakit"
+        }
+
         holder.tvStatus.setText(status)
 
 
 
-        holder.tvValue.setText(b.bpm)
+        holder.tvValue.setText(b.bpm.toString())
 
 
         /*

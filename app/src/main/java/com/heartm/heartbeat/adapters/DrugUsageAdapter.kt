@@ -10,6 +10,7 @@ import com.heartm.heartbeat.R
 import com.heartm.heartbeat.models.DrugUsage
 
 import com.heartm.heartbeat.util.MyDateConverter
+import kotlinx.android.synthetic.main.activity_dashboard_actvity.*
 import java.util.*
 
 class DrugUsageAdapter(
@@ -37,6 +38,7 @@ class DrugUsageAdapter(
         var tvDayMonth: TextView
         var tvYear: TextView
         var tvDrugName: TextView
+        var tvStatusOfDrug : TextView
 
         // var lyt_parent: View
 
@@ -44,6 +46,7 @@ class DrugUsageAdapter(
             tvDayMonth = v.findViewById<View>(R.id.tvDayAndMonth) as TextView
             tvYear = v.findViewById<View>(R.id.tvYear) as TextView
             tvDrugName = v.findViewById<View>(R.id.tvDrugName) as TextView
+            tvStatusOfDrug = v.findViewById<View>(R.id.tvStatusOfDrug) as TextView
 
             // lyt_parent = v.findViewById(R.id.lyt_parent) as View
         }
@@ -66,14 +69,17 @@ class DrugUsageAdapter(
 
         val mydate = MyDateConverter()
 
-        val daymonth = mydate.convertfromShortDate(b.tgl_pengambilan_obat, "dd MMM")
-        val year = mydate.convertfromShortDate(b.tgl_pengambilan_obat, "yyyy")
+        val daymonth = mydate.convertfromShortDate(b.tgl_pengambilan_obat, "dd MMM yyyy")
+        val nextdateoftakendrug = mydate.convertfromShortDate(b.tgl_ambil_selanjutnya, "dd MMM yyyy")
         holder.tvDayMonth.setText(daymonth)
-        holder.tvYear.setText("Tahun " + year)
+        holder.tvYear.setText("Selanjutnya " + nextdateoftakendrug)
 
 
 
         holder.tvDrugName.setText(b.obat)
+
+        val arrsplit : List<String> = b.waktu_makan.split(",")
+        holder.tvStatusOfDrug.text = arrsplit.size.toString() + "x / Hari"
 
 
         /*

@@ -95,7 +95,87 @@
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="312.3dp"
+                            android:layout_height="150.3dp"
+                            android:layout_marginRight="30.3dp"
+                            android:layout_marginLeft="30.3dp"
+                            android:layout_marginBottom="15dp"
+                            android:background="@drawable/white_rounded_corner"
+                            android:orientation="vertical"
+                            android:paddingLeft="16dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="21.5dp"
+                                android:gravity="center_horizontal"
+                                android:text="TARGET ANDA / HARI"
+                                android:textColor="#333232"
+                                android:textSize="18sp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="80dp"
+                            android:layout_marginRight="30.3dp"
+                            android:orientation="horizontal"
+                            android:layout_gravity="center_vertical"
+                            android:paddingLeft="16dp">
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+
+                                android:text="Masukkan Jumlahnya"
+                                android:layout_gravity="center_vertical"
+                                android:textColor="#9e9d9d"
+                                android:textSize="12.3sp" />
+
+                            <EditText
+                                android:id="@+id/edTargetCount"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+
+                                android:maxLines="1"
+                                android:textColorHint="#c2c2c2"
+                                android:inputType="number"
+                                android:gravity="center"
+                                android:textSize="20sp"
+                                />
+
+                        </LinearLayout>
+
+
+                        </LinearLayout>
+
+
+                    </FrameLayout>
+
+
+                    <View
+                        android:layout_width="7dp"
+                        android:layout_height="33dp"
+                        android:layout_marginLeft="27dp"
+                        android:layout_marginTop="21.7dp"
+                        android:background="@drawable/rounded_corner" />
+
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp">
+
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="380dp"
                             android:layout_marginRight="30.3dp"
                             android:layout_marginLeft="30.3dp"
                             android:layout_marginBottom="35dp"
@@ -111,6 +191,8 @@
                                 android:text="LANGKAH KAKI ANDA"
                                 android:textColor="#333232"
                                 android:textSize="18sp" />
+
+
 
 
                             <TextView
@@ -149,10 +231,32 @@
                                 android:id="@+id/btnSave"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_margin="@dimen/spacing_xlarge"
+                                android:layout_marginTop="@dimen/spacing_large"
+                                android:layout_marginRight="@dimen/spacing_large"
+
                                 android:background="@drawable/blue_fill__rounded_color"
                                 android:textColor="@color/white"
                                 android:text="Simpan" />
+
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_horizontal"
+                                android:layout_marginTop="12dp"
+                                android:text="Sisa Langkah"
+                                android:textColor="#9e9d9d"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/tvStepRest"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="11.5dp"
+                                android:gravity="center_horizontal"
+                                android:text="0"
+                                android:textColor="#333232"
+                                android:textSize="28sp" />
 
 
                         </LinearLayout>

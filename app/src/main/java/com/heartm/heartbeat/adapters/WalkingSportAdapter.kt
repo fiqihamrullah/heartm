@@ -65,10 +65,10 @@ class WalkingSportAdapter(
 
         val mydate = MyDateConverter()
 
-        val daymonth = mydate.convertfromLongDate(b.created_at, "dd MMM")
-        val year = mydate.convertfromLongDate(b.created_at, "yyyy")
+        val daymonth = mydate.convertfromLongDate(b.created_at, "HH:ss")
+        val year = mydate.convertfromLongDate(b.created_at, "dd MMM yyyy")
         holder.tvDayMonth.setText(daymonth)
-        holder.tvYear.setText("Tahun " + year)
+        holder.tvYear.setText( year)
 
 
 

@@ -40,6 +40,10 @@ class FormDrugUsageActivity : AppCompatActivity()
 
         })
 
+        edTglPengambilanBerikut.setOnClickListener {
+            showDatePicker(edTglPengambilanBerikut)
+        }
+
         btnSave.setOnClickListener(View.OnClickListener { saveDrugUsage() })
 
     }
@@ -58,15 +62,48 @@ class FormDrugUsageActivity : AppCompatActivity()
 
 
         val tgl = edTglInput.text.toString()
+        val tgl_next = edTglPengambilanBerikut.text.toString()
         val obat = edDrugName.text.toString()
 
+        val sbpagi : Boolean = swpagi.isChecked
+        val sbsiang : Boolean = swsiang.isChecked
+        val sbmalam : Boolean = swmalam.isChecked
 
 
-        if (tgl.equals("") || obat.equals(""))
+
+
+        if (tgl.equals("") || obat.equals("") || tgl_next.equals(""))
         {
             Toasty.warning(this@FormDrugUsageActivity, "Data masih ada yag kosong!.", Toast.LENGTH_SHORT, true)
                 .show()
-        }  else {
+        } else if (sbpagi==false && sbsiang==false && sbmalam==false)
+        {
+            Toasty.warning(this@FormDrugUsageActivity, "Waktu Pemakaian Obat belum ditentukan!.", Toast.LENGTH_SHORT, true)
+                .show()
+        } else
+        {
+            var selectedTimeOfDrugUsage : String =""
+            if (sbpagi)
+            {
+                selectedTimeOfDrugUsage = "Pagi,"
+            }
+
+            if (sbsiang)
+            {
+                selectedTimeOfDrugUsage += "Siang,"
+            }
+
+            if (sbmalam)
+            {
+                selectedTimeOfDrugUsage += "Malam"
+            }
+
+
+            if (selectedTimeOfDrugUsage.endsWith(','))
+            {
+                selectedTimeOfDrugUsage =  selectedTimeOfDrugUsage.trimEnd(',')
+            }
+
 
             //Toast.makeText(getApplicationContext(),tags,Toast.LENGTH_LONG).show();
 
@@ -76,6 +113,8 @@ class FormDrugUsageActivity : AppCompatActivity()
                 postparams.put("pasien_id",UserAccount.getID())
                 postparams.put("obat",obat)
                 postparams.put("tgl_ambil_obat",tgl)
+                postparams.put("tgl_ambil_obat_berikutnya",tgl_next)
+                postparams.put("waktu_makan",selectedTimeOfDrugUsage)
 
 
             } catch (e: JSONException) {
@@ -89,6 +128,11 @@ class FormDrugUsageActivity : AppCompatActivity()
                 Request.Method.POST, URL_KONTROLOBAT, postparams,
                 Response.Listener {
                     dialog.hide()
+
+                    val sessmgr = SessionManager(this@FormDrugUsageActivity)
+                    sessmgr.saveNextDateDrugTaken(tgl_next)
+                    sessmgr.saveTimeofDrugUsage(selectedTimeOfDrugUsage)
+
                     SweetAlertDialog(
                         this@FormDrugUsageActivity,
                         SweetAlertDialog.SUCCESS_TYPE
@@ -100,6 +144,7 @@ class FormDrugUsageActivity : AppCompatActivity()
                         //  .setConfirmButtonBackgroundColor(Color.BLUE.darker())
                         .setConfirmClickListener {
                             it.hide()
+                            this.finish()
 
                         }
 

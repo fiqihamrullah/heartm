@@ -95,7 +95,7 @@
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="412.3dp"
+                            android:layout_height="550.3dp"
                             android:layout_marginRight="30.3dp"
                             android:layout_marginLeft="30.3dp"
                             android:layout_marginBottom="35dp"
@@ -145,11 +145,47 @@
                                 android:layout_marginRight="17.3dp"
                                 android:background="#9e9e9e" />
 
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="30.3dp"
+                                android:text="Waktu Penggunaan Obat"
+                                android:textColor="#9e9d9d"
+                                android:textSize="12.3sp" />
+
+
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="32dp"
-                                android:orientation="horizontal"/>
+
+                                android:orientation="horizontal">
+
+                                <Switch
+                                    android:id="@+id/swpagi"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:layoutDirection="rtl"
+                                    android:text=" Pagi" />
+
+
+                                <Switch
+                                    android:id="@+id/swsiang"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:layoutDirection="rtl"
+                                    android:text=" Siang" />
+
+                                <Switch
+                                    android:id="@+id/swmalam"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:layoutDirection="rtl"
+                                    android:text=" Malam" />
+
+                            </LinearLayout>
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -178,6 +214,39 @@
                                 android:layout_marginTop="6.7dp"
                                 android:layout_marginRight="17.3dp"
                                 android:layout_marginBottom="27dp"
+                                android:background="#9e9e9e" />
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10.3dp"
+                                android:text="Tanggal Pengambilan(DD/MM/YYYY) Selanjutnya"
+                                android:textColor="#9e9d9d"
+                                android:textSize="12.3sp" />
+
+                            <EditText
+                                android:id="@+id/edTglPengambilanBerikut"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="12dp"
+                                android:layout_marginRight="@dimen/spacing_large"
+                                android:background="@android:color/transparent"
+                                android:maxLines="1"
+                                android:textColorHint="#c2c2c2"
+                                android:inputType="none"
+                                android:cursorVisible="false"
+                                android:focusable="false"
+
+                                android:drawableEnd="@drawable/ic_calendar24"
+
+                                android:textSize="15sp" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginTop="6.7dp"
+                                android:layout_marginRight="17.3dp"
                                 android:background="#9e9e9e" />
 
 

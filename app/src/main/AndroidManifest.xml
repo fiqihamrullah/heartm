@@ -6,6 +6,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
         android:name=".MyApplication"
@@ -17,10 +19,14 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
+            android:name=".HeartBeatHistoryActivity"
+            android:label="@string/title_activity_heart_beat_history"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".TesActivity"
             android:label="@string/title_activity_tes"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".DashboardActvity" />
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".DashboardActivity" />
         <activity android:name=".DrugUsageActivity" />
         <activity android:name=".FormDrugUsageActivity" />
         <activity android:name=".StepSportActivity" />
@@ -39,6 +45,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <receiver
+            android:name=".notification.AlarmReceiver"
+            android:enabled="true"
+            android:exported="true" />
+
+
     </application>
 
 </manifest>
