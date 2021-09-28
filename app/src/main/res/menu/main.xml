@@ -28,6 +28,22 @@
         android:id="@+id/drug"
         android:icon="@drawable/meds"
         android:title="Obat-obatan"
+        app:cnb_iconColor="@color/drugs" />
+
+    <item
+        android:id="@+id/settings"
+        android:icon="@drawable/ic_settings"
+        android:title="Pengaturan"
         app:cnb_iconColor="@color/settings" />
+
+    <item
+        android:id="@+id/about"
+        android:icon="@drawable/about"
+        android:title="Tentang"
+        app:cnb_iconColor="@color/about" />
+
+
+
+
 
 </menu>

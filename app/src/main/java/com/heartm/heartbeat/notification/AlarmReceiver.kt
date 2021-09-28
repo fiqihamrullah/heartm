@@ -25,14 +25,45 @@ class AlarmReceiver : BroadcastReceiver()
             {
                 NotificationHelper.createSimpleNotification(
                     context,
-                    "Ingat,Minum Obat",
-                    "Minumlah Obat yang telah Anda Ambil, semoga lekas sembuh",
+                    "Ingat,Minum Obat ya[PAGI]",
+                    "Waktunya Minum Obat, semoga lekas sembuh!",
+                    "",
+                    true,
+                    1002
+                )
+
+            }else if (intent?.type.equals("drink_in_afternoon",ignoreCase = true))
+            {
+                NotificationHelper.createSimpleNotification(
+                    context,
+                    "Ingat,Minum Obat ya[SIANG]",
+                    "Waktunya minum Obat, semoga lekas sembuh!",
+                    "",
+                    true,
+                    1002
+                )
+
+            }else if (intent?.type.equals("drink_in_evening",ignoreCase = true))
+            {
+                NotificationHelper.createSimpleNotification(
+                    context,
+                    "Ingat,Minum Obat ya[SORE]",
+                    "Waktunya minum obat, semoga lekas sembuh!",
                     "",
                     true,
                     1002
                 )
 
             }
+
+
+            if (intent?.action == "android.intent.action.BOOT_COMPLETED")
+            {
+                // Set the alarm here.
+
+            }
+
+
         }
     }
 

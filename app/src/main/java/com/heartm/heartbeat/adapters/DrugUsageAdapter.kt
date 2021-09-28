@@ -38,6 +38,7 @@ class DrugUsageAdapter(
         var tvDayMonth: TextView
         var tvYear: TextView
         var tvDrugName: TextView
+        var tvAmount : TextView
         var tvStatusOfDrug : TextView
 
         // var lyt_parent: View
@@ -47,6 +48,7 @@ class DrugUsageAdapter(
             tvYear = v.findViewById<View>(R.id.tvYear) as TextView
             tvDrugName = v.findViewById<View>(R.id.tvDrugName) as TextView
             tvStatusOfDrug = v.findViewById<View>(R.id.tvStatusOfDrug) as TextView
+            tvAmount = v.findViewById<View>(R.id.tvAmount) as TextView
 
             // lyt_parent = v.findViewById(R.id.lyt_parent) as View
         }
@@ -77,6 +79,7 @@ class DrugUsageAdapter(
 
 
         holder.tvDrugName.setText(b.obat)
+        holder.tvAmount.text = b.jumlah.toString() + " Pcs"
 
         val arrsplit : List<String> = b.waktu_makan.split(",")
         holder.tvStatusOfDrug.text = arrsplit.size.toString() + "x / Hari"

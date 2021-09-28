@@ -43,10 +43,10 @@
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/settings"
+        android:background="@color/home"
         android:orientation="vertical"
         tools:background="@color/activity"
-        tools:context=".DrugUsageActivity">
+        tools:context=".DashboardActivity">
 
 
         <TextView
@@ -59,6 +59,43 @@
             android:textSize="34sp"
             android:text="Dashboard Anda " />
 
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:background="@color/white" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Semoga Selalu Sehat ,  "
+                        android:paddingLeft="3dp"
+                        android:paddingRight="3dp"
+                        android:textSize="18dp"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                        android:textColor="@color/white" />
+
+                    <TextView
+                        android:id="@+id/tvUser"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/rounded_corner"
+
+                        android:paddingLeft="3dp"
+                        android:paddingRight="3dp"
+                        android:textSize="18dp"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                        android:textColor="@color/white" />
+
+            </LinearLayout>
+
 
         <LinearLayout
             android:id="@+id/LabelCard"
@@ -68,21 +105,16 @@
             android:gravity="center"
             android:layout_marginTop="5dp">
 
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="1dp"
-                android:layout_weight="1"
-                android:background="@color/grey_bg" />
+
 
             <TextView
                 android:id="@+id/tv1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Info Terkini"
+                android:text="Info Terkini "
                 android:paddingLeft="3dp"
                 android:paddingRight="3dp"
-                android:textStyle="italic"
-                android:textSize="18dp"
+                android:textSize="12dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Caption"
                 android:textColor="@color/white" />
 
@@ -116,7 +148,7 @@
             <LinearLayout
                 android:id="@+id/lyt_parent"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:background="?attr/selectableItemBackground"
                 android:clickable="true"
                 android:orientation="vertical"
@@ -365,11 +397,9 @@
 
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:layout_marginTop="3dp"
             android:layout_marginLeft="@dimen/spacing_regular"
             android:layout_marginRight="@dimen/spacing_regular"
-
 
             app:cardBackgroundColor="@android:color/white"
             app:cardCornerRadius="10dp"
@@ -379,7 +409,7 @@
             <LinearLayout
 
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:background="?attr/selectableItemBackground"
                 android:clickable="true"
                 android:orientation="vertical"
@@ -389,14 +419,17 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="65dp"
                     android:orientation="horizontal">
 
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        android:layout_gravity="center_vertical"
+                        android:orientation="vertical"
+
+                        >
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -432,7 +465,6 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-
                         android:orientation="vertical">
 
                         <TextView
@@ -443,12 +475,10 @@
                             android:maxLines="1"
                             android:singleLine="true"
                             android:text="-----"
-
-
-
                             android:textColor="@color/main_blue_color"
                             android:textSize="15sp"
                             android:textStyle="bold" />
+
 
 
                         <TextView
@@ -458,8 +488,20 @@
                             android:ellipsize="end"
                             android:maxLines="1"
                             android:singleLine="true"
-                            android:layout_gravity="center"
+                            android:layout_gravity="center_horizontal"
                             android:text="\? / Hari"
+                            android:textSize="10sp"
+                            android:textColor="@color/grey_text" />
+
+                        <TextView
+                            android:id="@+id/tvAmount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:layout_gravity="center_horizontal"
+                            android:text="\?"
                             android:textSize="10sp"
                             android:textColor="@color/grey_text" />
 

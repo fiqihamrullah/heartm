@@ -53,7 +53,7 @@ class HeartBeatActivity : AppCompatActivity()
     private val justShared = false
 
     private val URL_HEARTPULSE =
-        MyApplication.Companion.instance?.resources?.getString(R.string.online_url) + "rekamjantungx"
+        MyApplication.Companion.instance?.resources?.getString(R.string.online_url) + "rekamjantung"
 
     @SuppressLint("HandlerLeak")
     private val mainHandler: Handler =

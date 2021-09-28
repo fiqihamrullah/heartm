@@ -116,7 +116,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="30.3dp"
+                                android:layout_marginTop="20dp"
                                 android:text="Tanggal Pengambilan(DD/MM/YYYY)"
                                 android:textColor="#9e9d9d"
                                 android:textSize="12.3sp" />
@@ -145,11 +145,90 @@
                                 android:layout_marginRight="17.3dp"
                                 android:background="#9e9e9e" />
 
+
+
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="30.3dp"
-                                android:text="Waktu Penggunaan Obat"
+                                android:layout_marginTop="20dp"
+                                android:text="Nama Obat"
+                                android:textColor="#9e9d9d"
+                                android:textSize="12.3sp" />
+
+                            <Spinner
+                                android:id="@+id/spDrugName"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/spacing_medium"/>
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="20dp"
+                                android:orientation="horizontal">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Jumlah"
+                                        android:textColor="#9e9d9d"
+                                        android:textSize="12.3sp" />
+
+
+                                    <RelativeLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginRight="17.3dp"
+                                        android:layout_marginTop="12dp"
+                                        android:orientation="horizontal">
+
+                                        <EditText
+                                            android:id="@+id/edJumlah"
+                                            android:layout_width="120dp"
+                                            android:layout_height="wrap_content"
+                                            android:background="@android:color/transparent"
+                                            android:inputType="numberDecimal"
+                                            android:maxLength="10"
+                                            android:maxLines="1"
+
+                                            android:textColor="#333232"
+                                            />
+
+                                        <TextView
+
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_alignParentEnd="true"
+                                            android:text="Pcs " />
+
+
+                                    </RelativeLayout>
+
+
+                                    <View
+                                        android:layout_width="match_parent"
+                                        android:layout_height="1dp"
+                                        android:layout_marginTop="6.7dp"
+                                        android:layout_marginRight="17.3dp"
+                                        android:background="#9e9e9e" />
+                                </LinearLayout>
+
+
+                            </LinearLayout>
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="20dp"
+                                android:text="Dosis"
                                 android:textColor="#9e9d9d"
                                 android:textSize="12.3sp" />
 
@@ -187,34 +266,6 @@
 
                             </LinearLayout>
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="27.3dp"
-                                android:text="Nama Obat"
-                                android:textColor="#9e9d9d"
-                                android:textSize="12.3sp" />
-
-                            <EditText
-                                android:id="@+id/edDrugName"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="12dp"
-                                android:background="@android:color/transparent"
-                                android:maxLines="3"
-                                android:textColorHint="#c2c2c2"
-                                android:inputType="textMultiLine"
-
-                                android:textSize="15sp" />
-
-
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="1dp"
-                                android:layout_marginTop="6.7dp"
-                                android:layout_marginRight="17.3dp"
-                                android:layout_marginBottom="27dp"
-                                android:background="#9e9e9e" />
 
 
                             <TextView
@@ -254,7 +305,7 @@
                                 android:id="@+id/btnSave"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_margin="@dimen/spacing_xlarge"
+                                android:layout_margin="@dimen/spacing_large"
                                 android:background="@drawable/blue_fill__rounded_color"
                                 android:textColor="@color/white"
                                 android:text="Simpan" />

@@ -27,7 +27,8 @@ class DashboardActivity : AppCompatActivity()
 {
 
     private val container by lazy { findViewById<ViewGroup>(R.id.container) }
-    private val title by lazy { findViewById<TextView>(R.id.title) }
+    private val tvUser by lazy { findViewById<TextView>(R.id.tvUser) }
+
     private val button by lazy { findViewById<ImageView>(R.id.expand_button) }
     private val menu by lazy { findViewById<ChipNavigationBar>(R.id.bottom_menu) }
 
@@ -41,6 +42,8 @@ class DashboardActivity : AppCompatActivity()
     {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard_actvity)
+        tvUser.text = UserAccount.getUsername()
+
 
         val menuNav = Menu(this@DashboardActivity)
         menuNav.initMenu(container,button,menu)
@@ -49,7 +52,7 @@ class DashboardActivity : AppCompatActivity()
 
       //  AlarmScheduler.scheduleNextDrugTaken(this@DashboardActivity)
        // AlarmScheduler.scheduleDrinkInMorning(this@DashboardActivity)
-        AlarmScheduler.cancelSchedule(this@DashboardActivity)
+      //  AlarmScheduler.cancelSchedule(this@DashboardActivity)
 
 
 
@@ -95,6 +98,7 @@ class DashboardActivity : AppCompatActivity()
                         tvNameOfDrug.text = drugusage.obat
                         val arrsplit : List<String> = drugusage.waktu_makan.split(",")
                         tvStatusOfDrug.text = arrsplit.size.toString() + "x / Hari"
+                        tvAmount.text = drugusage.jumlah.toString() + " Pcs"
 
 
 

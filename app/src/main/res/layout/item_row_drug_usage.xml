@@ -91,12 +91,22 @@
                         android:maxLines="1"
                         android:singleLine="true"
                         android:text="-----"
-
-
-
                         android:textColor="@color/main_blue_color"
                         android:textSize="15sp"
                         android:textStyle="bold" />
+
+
+                    <TextView
+                        android:id="@+id/tvAmount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:layout_gravity="center"
+                        android:text="\?"
+                        android:textSize="10sp"
+                        android:textColor="@color/grey_text" />
 
 
                     <TextView

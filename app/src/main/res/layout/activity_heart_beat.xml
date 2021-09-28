@@ -63,11 +63,19 @@
             android:textSize="20sp"
             android:text="Ukur Detak Jantung Anda" />
 
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+
+            android:background="@color/white" />
+
         <Button
             android:id="@+id/btnShowHistory"
             android:layout_width="wrap_content"
-            android:background="@drawable/blue_border_rounded_cornwe"
+            android:background="@drawable/blue_fill__rounded_color"
+            android:layout_marginTop="@dimen/spacing_medium"
             android:layout_height="wrap_content"
+            android:textColor="@color/white"
             android:text="Riwayat"
             android:layout_gravity="right"
             />

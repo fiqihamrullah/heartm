@@ -61,6 +61,12 @@ class Menu(context: Context)
                 }else if (id==R.id.drug)
                 {
                     context.startActivity(Intent(context, DrugUsageActivity::class.java))
+                }else if (id==R.id.settings)
+                {
+                    context.startActivity(Intent(context, SettingActivity::class.java))
+                }else if (id==R.id.about)
+                {
+                    context.startActivity(Intent(context, AboutActivity::class.java))
                 }
 
             }

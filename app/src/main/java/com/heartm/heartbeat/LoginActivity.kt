@@ -51,7 +51,7 @@ class LoginActivity : AppCompatActivity() {
     {
         UserAccount.setID(user.id.toString())
         UserAccount.setEmail(user.no_hp)
-        UserAccount.setUserName("")
+        UserAccount.setUserName(user.nama)
         UserAccount.setToken(api_token)
 
 

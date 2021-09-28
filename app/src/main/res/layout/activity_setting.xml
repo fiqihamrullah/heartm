@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".StepSportActivity">
+    <LinearLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/settings"
+        android:orientation="horizontal"
+        tools:background="@color/settings"
+        tools:context=".HeartBeatActivity">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <com.ismaeldivita.chipnavigation.ChipNavigationBar
+                android:id="@+id/bottom_menu"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:elevation="16dp"
+                app:cnb_minExpandedWidth="150dp"
+                app:cnb_addTopInset="true"
+                app:cnb_addLeftInset="true"
+                app:cnb_menuResource="@menu/main"
+                app:cnb_orientationMode="vertical" />
+
+            <ImageView
+                android:id="@+id/expand_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:tint="#696969"
+                android:padding="8dp"
+                android:src="@drawable/ic_menu" />
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/settings"
+            android:orientation="vertical"
+            tools:background="@color/settings"
+            tools:context=".SettingActivity">
+
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:fitsSystemWindows="true"
+                android:textColor="@color/black"
+                android:textSize="34sp"
+                android:text="Pengaturan " />
+
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+
+                android:background="@color/white" />
+
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="5dp">
+
+
+
+                <TextView
+                    android:id="@+id/tv1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bahasa"
+                    android:paddingLeft="3dp"
+                    android:paddingRight="3dp"
+
+                    android:textSize="18dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                    android:textColor="@color/black" />
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:layout_weight="1"
+                    android:background="@color/grey_medium" />
+
+
+
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="5dp">
+
+
+                <Button
+                    android:id="@+id/btnIndonesia"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableTop="@drawable/indonesia"
+                    android:layout_weight="1"
+                    android:layout_margin="@dimen/spacing_large"
+                    android:background="@drawable/blue_fill__rounded_color"
+                    android:textColor="@color/white"
+                    android:text="Indonesia" />
+
+
+
+                <Button
+                    android:id="@+id/btnEnglish"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableTop="@drawable/united_kingdom"
+                    android:layout_margin="@dimen/spacing_large"
+                    android:background="@drawable/blue_fill__rounded_color"
+                    android:textColor="@color/white"
+                    android:text="Inggris"
+                   />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="5dp">
+
+
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Keamanan"
+                    android:paddingLeft="3dp"
+                    android:paddingRight="3dp"
+
+                    android:textSize="18dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                    android:textColor="@color/black" />
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:layout_weight="1"
+                    android:background="@color/grey_medium" />
+
+
+
+
+
+            </LinearLayout>
+
+
+
+            <Button
+                android:id="@+id/btnChangePassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/padlock"
+                android:layout_margin="@dimen/spacing_large"
+                android:background="@drawable/blue_fill__rounded_color"
+                android:textColor="@color/white"
+                android:text="Ganti Password" />
+
+
+
+
+
+
+        </LinearLayout>
+
+
+
+
+
+    </LinearLayout>
+
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

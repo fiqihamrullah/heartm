@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">heartbeatm</string>
     <string name="online_url">https://heartmcp.000webhostapp.com/api/</string>
@@ -43,7 +44,6 @@
 
     <string name="output_hint">
         Letakkan Jarimu Menutupi Camera Belakang dan Flash untuk Memulai
-        Put your finger covering camera and flash to start
     </string>
     <string name="output_header_template">Heart rate on %s</string>
     <string name="output_detected_peaks_header">Detected Peaks:</string>
@@ -60,11 +60,9 @@
     <string name="dateFormatGranular">yyyy-MM-dd\'T\'HH:mm:ss.SSSXXX</string>
     <string name="camera_not_found">Camera not available.</string>
     <plurals name="measurement_output_template">
-        <item quantity="zero">Pulse: %.1f ( %.1f second)</item>
-        <item quantity="one">Pulse: %.1f ( %.1f second)</item>
-        <item quantity="other">Pulse: %.1f ( %.1f second)</item>
+        <item quantity="zero">Denyut: %.1f ( %.1f detik)</item>
+        <item quantity="one">Denyut: %.1f ( %.1f detik)</item>
+        <item quantity="other">Denyut: %.1f ( %.1f detik)</item>
     </plurals>
     <string name="title_activity_heart_beat_history">HeartBeatHistoryActivity</string>
-
-
 </resources>

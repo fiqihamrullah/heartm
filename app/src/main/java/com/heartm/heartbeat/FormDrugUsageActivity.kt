@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
+import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
@@ -14,6 +15,7 @@ import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.github.loadingview.LoadingDialog
 import com.heartm.heartbeat.fragments.DateTimePickerFragment
+import com.heartm.heartbeat.notification.AlarmScheduler
 import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.activity_form_drug_usage.*
 import kotlinx.android.synthetic.main.activity_form_drug_usage.btnSave
@@ -46,6 +48,26 @@ class FormDrugUsageActivity : AppCompatActivity()
 
         btnSave.setOnClickListener(View.OnClickListener { saveDrugUsage() })
 
+        initSpinnerDrugNames()
+
+    }
+
+
+    fun initSpinnerDrugNames()
+    {
+        var names = resources.getStringArray(R.array.obat)
+        var aa = ArrayAdapter(this, android.R.layout.simple_spinner_item, names)
+        aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+
+        with(spDrugName)
+        {
+            adapter = aa
+            setSelection(0, false)
+            // onItemSelectedListener = this@MainActivity
+            prompt = "Silahkan Pilih"
+
+
+        }
     }
 
 
@@ -63,8 +85,8 @@ class FormDrugUsageActivity : AppCompatActivity()
 
         val tgl = edTglInput.text.toString()
         val tgl_next = edTglPengambilanBerikut.text.toString()
-        val obat = edDrugName.text.toString()
-
+        val obat = spDrugName.selectedItem.toString()
+        val jumlah = edJumlah.text.toString()
         val sbpagi : Boolean = swpagi.isChecked
         val sbsiang : Boolean = swsiang.isChecked
         val sbmalam : Boolean = swmalam.isChecked
@@ -72,9 +94,9 @@ class FormDrugUsageActivity : AppCompatActivity()
 
 
 
-        if (tgl.equals("") || obat.equals("") || tgl_next.equals(""))
+        if (tgl.equals("") || obat.equals("") || tgl_next.equals("") || jumlah.equals(""))
         {
-            Toasty.warning(this@FormDrugUsageActivity, "Data masih ada yag kosong!.", Toast.LENGTH_SHORT, true)
+            Toasty.warning(this@FormDrugUsageActivity, "Data masih ada yang kosong!.", Toast.LENGTH_SHORT, true)
                 .show()
         } else if (sbpagi==false && sbsiang==false && sbmalam==false)
         {
@@ -82,20 +104,27 @@ class FormDrugUsageActivity : AppCompatActivity()
                 .show()
         } else
         {
+            var bMorningDose:Boolean = false
+            var bAfterNoonDose:Boolean = false
+            var  bEveningDose : Boolean = false
+
             var selectedTimeOfDrugUsage : String =""
             if (sbpagi)
             {
                 selectedTimeOfDrugUsage = "Pagi,"
+                bMorningDose  = true
             }
 
             if (sbsiang)
             {
                 selectedTimeOfDrugUsage += "Siang,"
+                bAfterNoonDose = true
             }
 
             if (sbmalam)
             {
                 selectedTimeOfDrugUsage += "Malam"
+                bEveningDose = true
             }
 
 
@@ -112,6 +141,7 @@ class FormDrugUsageActivity : AppCompatActivity()
             {
                 postparams.put("pasien_id",UserAccount.getID())
                 postparams.put("obat",obat)
+                postparams.put("jumlah",jumlah)
                 postparams.put("tgl_ambil_obat",tgl)
                 postparams.put("tgl_ambil_obat_berikutnya",tgl_next)
                 postparams.put("waktu_makan",selectedTimeOfDrugUsage)
@@ -133,6 +163,8 @@ class FormDrugUsageActivity : AppCompatActivity()
                     sessmgr.saveNextDateDrugTaken(tgl_next)
                     sessmgr.saveTimeofDrugUsage(selectedTimeOfDrugUsage)
 
+
+
                     SweetAlertDialog(
                         this@FormDrugUsageActivity,
                         SweetAlertDialog.SUCCESS_TYPE
@@ -143,6 +175,18 @@ class FormDrugUsageActivity : AppCompatActivity()
                         .setConfirmButtonBackgroundColor(Color.argb(255, 73, 94, 123))
                         //  .setConfirmButtonBackgroundColor(Color.BLUE.darker())
                         .setConfirmClickListener {
+
+                           // AlarmScheduler.cancelSchedule(this@FormDrugUsageActivity)
+
+                            Toasty.info(this@FormDrugUsageActivity, "Alarm Notifikasi Telah Diaktifkan!.", Toast.LENGTH_SHORT, true)
+                                .show()
+
+                            if (bMorningDose)  AlarmScheduler.scheduleDrinkInMorning(this@FormDrugUsageActivity)
+                            if (bAfterNoonDose)  AlarmScheduler.scheduleDrinkInAfternoon(this@FormDrugUsageActivity)
+                            if (bEveningDose)  AlarmScheduler.scheduleDrinkInEvening(this@FormDrugUsageActivity)
+
+                            AlarmScheduler.scheduleNextDrugTaken(this@FormDrugUsageActivity)
+
                             it.hide()
                             this.finish()
 
