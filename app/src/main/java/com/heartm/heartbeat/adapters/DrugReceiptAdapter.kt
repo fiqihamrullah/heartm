@@ -1,6 +1,8 @@
 package com.heartm.heartbeat.adapters
 
 
+
+
 import android.os.Build
 import android.text.Html
 import android.view.LayoutInflater
@@ -9,18 +11,19 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.heartm.heartbeat.R
+import com.heartm.heartbeat.models.DrugReceipt
 import com.heartm.heartbeat.models.DrugUsage
 
 import com.heartm.heartbeat.util.MyDateConverter
 import kotlinx.android.synthetic.main.activity_dashboard_actvity.*
 import java.util.*
 
-class DrugUsageAdapter(
+class DrugReceiptAdapter(
 
-    items: ArrayList<DrugUsage>
+    items: ArrayList<DrugReceipt>
 ) :
-    RecyclerView.Adapter<DrugUsageAdapter.ViewHolder>() {
-    private var items: ArrayList<DrugUsage> = ArrayList<DrugUsage>()
+    RecyclerView.Adapter<DrugReceiptAdapter.ViewHolder>() {
+    private var items: ArrayList<DrugReceipt> = ArrayList<DrugReceipt>()
     private var mOnItemClickListener: OnItemClickListener? = null
 
 
@@ -69,39 +72,65 @@ class DrugUsageAdapter(
         holder: ViewHolder,
         position: Int
     ) {
-        val b: DrugUsage = items[position]
-
+        val b: DrugReceipt = items[position]
         val mydate = MyDateConverter()
 
-        val daymonth = mydate.convertfromShortDate(b.tgl_pengambilan_obat, "dd MMM yyyy")
-        val nextdateoftakendrug = mydate.convertfromShortDate(b.tgl_ambil_selanjutnya, "dd MMM yyyy")
-       // holder.tvDayMonth.setText(daymonth)
+        println("Posisi " + position)
 
-        var content = b.obat + "<br/><i>Jumlah <b>" + b.jumlah.toString() + " Pcs </b> "
+        var content  = ""
+
+        for(index in 1..(b.getSize() ?:1))  //convert int? to int beside using !!
+        {
+            val obat = b.getObat(index-1)
+            content = content.plus(obat?.obat)// + "<br/><i>Jumlah <b>" + obat?.jumlah.toString() + " Pcs </b> ")
+
+            val arrsplit : List<String> = obat?.waktu_makan!!.split(",")
+            content = content.plus(" Dosis <b>" + arrsplit.size.toString() + "x / Hr</b></i>")
+
+            content = content.plus("<br/>- - - - - - - - - - - - -  <br/>")
 
 
 
 
-      //  holder.tvDayMonth.setText(b.obat)
-
-        holder.tvYear.setText("Selanjutnya " + nextdateoftakendrug)
-
-
-        holder.tvDrugName.setText("")
-        holder.tvDrugName.visibility = View.GONE
-
-      //  holder.tvAmount.text = b.jumlah.toString() + " Pcs"
-        holder.tvAmount.visibility = View.GONE
-
-        val arrsplit : List<String> = b.waktu_makan.split(",")
-        content = content.plus(" Diminum <b>" + arrsplit.size.toString() + "x / Hari</b></i>")
-      //  holder.tvStatusOfDrug.text = arrsplit.size.toString() + "x / Hari"
-        holder.tvStatusOfDrug.visibility = View.GONE
+        }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             holder.tvDayMonth.setText(Html.fromHtml(content, Html.FROM_HTML_MODE_LEGACY))
         } else
             holder.tvDayMonth.setText(Html.fromHtml(content))
+
+       // val daymonth = mydate.convertfromShortDate(b.tgl_pengambilan_obat, "dd MMM yyyy")
+
+        if (b.getSize()!!>0)
+        {
+            val nextdateoftakendrug =
+                mydate.convertfromShortDate(b.getObat(0)?.tgl_ambil_selanjutnya, "dd MMM yyyy")
+            holder.tvYear.setText("Selanjutnya " + nextdateoftakendrug)
+        }
+        // holder.tvDayMonth.setText(daymonth)
+
+
+
+
+
+
+        //  holder.tvDayMonth.setText(b.obat)
+
+
+
+
+        holder.tvDrugName.setText("")
+        holder.tvDrugName.visibility = View.GONE
+
+        //  holder.tvAmount.text = b.jumlah.toString() + " Pcs"
+        holder.tvAmount.visibility = View.GONE
+
+    //    val arrsplit : List<String> = b.waktu_makan.split(",")
+    //    content = content.plus(" Diminum <b>" + arrsplit.size.toString() + "x / Hari</b></i>")
+        //  holder.tvStatusOfDrug.text = arrsplit.size.toString() + "x / Hari"
+        holder.tvStatusOfDrug.visibility = View.GONE
+
+
 
 
         /*

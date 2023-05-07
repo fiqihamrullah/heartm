@@ -8,5 +8,6 @@ class DrugUsage
      var tgl_ambil_selanjutnya : String=""
      var waktu_makan : String=""
      var jumlah : Int =0
+     var resep:Int=0
 
 }

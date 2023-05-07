@@ -2,6 +2,7 @@ package com.heartm.heartbeat
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.app.Dialog
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Color
@@ -10,16 +11,9 @@ import android.os.Handler
 import android.os.Looper
 import android.os.Message
 import android.util.Log
-import android.view.Surface
-import android.view.TextureView
-import android.view.View
-import android.view.ViewGroup
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
+import android.view.*
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.core.app.ActivityCompat
 import cn.pedant.SweetAlert.SweetAlertDialog
 import com.android.volley.Request
@@ -32,10 +26,10 @@ import com.heartm.heartbeat.detector.OutputAnalyzer
 import com.heartm.heartbeat.util.Menu
 import com.ismaeldivita.chipnavigation.ChipNavigationBar
 import es.dmoral.toasty.Toasty
-import kotlinx.android.synthetic.main.activity_form_step_sport.*
 import kotlinx.android.synthetic.main.activity_heart_beat.*
 import org.json.JSONException
 import org.json.JSONObject
+import java.util.*
 
 
 class HeartBeatActivity : AppCompatActivity()
@@ -46,9 +40,11 @@ class HeartBeatActivity : AppCompatActivity()
     private val REQUEST_CODE_CAMERA = 0
     private val container by lazy { findViewById<ViewGroup>(R.id.container) }
     private val title by lazy { findViewById<TextView>(R.id.title) }
-    private val labelIndicator by lazy { findViewById<TextView>(R.id.tvLabel) }
+   // private val labelIndicator by lazy { findViewById<TextView>(R.id.tvLabel) }
     private val button by lazy { findViewById<ImageView>(R.id.expand_button) }
     private val menu by lazy { findViewById<ChipNavigationBar>(R.id.bottom_menu) }
+
+    private var textToShare:String?= null
 
     private val justShared = false
 
@@ -69,27 +65,9 @@ class HeartBeatActivity : AppCompatActivity()
                     val bpm = msg.obj.toString()
                     val ibpm = Integer.parseInt(bpm)
 
-                    (findViewById<View>(R.id.tvBPM) as TextView).setText(bpm + " BPM")
 
-                    var status = ""
-                    labelIndicator.visibility = View.VISIBLE
+                    showDialogResult(bpm,ibpm)
 
-                    if (ibpm in 60..100)
-                    {
-                        status = "Sehat"
-                        labelIndicator.setBackgroundResource(R.drawable.green_rounded_corner)
-
-                    }else {
-                        status = "Sakit"
-                        labelIndicator.setBackgroundResource(R.drawable.rounded_corner)
-                    }
-
-                    labelIndicator.text = status
-
-
-
-
-                    saveHeartPulse(bpm)
 
 
                 }
@@ -139,6 +117,30 @@ class HeartBeatActivity : AppCompatActivity()
             cameraService.start(previewSurface)
             analyzer?.measurePulse(cameraTextureView, cameraService)
         }
+
+
+        /*
+        labelIndicator.setOnClickListener(View.OnClickListener {
+            if (labelIndicator.text.equals(getString(R.string.healthy)))
+            {
+                val content = String.format(Locale.getDefault(),"%s %s 60 Bpm & 100 Bpm",getString(R.string.healthy),"Antara")
+
+                SweetAlertDialog(this@HeartBeatActivity, SweetAlertDialog.SUCCESS_TYPE)
+                    .setTitleText("Selamat")
+                    .setContentText(content)
+                    .show()
+            }else
+            {
+                val content = String.format(Locale.getDefault(),"%s %s 60 Bpm",getString(R.string.sick),"Dibawah")
+
+                SweetAlertDialog(this@HeartBeatActivity, SweetAlertDialog.WARNING_TYPE)
+                    .setTitleText("Ups!")
+                    .setContentText(content)
+                    .show()
+
+            }
+        })*/
+
     }
 
     override fun onPause() {
@@ -190,6 +192,314 @@ class HeartBeatActivity : AppCompatActivity()
         }
     }
 
+
+    fun getStatus(ibpm:Int):String
+    {
+        var status = ""
+        val usia = UserAccount.getUsia()
+        if (UserAccount.getGender()=="L")
+        {
+            if (usia in 18..25)
+            {
+                    status= when(ibpm)
+                    {
+                        in  49..55 -> getString(R.string.athlete)
+                        in 56..61 ->  getString(R.string.excellent)
+                        in 62..65 ->  getString(R.string.great)
+                        in 66..69 ->  getString(R.string.good)
+                        in 70..73 ->  getString(R.string.average)
+                        in 74..81 ->  getString(R.string.below_average)
+                        else -> getString(R.string.poor)
+
+                    }
+
+            }else  if (usia in 26..35)
+            {
+                status= when(ibpm)
+                {
+                    in  49..54 -> getString(R.string.athlete)
+                    in 55..61 ->  getString(R.string.excellent)
+                    in 62..65 ->  getString(R.string.great)
+                    in 66..70->  getString(R.string.good)
+                    in 71..74 ->  getString(R.string.average)
+                    in 75..81 ->  getString(R.string.below_average)
+                    else -> getString(R.string.poor)
+
+                }
+
+            }else  if (usia in 36..45)
+            {
+                status= when(ibpm)
+                {
+                    in  50..56 -> getString(R.string.athlete)
+                    in 57..62 ->  getString(R.string.excellent)
+                    in 63..66 ->  getString(R.string.great)
+                    in 67..70->  getString(R.string.good)
+                    in 71..75 ->  getString(R.string.average)
+                    in 76..82 ->  getString(R.string.below_average)
+                    else -> getString(R.string.poor)
+
+                }
+
+            }else  if (usia in 46..55)
+            {
+                status= when(ibpm)
+                {
+                    in  50..57 -> getString(R.string.athlete)
+                    in 58..63 ->  getString(R.string.excellent)
+                    in 64..67 ->  getString(R.string.great)
+                    in 68..71->  getString(R.string.good)
+                    in 72..76 ->  getString(R.string.average)
+                    in 77..83 ->  getString(R.string.below_average)
+                    else -> getString(R.string.poor)
+
+                }
+
+            }else  if (usia in 56..65)
+            {
+
+                status= when(ibpm)
+                {
+                    in  51..56 -> getString(R.string.athlete)
+                    in 57..61 ->  getString(R.string.excellent)
+                    in 62..67 ->  getString(R.string.great)
+                    in 68..71->  getString(R.string.good)
+                    in 72..75 ->  getString(R.string.average)
+                    in 76..81 ->  getString(R.string.below_average)
+                    else -> getString(R.string.poor)
+
+                }
+
+            }else if (usia > 65)
+            {
+
+                status= when(ibpm)
+                {
+                    in  50..55 -> getString(R.string.athlete)
+                    in 56..61 ->  getString(R.string.excellent)
+                    in 62..65 ->  getString(R.string.great)
+                    in 66..69->  getString(R.string.good)
+                    in 70..73 ->  getString(R.string.average)
+                    in 74..79 ->  getString(R.string.below_average)
+                    else -> getString(R.string.poor)
+
+                }
+
+            }
+
+
+        }else
+        {
+
+            if (usia in 18..25)
+            {
+                status= when(ibpm)
+                {
+                    in  54..60 -> getString(R.string.athlete)
+                    in 61..65 ->  getString(R.string.excellent)
+                    in 66..69 ->  getString(R.string.great)
+                    in 70..73 ->  getString(R.string.good)
+                    in 74..78 ->  getString(R.string.average)
+                    in 79..84 ->  getString(R.string.below_average)
+                    else -> getString(R.string.poor)
+
+                }
+
+            }else  if (usia in 26..35)
+            {
+
+                status= when(ibpm)
+                {
+                    in 54..59 -> getString(R.string.athlete)
+                    in 60..64 ->  getString(R.string.excellent)
+                    in 65..68 ->  getString(R.string.great)
+                    in 69..72 ->  getString(R.string.good)
+                    in 73..76 ->  getString(R.string.average)
+                    in 77..82 ->  getString(R.string.below_average)
+                    else -> getString(R.string.poor)
+
+                }
+
+            }else  if (usia in 36..45)
+            {
+                status= when(ibpm)
+                {
+                    in 54..59 -> getString(R.string.athlete)
+                    in 60..64 ->  getString(R.string.excellent)
+                    in 65..69 ->  getString(R.string.great)
+                    in 70..73 ->  getString(R.string.good)
+                    in 74..78 ->  getString(R.string.average)
+                    in 79..84 ->  getString(R.string.below_average)
+                    else -> getString(R.string.poor)
+
+                }
+
+            }else  if (usia in 46..55)
+            {
+                status= when(ibpm)
+                {
+                    in 54..60 -> getString(R.string.athlete)
+                    in 61..65 ->  getString(R.string.excellent)
+                    in 66..69 ->  getString(R.string.great)
+                    in 70..73 ->  getString(R.string.good)
+                    in 74..77 ->  getString(R.string.average)
+                    in 78..83 ->  getString(R.string.below_average)
+                    else -> getString(R.string.poor)
+
+                }
+
+            }else  if (usia in 56..65)
+            {
+                status= when(ibpm)
+                {
+                    in 54..59 -> getString(R.string.athlete)
+                    in 60..64 ->  getString(R.string.excellent)
+                    in 65..68 ->  getString(R.string.great)
+                    in 69..73 ->  getString(R.string.good)
+                    in 74..77 ->  getString(R.string.average)
+                    in 78..83 ->  getString(R.string.below_average)
+                    else -> getString(R.string.poor)
+
+                }
+
+            }else if (usia > 65)
+            {
+                status= when(ibpm)
+                {
+                    in 54..59 -> getString(R.string.athlete)
+                    in 60..64 ->  getString(R.string.excellent)
+                    in 65..68 ->  getString(R.string.great)
+                    in 69..72 ->  getString(R.string.good)
+                    in 73..76 ->  getString(R.string.average)
+                    in 77..84 ->  getString(R.string.below_average)
+                    else -> getString(R.string.poor)
+
+                }
+
+
+            }
+
+        }
+
+        return status
+    }
+
+
+    fun showDialogResult(bpm:String, ibpm:Int)
+    {
+        val dialog = Dialog(this@HeartBeatActivity)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE) // before
+
+        dialog.setContentView(R.layout.dialog_heartbeat_result)
+
+        val lp = WindowManager.LayoutParams()
+        lp.copyFrom(dialog.window!!.attributes)
+        lp.width = WindowManager.LayoutParams.WRAP_CONTENT
+        lp.height = WindowManager.LayoutParams.WRAP_CONTENT
+
+        val v = dialog.window!!.decorView
+        v.setBackgroundResource(android.R.color.transparent)
+
+
+
+        (dialog.findViewById<View>(R.id.img_close) as ImageView).setOnClickListener { dialog.dismiss() }
+
+        (dialog.findViewById<View>(R.id.tvBPM) as TextView).setText(bpm + " BPM")
+        val labelIndicator =  dialog.findViewById<View>(R.id.tvLabelIndicator) as TextView
+        val labelDesc=  dialog.findViewById<View>(R.id.tvDesc) as TextView
+
+
+        val btnSave=  dialog.findViewById<View>(R.id.btnSaveBPM) as ImageButton
+        val btnShare=  dialog.findViewById<View>(R.id.btnShare) as ImageButton
+
+
+
+        var status = getStatus(ibpm)
+        labelIndicator.visibility = View.VISIBLE
+
+        if (ibpm in 60..100)
+        {
+           // status = getString(R.string.healthy)
+            labelIndicator.setBackgroundResource(R.drawable.green_rounded_corner)
+
+        }else {
+           // status = getString(R.string.sick)
+            labelIndicator.setBackgroundResource(R.drawable.rounded_corner)
+        }
+
+
+
+        var desc = ""
+        textToShare = "Detak Jantung Sebesar " + bpm + " BPM"
+        textToShare += "Dinyatakan dalam keadaan  " + status
+
+
+        if (ibpm in 0..39 )
+        {
+            desc = getString(R.string.red_desc_bpm)
+            labelDesc.setBackgroundResource(R.drawable.shape_rect_round_dash_red)
+            desc = desc + "\n" + "0 - 39"
+
+
+
+        }else if (ibpm in 40..59)
+        {
+            desc =   getString(R.string.orange_desc_bpm)
+            labelDesc.setBackgroundResource(R.drawable.shape_rect_round_dash_warning)
+            desc = desc + "\n" + "40 - 59"
+
+        }else if (ibpm in 60..100)
+        {
+
+            desc = getString(R.string.green_desc_bpm)
+            labelDesc.setBackgroundResource(R.drawable.shape_rect_round_dash)
+            desc = desc + "\n" + "60 - 100"
+        }
+
+        textToShare += desc
+
+        labelDesc.setText(desc)
+
+        labelIndicator.text = status
+
+
+        btnSave.setOnClickListener(View.OnClickListener { saveHeartPulse(bpm) })
+
+        btnShare.setOnClickListener(View.OnClickListener {
+
+            if (textToShare.isNullOrBlank())
+            {
+
+                Toasty.warning(this@HeartBeatActivity, getString(R.string.no_data_to_share), Toast.LENGTH_SHORT, true)
+                    .show()
+
+            }else {
+                val intentShare = Intent(Intent.ACTION_SEND)
+                intentShare.setType("text/plain")
+                intentShare.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.heart_beat))
+                intentShare.putExtra(
+                    Intent.EXTRA_TEXT,
+                    textToShare
+                )
+
+                startActivity(
+                    Intent.createChooser(
+                        intentShare,
+                        getString(R.string.share_your_data)
+                    )
+                )
+            }
+
+        })
+
+
+        dialog.show()
+        dialog.window!!.attributes = lp
+
+
+
+    }
+
     fun initMenu()
     {
 
@@ -228,8 +538,8 @@ class HeartBeatActivity : AppCompatActivity()
                         this@HeartBeatActivity,
                         SweetAlertDialog.SUCCESS_TYPE
                     )
-                        .setTitleText("Sukses!!")
-                        .setContentText("Data BPM Anda berhasil tersimpan!!")
+                        .setTitleText(getString(R.string.success))
+                        .setContentText(String.format(Locale.getDefault(),"%s %s", "Data BPM ",getString(R.string.success_save) ))
                         //  .setConfirmButtonBackgroundColor(R.color.extraDialogcolorPrimary)
                         .setConfirmButtonBackgroundColor(Color.argb(255, 73, 94, 123))
                         //  .setConfirmButtonBackgroundColor(Color.BLUE.darker())

@@ -54,12 +54,24 @@ class AlarmReceiver : BroadcastReceiver()
                     1002
                 )
 
+            }else if (intent?.type.equals("daily_usage",ignoreCase = true))
+            {
+                NotificationHelper.createSimpleNotification(
+                    context,
+                    "Ingat!",
+                    "Selalu periksa denyut jantung Anda setiap hari!",
+                    "",
+                    true,
+                    1003
+                )
+
             }
 
 
             if (intent?.action == "android.intent.action.BOOT_COMPLETED")
             {
                 // Set the alarm here.
+                AlarmScheduler.scheduleDailyUsage(context)
 
             }
 

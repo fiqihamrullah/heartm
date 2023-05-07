@@ -5,13 +5,13 @@
     <item
         android:id="@+id/home"
         android:icon="@drawable/ic_home"
-        android:title="Beranda"
+        android:title="@string/dashboard"
         app:cnb_iconColor="@color/home"/>
 
     <item
         android:id="@+id/heartbeat"
         android:icon="@drawable/heartbeats"
-        android:title="Detak Jantung"
+        android:title="@string/heart_beat"
         app:cnb_iconColor="@color/activity"/>
 
 
@@ -19,7 +19,7 @@
     <item
         android:id="@+id/sport"
         android:icon="@drawable/footing"
-        android:title="Olahraga"
+        android:title="@string/step"
         app:cnb_iconColor="@color/favorites" />
 
 
@@ -27,19 +27,19 @@
     <item
         android:id="@+id/drug"
         android:icon="@drawable/meds"
-        android:title="Obat-obatan"
+        android:title="@string/medicine"
         app:cnb_iconColor="@color/drugs" />
 
     <item
         android:id="@+id/settings"
         android:icon="@drawable/ic_settings"
-        android:title="Pengaturan"
+        android:title="@string/setting"
         app:cnb_iconColor="@color/settings" />
 
     <item
         android:id="@+id/about"
         android:icon="@drawable/about"
-        android:title="Tentang"
+        android:title="@string/about"
         app:cnb_iconColor="@color/about" />
 
 

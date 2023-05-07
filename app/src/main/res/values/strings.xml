@@ -1,19 +1,9 @@
 <resources>
-    <string name="app_name">heartbeatm</string>
+    <string name="app_name">HeartM</string>
     <string name="online_url">https://heartmcp.000webhostapp.com/api/</string>
+    <string name="online_base_url">https://heartmcp.000webhostapp.com/</string>
     <string name="title_activity_login">LoginActivity</string>
-    <string name="set_password">Set Password</string>
-    <string name="full_name">Full Name</string>
-    <string name="email">No Telepon</string>
-    <string name="password">Password</string>
-    <string name="sign_in">Sign In</string>
-    <string name="don_t_have_an_account">Don\'t have an account?</string>
-    <string name="sign_up">Sign Up</string>
-    <string name="enteryourname">Enter your Name</string>
-    <string name="validemail">Enter a valid email address</string>
-    <string name="validpassword">Between 6 and 12 alphanumeric characters</string>
-    <string name="privacypolicy">Privacy policy and terms of service</string>
-    <string name="forgot_password">Forgot Password</string>
+
     <string name="by_using_this_ui_ux_you_agree">by using this ui/ux you agree to our</string>
     <string name="title_activity_sign_up">SignUp</string>
     <string name="privacypolicyterms">
@@ -23,11 +13,93 @@
         <b>Regular LICENCE</b> \The Regular License grants you, the purchaser, an ongoing, non-exclusive, worldwide license to make use of the digital work (Item) you have selected. You are licensed to use the Item to create one single End Product for yourself or for one client (a “single application”), and the End Product can be distributed for Free..\n\n
 
     </string>
+    <!-- Form Login -->
+    <string name="set_password">Set Password</string>
+    <string name="full_name">Full Name</string>
+    <string name="email">Phone Number</string>
+    <string name="password">Password</string>
+    <string name="sign_in">Sign In</string>
+    <string name="don_t_have_an_account">Don\'t have an account?</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="profile_update">Update Profile</string>
+    <string name="enteryourname">Enter your Name</string>
+    <string name="validemail">Enter a valid email address</string>
+    <string name="validpassword">Between 6 and 12 alphanumeric characters</string>
+    <string name="privacypolicy">Privacy policy and terms of service</string>
+    <string name="forgot_password">Forgot Password</string>
+
+    <string name="heart_beat">Heart Beat</string>
+    <string name="step">Step</string>
+    <string name="sport">Sport</string>
+    <string name="medicine">Medicine</string>
+    <string name="history_of_medicine">History of Medicine</string>
+    <string name="next_on">Next On</string>
+    <string name="per_day">Day</string>
+    <string name="healthy">Healthy</string>
+    <string name="sick">Sick</string>
+
+    <string name="setting">Setting</string>
+    <string name="about">About</string>
+    <string name="history">History</string>
+
+    <string name="language">Language</string>
+    <string name="security">Security</string>
+    <string name="profile">Profile</string>
+    <string name="update_profile">Update </string>
+    <string name="change_password">Change Password</string>
+    <string name="logout">Logout</string>
+
+    <string name="measure_your_heartbeat">Measure Your Heart Beat</string>
+    <string name="developed_to">Developed for Helping Patient of Heart Disease to :</string>
+    <string name="record_health">Record Heart Health </string>
+    <string name="control_medicine">Control Medicine Taking and Usage</string>
+    <string name="doing_sport">Doing Sport</string>
+    <string name="powered_and_supported">Powered and Supported By Cardiologist Palembang</string>
+
+    <string name="athlete">Athlete</string>
+    <string name="excellent">Excellent</string>
+    <string name="great">Great</string>
+    <string name="good">Good</string>
+    <string name="average">Average</string>
+    <string name="below_average">Below Average</string>
+    <string name="poor">Poor</string>
+
+
+    <string name="dashboard">Dashboard</string>
+    <string name="latest_info">Latest Info</string>
+    <string name="discuss">Discuss with your doctor</string>
+    <string name="send_msg">Send Message</string>
+    <string name="share_your_data">Share Your Data</string>
+    <string name="no_data_to_share">No Data To Share</string>
+    <string name="success">Succcess</string>
+    <string name="prayer">Stay Healthy</string>
+    <string name="success_save">Successfully Saved</string>
+    <string name="title_not_complete">Not yet Complete!</string>
+    <string name="phone_number_empty">Phone Number is Empty</string>
+
+    <string name="week">Week</string>
+    <string name="month">Month</string>
+
+    <string name="target_achieved">Target Achieved</string>
+    <string name="target_missed">Did not reach the target</string>
+    <string name="red_desc_bpm">This means the system has detected the disease and this, urgent notification to seek immediate treatment will be pushed to the patient</string>
+    <string name="orange_desc_bpm">The patient should be careful, calm and take the prescribed medication</string>
+    <string name="green_desc_bpm">Positive health indications and ask, patients to maintain health monitor food intake and continue taking medication</string>
+
+
+
+
+
     <string name="OK">OK</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_tes">TesActivity</string>
+
+    <string-array name="tab_titles">
+        <item>Data</item>
+        <item>Stats</item>
+    </string-array>
 
     <string-array name="obat">
         <item>Amaryl M2</item>
@@ -42,8 +114,7 @@
 
 
     <string name="output_hint">
-        Letakkan Jarimu Menutupi Camera Belakang dan Flash untuk Memulai
-        Put your finger covering camera and flash to start
+       Put your right point finger covering camera and flash to start and hold until 30 seconds
     </string>
     <string name="output_header_template">Heart rate on %s</string>
     <string name="output_detected_peaks_header">Detected Peaks:</string>

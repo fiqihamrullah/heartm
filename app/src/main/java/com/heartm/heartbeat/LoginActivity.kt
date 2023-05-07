@@ -18,7 +18,8 @@ import kotlinx.android.synthetic.main.activity_login.*
 import org.json.JSONException
 import org.json.JSONObject
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity()
+{
 
     private val URL_LOGIN_POST =
         MyApplication.Companion.instance?.resources?.getString(R.string.online_url) + "auth"
@@ -30,10 +31,6 @@ class LoginActivity : AppCompatActivity() {
 
         initComponent()
 
-
-
-
-
     }
 
 
@@ -44,6 +41,14 @@ class LoginActivity : AppCompatActivity() {
              login()
         })
 
+        id_ForgetPassword_TextView.setOnClickListener(View.OnClickListener {
+            startActivity(Intent(this,ViewWebFormActivity::class.java).putExtra("pil",1))
+        })
+
+        id_SignUp_TextView.setOnClickListener(View.OnClickListener {
+            startActivity(Intent(this,ViewWebFormActivity::class.java).putExtra("pil",2))
+        })
+
 
     }
 
@@ -52,15 +57,21 @@ class LoginActivity : AppCompatActivity() {
         UserAccount.setID(user.id.toString())
         UserAccount.setEmail(user.no_hp)
         UserAccount.setUserName(user.nama)
+        UserAccount.setDoctorName(user.ofdokter!!.nama)
+        UserAccount.setDoctorPhoneNumber(user.ofdokter!!.no_hp)
+        UserAccount.setUsia(user.usia)
+        UserAccount.setGender(user.jk)
         UserAccount.setToken(api_token)
-
-
 
         val sm = SessionManager(this@LoginActivity)
         sm.createLoginSession(
             UserAccount.getID().toString(),
             UserAccount.getUsername().toString(),
             UserAccount.getEmail().toString(),
+            UserAccount.getDoctorName().toString(),
+            UserAccount.getDoctorPhoneNumber().toString(),
+            UserAccount.getUsia().toString(),
+            UserAccount.getGender(),
             api_token,
             "",
             UserAccount.getAccess()
@@ -76,8 +87,8 @@ class LoginActivity : AppCompatActivity() {
         if (email == "")
         {
             SweetAlertDialog(this@LoginActivity, SweetAlertDialog.WARNING_TYPE)
-                .setTitleText("Belum Lengkap!!")
-                .setContentText("No HP Masih Kosong !!")
+                .setTitleText(getString(R.string.title_not_complete))
+                .setContentText(getString(R.string.phone_number_empty))
                 .show()
 
 

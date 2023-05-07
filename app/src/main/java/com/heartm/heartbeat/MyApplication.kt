@@ -22,14 +22,16 @@ class MyApplication : Application()
             getString(R.string.app_name), "AppHeartMChannel")
     }
 
-    fun getRequestQueue(): RequestQueue? {
+    fun getRequestQueue(): RequestQueue?
+    {
         if (requestQueue == null)
             requestQueue = Volley.newRequestQueue(applicationContext)
         return requestQueue
     }
 
 
-    fun addToRequestQueue(request: Request<*>, tag: String) {
+    fun addToRequestQueue(request: Request<*>, tag: String)
+    {
         request.tag = tag
         getRequestQueue()?.add(request)
     }

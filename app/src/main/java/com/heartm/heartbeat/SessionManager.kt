@@ -23,6 +23,10 @@ class SessionManager {
     private val EMAIL = "EMAIL"
     private val USER_ID = "PASIEN_ID"
     private val ACCESS = "ACCESS"
+    private val DOCTOR_NAME = "DOKTOR_NAME"
+    private val DOCTOR_PHONE = "DOCTOR_PHONE"
+    private val AGE = "AGE"
+    private val GENDER = "GENDER"
 
     private val STEP_TARGET = "STEP_TARGET"
     private val TOTAL_STEP = "TOTAL_STEP"
@@ -109,6 +113,10 @@ class SessionManager {
         ID: String,
         username: String,
         email: String,
+        dokter_name: String,
+        dokter_phone : String,
+        age : String,
+        gender: String,
         api_token: String,
         expired_date: String,
         access : Int
@@ -120,6 +128,13 @@ class SessionManager {
         editor.putString(USERNAME, username)
         editor.putString(EMAIL, email)
 
+        editor.putString(DOCTOR_NAME, dokter_name)
+        editor.putString(DOCTOR_PHONE, dokter_phone)
+
+        editor.putString(AGE, age)
+        editor.putString(GENDER, gender)
+
+
         editor.putString(API_TOKEN,api_token)
         editor.putString(TOKEN_EXPIRED_DATE, expired_date)
 
@@ -130,15 +145,18 @@ class SessionManager {
         editor.commit()
     }
 
-    fun createUserProfiles() {
+    fun createUserProfiles()
+    {
         UserAccount.setID(pref.getString(USER_ID, null).toString())
         UserAccount.setEmail(pref.getString(EMAIL, null).toString())
         UserAccount.setUserName(pref.getString(USERNAME, null).toString())
+        UserAccount.setDoctorName(pref.getString(DOCTOR_NAME, null).toString())
+        UserAccount.setDoctorPhoneNumber(pref.getString(DOCTOR_PHONE, null).toString())
+        UserAccount.setUsia(pref.getString(AGE, "")!!.toInt())
+        UserAccount.setGender(pref.getString(GENDER, null).toString())
+
         UserAccount.setToken(pref.getString(API_TOKEN, null).toString())
         UserAccount.setAccess(pref.getInt(ACCESS,0))
-
-
-
     }
 
     fun isLoggedIn(): Boolean {

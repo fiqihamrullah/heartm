@@ -20,13 +20,18 @@ class DateTimePickerFragment : DialogFragment()
 {
     private var edHolder: TextView? = null
 
-    private val dateSetListener =
+    private var dateSetListener =
         DatePickerDialog.OnDateSetListener { view, year, month, day ->
             val strdate = view.dayOfMonth.toString() + "/" + (view.month + 1) + "/" + view.year
             edHolder!!.text = strdate
 
 
         }
+
+    fun setOnDateSetListner(listener:DatePickerDialog.OnDateSetListener )
+    {
+        dateSetListener = listener
+    }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog
     {
@@ -39,7 +44,8 @@ class DateTimePickerFragment : DialogFragment()
         return DatePickerDialog(activity!!, dateSetListener, year, month, day)
     }
 
-    fun setHolder(edHolder: TextView) {
+    fun setHolder(edHolder: TextView)
+    {
         this.edHolder = edHolder
     }
 }

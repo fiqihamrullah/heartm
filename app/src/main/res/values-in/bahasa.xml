@@ -1,22 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">heartbeatm</string>
+    <string name="app_name">HeartM</string>
     <string name="online_url">https://heartmcp.000webhostapp.com/api/</string>
+    <string name="online_base_url">https://heartmcp.000webhostapp.com/</string>
     <string name="title_activity_login">LoginActivity</string>
-    <string name="set_password">Set Password</string>
-    <string name="full_name">Full Name</string>
-    <string name="email">No Telepon</string>
-    <string name="password">Password</string>
-    <string name="sign_in">Sign In</string>
-    <string name="don_t_have_an_account">Don\'t have an account?</string>
-    <string name="sign_up">Sign Up</string>
-    <string name="enteryourname">Enter your Name</string>
-    <string name="validemail">Enter a valid email address</string>
-    <string name="validpassword">Between 6 and 12 alphanumeric characters</string>
-    <string name="privacypolicy">Privacy policy and terms of service</string>
-    <string name="forgot_password">Forgot Password</string>
+
     <string name="by_using_this_ui_ux_you_agree">by using this ui/ux you agree to our</string>
-    <string name="title_activity_sign_up">SignUp</string>
+    <string name="title_activity_sign_up">Daftar</string>
     <string name="privacypolicyterms">
 
         <b>Extended Licence</b> \The Extended License grants you, the purchaser, an ongoing, non-exclusive, worldwide license to make use of the digital work (Item) you have selected. You are licensed to use the Item to create one single End Product for yourself or for one client (a “single application”), and the End Product may be Sold. \n\n
@@ -24,11 +13,94 @@
         <b>Regular LICENCE</b> \The Regular License grants you, the purchaser, an ongoing, non-exclusive, worldwide license to make use of the digital work (Item) you have selected. You are licensed to use the Item to create one single End Product for yourself or for one client (a “single application”), and the End Product can be distributed for Free..\n\n
 
     </string>
+    <!-- Form Login -->
+    <string name="set_password">Set Password</string>
+    <string name="full_name">Full Name</string>
+    <string name="email">No Telepon</string>
+    <string name="password">Kata Laluan</string>
+    <string name="sign_in">Masuk</string>
+    <string name="don_t_have_an_account">Belum Punya Akun ?</string>
+    <string name="sign_up">Daftar</string>
+    <string name="profile_update">Perbaharui Profil</string>
+    <string name="enteryourname">Enter your Name</string>
+    <string name="validemail">Enter a valid email address</string>
+    <string name="validpassword">Between 6 and 12 alphanumeric characters</string>
+    <string name="privacypolicy">Privacy policy and terms of service</string>
+    <string name="forgot_password">Lupa Kata Laluan?</string>
+
+    <string name="heart_beat">Denyut Jantung</string>
+    <string name="step">Langkah</string>
+    <string name="sport">Olahraga</string>
+    <string name="medicine">Obat</string>
+    <string name="history_of_medicine">Riwayat Obat</string>
+    <string name="next_on">Selanjutnya</string>
+    <string name="per_day">Hari</string>
+    <string name="healthy">Sehat</string>
+    <string name="sick">Sakit</string>
+
+    <string name="setting">Pengaturan</string>
+    <string name="about">Tentang</string>
+    <string name="history">Riwayat</string>
+
+    <string name="language">Bahasa</string>
+    <string name="security">Keamanan</string>
+    <string name="profile">Profil</string>
+    <string name="update_profile">Perbaharui </string>
+    <string name="change_password">Ganti Kata Laluan</string>
+    <string name="logout">Logout</string>
+
+
+    <string name="athlete">Atlet</string>
+    <string name="excellent">Bagus Sekali</string>
+    <string name="great">Hebat</string>
+    <string name="good">Baik</string>
+    <string name="average">Rata-rata</string>
+    <string name="below_average">Di bawah Rata-rata</string>
+    <string name="poor">Buruk/Lemah</string>
+
+    <string name="measure_your_heartbeat">Ukur denyut jantung</string>
+    <string name="developed_to">Dikembangkan untuk Membantu Pasien Penyakit Jantung untuk :</string>
+    <string name="record_health">Merekam Kesehatan Jantung </string>
+    <string name="control_medicine">Mengontrol Pengambilan dan Penggunaan Obat</string>
+    <string name="doing_sport">Berolahraga</string>
+    <string name="powered_and_supported">Didukung oleh Dokter Ahli Penyakit Jantung Palembang</string>
+
+
+
+    <string name="dashboard">Beranda</string>
+    <string name="latest_info">Informasi Terkini</string>
+    <string name="discuss">Diskusikan dengan Dokter Anda</string>
+    <string name="send_msg">Kirim Pesan</string>
+    <string name="share_your_data">Bagikan Data Anda</string>
+    <string name="no_data_to_share">Tidak Ada Data Untuk Dibagi</string>
+    <string name="success">Sukses</string>
+    <string name="prayer">Semoga Selalu Sehat, </string>
+    <string name="success_save">Berhasil Tersimpan</string>
+    <string name="title_not_complete">Belum Lengkap!</string>
+    <string name="phone_number_empty">No Telepon Kosong</string>
+
+    <string name="week">Minggu</string>
+    <string name="month">Bulan</string>
+
+    <string name="target_achieved">Target Tercapai</string>
+    <string name="target_missed">Tidak dapat mencapai target</string>
+    <string name="red_desc_bpm">Ini berarti sistem telah mendeteksi penyakit dan ini, pemberitahuan mendesak untuk mencari pengobatan segera akan didorong ke pasien</string>
+    <string name="orange_desc_bpm">Pasien harus berhati-hati, tenang dan minum obat yang diresepkan</string>
+    <string name="green_desc_bpm">Indikasi kesehatan yang positif dan tanyakan, pasien untuk menjaga kesehatan memantau asupan makanan dan melanjutkan minum obat</string>
+
+
+
+
     <string name="OK">OK</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_tes">TesActivity</string>
+
+    <string-array name="tab_titles">
+        <item>Data</item>
+        <item>Statistik</item>
+    </string-array>
 
     <string-array name="obat">
         <item>Amaryl M2</item>
@@ -38,12 +110,11 @@
         <item>Twinsta</item>
         <item>Lanzoprazole</item>
         <item>Truvas</item>
-
     </string-array>
 
 
     <string name="output_hint">
-        Letakkan Jarimu Menutupi Camera Belakang dan Flash untuk Memulai
+       Letakkan jari telunjuk kanan bagi menutupi kamera belakang dan flash untuk memulai dan tahan hingga 30 detik
     </string>
     <string name="output_header_template">Heart rate on %s</string>
     <string name="output_detected_peaks_header">Detected Peaks:</string>
@@ -51,18 +122,20 @@
     <string name="separator">,</string>
     <string name="row_separator">\n</string>
     <string name="raw_values">Measurements (Timestamp, Value)</string>
-    <string name="cameraPermissionRequired">Camera permission is required for this application to work.</string>
-    <string name="noFlashWarning">Measurement without flash is less reliable.</string>
+    <string name="cameraPermissionRequired">Izin Penggunaan Kamera sangat diperlukan untuk hal ini.</string>
+    <string name="noFlashWarning">Pengukuran tanpa flash kurang dapat dihandalkan.</string>
     <string name="new_measurement">New Measurement</string>
     <string name="export_result">Export Result</string>
     <string name="export_details">Export Details</string>
     <string name="dateFormat">yyyy-MM-dd\'T\'HH:mm:ssXXX</string>
     <string name="dateFormatGranular">yyyy-MM-dd\'T\'HH:mm:ss.SSSXXX</string>
-    <string name="camera_not_found">Camera not available.</string>
+    <string name="camera_not_found">Kamera Tidak Ditemukan.</string>
     <plurals name="measurement_output_template">
         <item quantity="zero">Denyut: %.1f ( %.1f detik)</item>
         <item quantity="one">Denyut: %.1f ( %.1f detik)</item>
         <item quantity="other">Denyut: %.1f ( %.1f detik)</item>
     </plurals>
     <string name="title_activity_heart_beat_history">HeartBeatHistoryActivity</string>
+
+
 </resources>

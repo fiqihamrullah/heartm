@@ -1,11 +1,13 @@
 package com.heartm.heartbeat.adapters
 
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.heartm.heartbeat.MyApplication
 import com.heartm.heartbeat.R
 import com.heartm.heartbeat.models.WalkingSport
 import com.heartm.heartbeat.util.MyDateConverter
@@ -36,15 +38,17 @@ class WalkingSportAdapter(
         var tvDayMonth: TextView
         var tvYear: TextView
         var tvStepValue: TextView
+        var tvResult:TextView
 
-        // var lyt_parent: View
+         var lyt_parent: View
 
         init {
             tvDayMonth = v.findViewById<View>(R.id.tvDayAndMonth) as TextView
             tvYear = v.findViewById<View>(R.id.tvYear) as TextView
             tvStepValue = v.findViewById<View>(R.id.tvStepValue) as TextView
+            tvResult = v.findViewById<View>(R.id.tvResult) as TextView
 
-            // lyt_parent = v.findViewById(R.id.lyt_parent) as View
+             lyt_parent = v.findViewById<View>(R.id.lyt_parent) as View
         }
     }
 
@@ -67,20 +71,31 @@ class WalkingSportAdapter(
 
         val daymonth = mydate.convertfromLongDate(b.created_at, "HH:ss")
         val year = mydate.convertfromLongDate(b.created_at, "dd MMM yyyy")
-        holder.tvDayMonth.setText(daymonth)
+        holder.tvDayMonth.setText(daymonth?.trim())
         holder.tvYear.setText( year)
 
 
 
-        holder.tvStepValue.setText( b.jumlah_langkah.toString())
+        holder.tvStepValue.setText( b.total_per_hari.toString().plus(" / ").plus(b.jumlah_target.toString()))
+
+        if (b.total_per_hari < b.jumlah_target)
+        {
+            holder.tvResult.setText( MyApplication.Companion.instance?.resources?.getString(R.string.target_missed))
+            holder.tvResult.setTextColor(Color.RED)
+
+        }else {
+            holder.tvResult.setText( MyApplication.Companion.instance?.resources?.getString(R.string.target_achieved))
+            holder.tvResult.setTextColor(Color.GREEN)
+        }
 
 
-        /*
+
         holder.lyt_parent.setOnClickListener { view ->
-            if (mOnItemClickListener != null) {
+            if (mOnItemClickListener != null)
+            {
                 mOnItemClickListener!!.onItemClick(view, b, position)
             }
-        }*/
+        }
 
     }
 

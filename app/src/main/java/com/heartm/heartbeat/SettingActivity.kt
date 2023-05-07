@@ -1,6 +1,8 @@
 package com.heartm.heartbeat
 
+
 import android.app.AlertDialog
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +15,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
+import com.github.loadingview.LoadingDialog
+import com.heartm.heartbeat.util.LocaleHelper.setLocale
 import com.heartm.heartbeat.util.Menu
 import com.ismaeldivita.chipnavigation.ChipNavigationBar
 import es.dmoral.toasty.Toasty
@@ -20,41 +24,77 @@ import kotlinx.android.synthetic.main.activity_setting.*
 import org.json.JSONException
 import org.json.JSONObject
 
+
 class SettingActivity : AppCompatActivity() {
 
     private val container by lazy { findViewById<ViewGroup>(R.id.container) }
     private val btnIndonesia by lazy { findViewById<TextView>(R.id.btnIndonesia) }
     private val btnEnglish by lazy { findViewById<TextView>(R.id.btnEnglish) }
+    private val btnShowUpdateProfilePage by lazy { findViewById<TextView>(R.id.btnShowUpdatePage) }
     private val button by lazy { findViewById<ImageView>(R.id.expand_button) }
     private val menu by lazy { findViewById<ChipNavigationBar>(R.id.bottom_menu) }
 
     private val URL_UPDATE_PASS: String =
         MyApplication.instance?.getResources()?.getString(R.string.online_url)
-            .toString() + "agent/pass"
+            .toString() + "pasien/password"
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_setting)
 
+
+
+        btnChangePassword.setOnClickListener {
+            showDialogInputPassword()
+        }
+
+        btnLogout.setOnClickListener {
+            val sm = SessionManager(this@SettingActivity)
+            sm.logout()
+            this.finish()
+
+        }
+
+
+        val menuNav = Menu(this@SettingActivity)
+        menuNav.initMenu(container,button,menu)
+
+
         btnIndonesia.setOnClickListener {
+            var languagePref = "in"
+
+
+
+            if (!languagePref.isEmpty())
+            {
+                setLocale(this@SettingActivity, languagePref)
+                recreate()
+            }
+
             Toasty.info(this@SettingActivity, "Sekarang , Apps Menggunakan Bahasa Indonesia!.", Toast.LENGTH_SHORT, true)
                 .show()
         }
 
 
         btnEnglish.setOnClickListener {
+            var languagePref = "en"
+
+
+
+            if (!languagePref.isEmpty())
+            {
+                setLocale(this@SettingActivity, languagePref)
+                recreate()
+            }
+
             Toasty.info(this@SettingActivity, "Now, Apps Language In English!.", Toast.LENGTH_SHORT, true)
                 .show()
         }
 
-        btnChangePassword.setOnClickListener {
-            showDialogInputPassword()
+        btnShowUpdateProfilePage.setOnClickListener {
+            startActivity(Intent(this,ViewWebFormActivity::class.java).putExtra("pil",3))
         }
-
-
-        val menuNav = Menu(this@SettingActivity)
-        menuNav.initMenu(container,button,menu)
 
 
     }
@@ -63,7 +103,7 @@ class SettingActivity : AppCompatActivity() {
     private fun showDialogInputPassword() {
         val builder =
             AlertDialog.Builder(this@SettingActivity)
-        builder.setTitle("Ganti Kata Sandi Anda")
+        builder.setTitle("Ganti Kata Laluan Anda")
         val viewInflated: View =
             LayoutInflater.from(this@SettingActivity).inflate(R.layout.dialog_change_password, null, false)
         val password =
@@ -79,7 +119,7 @@ class SettingActivity : AppCompatActivity() {
             if (pass == "") {
                 Toasty.warning(
                     this@SettingActivity,
-                    "Kata Sandi Kosong!.",
+                    "Kata Laluan Kosong!.",
                     Toast.LENGTH_SHORT,
                     true
                 ).show()
@@ -90,7 +130,7 @@ class SettingActivity : AppCompatActivity() {
                     } else {
                         Toasty.warning(
                             this@SettingActivity,
-                            "Kata Sandi Tidak Sama!.",
+                            "Kata Laluan Tidak Sama!.",
                             Toast.LENGTH_SHORT,
                             true
                         ).show()
@@ -98,7 +138,7 @@ class SettingActivity : AppCompatActivity() {
                 } else {
                     Toasty.warning(
                         this@SettingActivity,
-                        "Kata Sandi Terlalu Singkat!",
+                        "Kata Laluan Terlalu Singkat!",
                         Toast.LENGTH_SHORT,
                         true
                     ).show()
@@ -120,26 +160,28 @@ class SettingActivity : AppCompatActivity() {
         //Toast.makeText(getApplicationContext(),tags,Toast.LENGTH_LONG).show();
         val postparams = JSONObject()
         try {
-            postparams.put("agent_id", UserAccount.getID())
+            postparams.put("id", UserAccount.getID())
             postparams.put("password", pass)
         } catch (e: JSONException) {
             e.printStackTrace()
         }
+        val dialog = LoadingDialog.get(this).show()
         val jsonObjReq =
             JsonObjectRequest(
                 Request.Method.POST, URL_UPDATE_PASS, postparams,
                 Response.Listener { //item.setInitCol(item.getColumnIndex());
                     val sessionManager = SessionManager(this@SettingActivity)
-
-                    Toasty.warning(
+                    dialog.hide()
+                    Toasty.info(
                         this@SettingActivity,
-                        "Kata Sandi telah Anda tentukan!",
+                        "Kata Laluan baru telah Anda tentukan!",
                         Toast.LENGTH_SHORT,
                         true
                     ).show()
                 },
                 Response.ErrorListener {
                     //Failure Callback
+                    dialog.hide()
                 })
         MyApplication.instance?.addToRequestQueue(jsonObjReq, "postRequest_updatePass")
     }

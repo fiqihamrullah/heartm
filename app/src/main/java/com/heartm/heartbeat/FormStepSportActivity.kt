@@ -52,7 +52,9 @@ class FormStepSportActivity : AppCompatActivity() {
                {
                    val sessmgr = SessionManager(this@FormStepSportActivity)
 
-                   val sisa = sessmgr.getStepTarget() - (sessmgr.getTotalStep() + step.toInt())
+                   val itarget = if (sessmgr.getStepTarget()>0) sessmgr.getStepTarget() else edTargetCount.text.toString().toInt()
+
+                   val sisa = itarget - (sessmgr.getTotalStep() + step.toInt())
                    if (sisa >= 0)
                    {
                        tvStepRest.text = sisa.toString()
