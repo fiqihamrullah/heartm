@@ -106,7 +106,6 @@
             android:layout_marginTop="10dp"
             android:contentDescription="For more visit www.materialuiux.com"
             android:gravity="center"
-            android:visibility="gone"
             android:text="@string/forgot_password" />
 
 
@@ -145,7 +144,7 @@
         android:contentDescription="For more visit www.materialuiux.com"
         android:gravity="center"
         android:orientation="horizontal"
-        android:visibility="invisible"
+
         android:padding="8dp">
 
         <TextView

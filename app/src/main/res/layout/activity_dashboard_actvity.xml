@@ -57,7 +57,7 @@
             android:fitsSystemWindows="true"
             android:textColor="@color/white"
             android:textSize="34sp"
-            android:text="Dashboard Anda " />
+            android:text="@string/dashboard" />
 
         <View
             android:layout_width="wrap_content"
@@ -75,7 +75,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Semoga Selalu Sehat ,  "
+                        android:text="@string/prayer"
                         android:paddingLeft="3dp"
                         android:paddingRight="3dp"
                         android:textSize="18dp"
@@ -111,7 +111,7 @@
                 android:id="@+id/tv1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Info Terkini "
+                android:text="@string/latest_info"
                 android:paddingLeft="3dp"
                 android:paddingRight="3dp"
                 android:textSize="12dp"
@@ -174,7 +174,7 @@
                             android:ellipsize="end"
                             android:maxLines="1"
                             android:singleLine="true"
-                            android:text="Detak Jantung "
+                            android:text="@string/heart_beat"
                             android:textColor="@color/grey_text"
                             android:textSize="15sp"
                             />
@@ -305,7 +305,7 @@
                             android:ellipsize="end"
                             android:maxLines="1"
                             android:singleLine="true"
-                            android:text="Olahraga "
+                            android:text="@string/step"
                             android:textColor="@color/grey_text"
                             android:textSize="15sp"
                             />
@@ -375,7 +375,7 @@
                             android:maxLines="1"
                             android:gravity="center_vertical"
                             android:singleLine="true"
-                            android:text=" Langkah "
+                            android:text="@string/step"
                             android:textColor="@color/grey_hard"
                             android:textSize="10sp"
                             />
@@ -437,7 +437,7 @@
                             android:ellipsize="end"
                             android:maxLines="1"
                             android:singleLine="true"
-                            android:text="Obat "
+                            android:text="@string/medicine"
                             android:textColor="@color/grey_text"
                             android:textSize="15sp"
                             />
@@ -450,7 +450,7 @@
                             android:ellipsize="end"
                             android:maxLines="1"
                             android:singleLine="true"
-                            android:text="Selanjutnya ??"
+                            android:text=""
                             android:textSize="8sp"
                             android:textColor="@color/grey_text" />
 
@@ -489,7 +489,7 @@
                             android:maxLines="1"
                             android:singleLine="true"
                             android:layout_gravity="center_horizontal"
-                            android:text="\? / Hari"
+                            android:text="@string/per_day"
                             android:textSize="10sp"
                             android:textColor="@color/grey_text" />
 
@@ -520,6 +520,132 @@
         </androidx.cardview.widget.CardView>
 
 
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="5dp">
+
+
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/discuss"
+                android:paddingLeft="3dp"
+                android:paddingRight="3dp"
+                android:textSize="12dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                android:textColor="@color/white" />
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:background="@color/grey_bg" />
+
+
+
+
+
+        </LinearLayout>
+
+        <androidx.cardview.widget.CardView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="@dimen/spacing_regular"
+            android:layout_marginRight="@dimen/spacing_regular"
+            app:cardBackgroundColor="@color/settings"
+            app:cardCornerRadius="2dp"
+            app:cardElevation="2dp"
+            app:cardUseCompatPadding="true">
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:orientation="vertical"
+            android:padding="@dimen/spacing_large">
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/doctor" />
+
+                <TextView
+                    android:id="@+id/tvDoctorName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Dr. "
+                    android:paddingLeft="3dp"
+                    android:paddingRight="3dp"
+                    android:gravity="center_vertical"
+                    android:textSize="14sp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                    android:textColor="@color/red_btn_bg_color" />
+
+
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:padding="@dimen/spacing_medium"
+            android:layout_marginTop="5dp">
+
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/send_msg"
+                android:paddingLeft="3dp"
+                android:paddingRight="3dp"
+                android:textSize="20sp"
+                android:layout_weight="1"
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                android:textColor="@color/white" />
+
+
+            <ImageView
+                android:id="@+id/imgVBtnSendMsg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                app:srcCompat="@drawable/whatsapp" />
+
+
+
+        </LinearLayout>
 
 
     </LinearLayout>

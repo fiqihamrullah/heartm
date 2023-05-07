@@ -63,7 +63,7 @@
                 android:fitsSystemWindows="true"
                 android:textColor="@color/white"
                 android:textSize="34sp"
-                android:text="Tentang " />
+                android:text="@string/about" />
 
             <View
                 android:layout_width="wrap_content"
@@ -92,7 +92,7 @@
                 android:fitsSystemWindows="true"
                 android:textColor="@color/white"
                 android:textSize="20sp"
-                android:text="Dibuat bagi membantu pasien penyakit jantung untuk: " />
+                android:text="@string/developed_to" />
 
 
             <TextView
@@ -106,7 +106,7 @@
                 android:drawableLeft="@drawable/correct"
                 android:drawablePadding="@dimen/spacing_small"
                 android:textSize="12sp"
-                android:text="Merekam Kesehatan Jantungnya " />
+                android:text="@string/record_health" />
 
 
             <TextView
@@ -119,7 +119,7 @@
                 android:drawableLeft="@drawable/correct"
                 android:drawablePadding="@dimen/spacing_small"
                 android:textSize="12sp"
-                android:text="Mengontrol Penggunaan dan Pengambilan Obat " />
+                android:text="@string/control_medicine" />
 
 
             <TextView
@@ -132,7 +132,7 @@
                 android:drawableLeft="@drawable/correct"
                 android:drawablePadding="@dimen/spacing_small"
                 android:textSize="12sp"
-                android:text="Berolahraga " />
+                android:text="@string/doing_sport" />
 
             <TextView
 
@@ -141,10 +141,9 @@
                 android:layout_marginTop="@dimen/spacing_xlarge"
                 android:layout_marginStart="24dp"
                 android:fitsSystemWindows="true"
-
                 android:textColor="@color/white"
                 android:textSize="20sp"
-                android:text="HeartM 3.0 dikembangkan dan disupport oleh dokter spesialis jantung Palembang" />
+                android:text="@string/powered_and_supported" />
 
 
 

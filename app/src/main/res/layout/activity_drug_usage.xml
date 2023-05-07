@@ -62,14 +62,63 @@
             android:layout_marginStart="24dp"
             android:fitsSystemWindows="true"
             android:textColor="@color/white"
-            android:textSize="34sp"
-            android:text="Obat " />
+            android:textSize="30sp"
+            android:text="@string/history_of_medicine" />
 
         <View
             android:layout_width="wrap_content"
             android:layout_height="1dp"
 
             android:background="@color/white" />
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chpgrpStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|end"
+            android:layout_marginTop="@dimen/spacing_xsmall"
+            android:layout_marginBottom="@dimen/spacing_small"
+            android:layout_marginLeft="@dimen/spacing_middle"
+            android:visibility="gone"
+            app:chipSpacing="@dimen/spacing_small"
+            app:singleSelection="true"
+
+            >
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipDay"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/blue_btn_bg_color"
+                app:chipBackgroundColor="@color/chip_bg_states"
+
+                android:text="@string/per_day"/>
+
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipWeek"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/blue_btn_bg_color"
+                app:chipBackgroundColor="@color/chip_bg_states"
+
+                android:text="@string/week"/>
+
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipMonth"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/blue_btn_bg_color"
+                app:chipBackgroundColor="@color/chip_bg_states"
+
+                android:text="@string/month"/>
+
+
+        </com.google.android.material.chip.ChipGroup>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
@@ -102,6 +151,19 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
         android:background="@color/white"
+
         app:srcCompat="@android:drawable/ic_input_add" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_share"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|start"
+        android:layout_margin="@dimen/fab_margin"
+        android:background="@color/white"
+        android:visibility="gone"
+        app:srcCompat="@android:drawable/ic_menu_share"
+        app:backgroundTint="@color/settings"
+        />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

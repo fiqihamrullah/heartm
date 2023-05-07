@@ -8,8 +8,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
         android:name=".MyApplication"
@@ -20,8 +19,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".SettingActivity"></activity>
-        <activity android:name=".AboutActivity" />
+        <activity android:name=".ViewWebFormActivity"  android:theme="@style/AppTheme.NoActionBar"  ></activity>
+        <activity android:name=".SettingActivity"  android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".AboutActivity"  android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".HeartBeatHistoryActivity"
             android:label="@string/title_activity_heart_beat_history"
@@ -30,12 +30,12 @@
             android:name=".TesActivity"
             android:label="@string/title_activity_tes"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".DashboardActivity" />
-        <activity android:name=".DrugUsageActivity" />
-        <activity android:name=".FormDrugUsageActivity" />
-        <activity android:name=".StepSportActivity" />
-        <activity android:name=".FormStepSportActivity" />
-        <activity android:name=".HeartBeatActivity" />
+        <activity android:name=".DashboardActivity"  android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".DrugUsageActivity"  android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".FormDrugUsageActivity"  android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".StepSportActivity"  android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".FormStepSportActivity"  android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".HeartBeatActivity"  android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login"
@@ -53,9 +53,9 @@
         <receiver
             android:name=".notification.AlarmReceiver"
             android:enabled="true"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
     </application>

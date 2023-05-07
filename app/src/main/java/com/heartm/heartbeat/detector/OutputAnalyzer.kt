@@ -22,7 +22,7 @@ class OutputAnalyzer(
     private lateinit var store: MeasureStore
     private val measurementInterval = 45
     private val measurementLength =
-        20000 // ensure the number of data points is the power of two
+        35000 // ensure the number of data points is the power of two
     private val clipLength = 3500
     private var detectedValleys = 0
     private var ticksPassed = 0
@@ -143,7 +143,7 @@ class OutputAnalyzer(
                         1f,
                         (valleys[valleys.size - 1] - valleys[0]) / 1000f
                     ),
-                    15f
+                    30f
                 )
 
                 sendMessage(HeartBeatActivity.MESSAGE_UPDATE_REALTIME, currentValue)

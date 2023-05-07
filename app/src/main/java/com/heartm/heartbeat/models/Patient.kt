@@ -9,5 +9,13 @@ class Patient
      var tipe : String = ""
      var no_hp : String = ""
 
+     var jk:String = ""
+     var usia:Int=0
+
+
+     var ofdokter : Doctor? = null
+
+
+
 
 }

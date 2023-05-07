@@ -1,11 +1,14 @@
 package com.heartm.heartbeat
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
@@ -22,6 +25,7 @@ import com.ismaeldivita.chipnavigation.ChipNavigationBar
 import kotlinx.android.synthetic.main.activity_dashboard_actvity.*
 import org.json.JSONException
 import org.json.JSONObject
+import java.util.*
 
 class DashboardActivity : AppCompatActivity()
 {
@@ -50,16 +54,41 @@ class DashboardActivity : AppCompatActivity()
 
         loadSummary()
 
-      //  AlarmScheduler.scheduleNextDrugTaken(this@DashboardActivity)
-       // AlarmScheduler.scheduleDrinkInMorning(this@DashboardActivity)
-      //  AlarmScheduler.cancelSchedule(this@DashboardActivity)
+        initDoctor()
+
+        imgVBtnSendMsg.setOnClickListener(View.OnClickListener {
+            var phone: String = UserAccount.getDoctorPhoneNumber().toString()
+          //  phone = phone.substring(1)
+            phone = "+$phone"
+            // Toast.makeText(getContext(),phone,Toast.LENGTH_LONG).show();
+            // Toast.makeText(getContext(),phone,Toast.LENGTH_LONG).show();
+            startActivity(
+                Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse(
+                        "https://api.whatsapp.com/send?phone=$phone&text=Halo Dok"
+                    )
+                )
+            )
+        })
+
+       //AlarmScheduler.scheduleNextDrugTaken(this@DashboardActivity)
+       //  AlarmScheduler.scheduleDrinkInMorning(this@DashboardActivity)
+        AlarmScheduler.scheduleDailyUsage(this@DashboardActivity)
+      // AlarmScheduler.cancelSchedule(this@DashboardActivity)
 
 
 
     }
 
+    fun initDoctor()
+    {
+        tvDoctorName.setText(UserAccount.getDoctorName())
+    }
+
     fun loadSummary()
     {
+        System.out.println(URL_SUMMARY)
         val dialog = LoadingDialog.get(this).show()
         val jsonObjReq =
             StringRequest(
@@ -74,31 +103,71 @@ class DashboardActivity : AppCompatActivity()
 
                         val mydate = MyDateConverter()
 
-                        val heartbeat : HeartBeatRecord  = gson.fromJson<HeartBeatRecord>(jsonObject.getJSONObject("result").getString("rekam_jantung"),object:TypeToken<HeartBeatRecord?>(){}.type)
-                        val fullDayOfMonth = mydate.convertfromLongDate(heartbeat.created_at, "dd MMM yyyy HH:ss")
-
-                        tvTimeofHeartBeat.text = fullDayOfMonth
-                        tvValue.text = heartbeat.bpm.toString()
-
-                        if (heartbeat.bpm in 60..100)
+                        if (!jsonObject.getJSONObject("result").isNull("rekam_jantung"))
                         {
-                            tvStatusHeartBeat.setText("Sehat")
-                        }else{
-                            tvStatusHeartBeat.setText("Sakit")
+
+                            val heartbeat: HeartBeatRecord = gson.fromJson<HeartBeatRecord>(
+                                jsonObject.getJSONObject("result").getString("rekam_jantung"),
+                                object : TypeToken<HeartBeatRecord?>() {}.type
+                            )
+                            val fullDayOfMonth = mydate.convertfromLongDate(
+                                heartbeat.created_at,
+                                "dd MMM yyyy HH:ss"
+                            )
+
+                            tvTimeofHeartBeat.text = fullDayOfMonth
+                            tvValue.text = heartbeat.bpm.toString()
+
+                            if (heartbeat.bpm in 60..100) {
+                                tvStatusHeartBeat.setText(getString(R.string.healthy))
+                            } else {
+                                tvStatusHeartBeat.setText(getString(R.string.sick))
+                            }
+
                         }
 
-                        val stepsport : WalkingSport  = gson.fromJson<WalkingSport>(jsonObject.getJSONObject("result").getString("langkah_pasien"),object:TypeToken<WalkingSport?>(){}.type)
-                        val fullDayOfMonth2 = mydate.convertfromLongDate(stepsport.created_at, "dd MMM yyyy HH:ss")
-                        tvTimeofStep.text = fullDayOfMonth2
-                        tvStepCount.text = stepsport.jumlah_langkah.toString()
 
-                        val drugusage : DrugUsage  = gson.fromJson<DrugUsage>(jsonObject.getJSONObject("result").getString("kontrol_obat"),object:TypeToken<DrugUsage?>(){}.type)
-                        val nextdateofdrugtaken = mydate.convertfromShortDate(drugusage.tgl_ambil_selanjutnya, "dd MMM yyyy")
-                        tvTimeofDrug.text = "Selanjutnya " +  nextdateofdrugtaken
-                        tvNameOfDrug.text = drugusage.obat
-                        val arrsplit : List<String> = drugusage.waktu_makan.split(",")
-                        tvStatusOfDrug.text = arrsplit.size.toString() + "x / Hari"
-                        tvAmount.text = drugusage.jumlah.toString() + " Pcs"
+                        if (!jsonObject.getJSONObject("result").isNull("langkah_pasien"))
+                        {
+                            val stepsport: WalkingSport = gson.fromJson<WalkingSport>(
+                                jsonObject.getJSONObject("result").getString("langkah_pasien"),
+                                object : TypeToken<WalkingSport?>() {}.type
+                            )
+                            val fullDayOfMonth2 = mydate.convertfromLongDate(
+                                stepsport.created_at,
+                                "dd MMM yyyy HH:ss"
+                            )
+                            tvTimeofStep.text = fullDayOfMonth2
+                            tvStepCount.text = stepsport.jumlah_langkah.toString()
+                        }
+
+
+                        if (!jsonObject.getJSONObject("result").isNull("kontrol_obat")) {
+
+                            val drugusage: DrugUsage = gson.fromJson<DrugUsage>(
+                                jsonObject.getJSONObject("result").getString("kontrol_obat"),
+                                object : TypeToken<DrugUsage?>() {}.type
+                            )
+                            val nextdateofdrugtaken = mydate.convertfromShortDate(
+                                drugusage.tgl_ambil_selanjutnya,
+                                "dd MMM yyyy"
+                            )
+                            tvTimeofDrug.text = String.format(
+                                Locale.getDefault(),
+                                " %s %s",
+                                getString(R.string.next_on),
+                                nextdateofdrugtaken
+                            )
+                            tvNameOfDrug.text = drugusage.obat
+                            val arrsplit: List<String> = drugusage.waktu_makan.split(",")
+                            tvStatusOfDrug.text = String.format(
+                                Locale.getDefault(),
+                                "%sx/ %s",
+                                arrsplit.size.toString(),
+                                getString(R.string.per_day)
+                            )
+                            tvAmount.text = drugusage.jumlah.toString() + " Pcs"
+                        }
 
 
 

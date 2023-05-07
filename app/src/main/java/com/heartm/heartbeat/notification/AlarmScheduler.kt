@@ -13,6 +13,7 @@ object AlarmScheduler
      private val PAGI_ALARM= 1001
      private val SIANG_ALARM= 1002
      private val SORE_ALARM= 1003
+     private val DAILY_ALARM= 1004
 
 
      fun scheduleNextDrugTaken(context: Context)
@@ -30,8 +31,8 @@ object AlarmScheduler
          //alarmManager?.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime() +1000*20,pendingIntent)
 
          val year  = 2021
-         val month = 8
-         val day_of_month = 25
+         val month = 12
+         val day_of_month = 13
 
 
          val calendar: Calendar = Calendar.getInstance().apply {
@@ -52,6 +53,31 @@ object AlarmScheduler
 
      }
 
+    fun scheduleDailyUsage(context: Context) {
+        val intent = Intent(context.applicationContext, AlarmReceiver::class.java).apply {
+            type = "daily_usage"
+        }
+
+
+        val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as? AlarmManager
+        val pendingIntent = PendingIntent.getBroadcast(context, DAILY_ALARM, intent, 0)
+
+        val calendar: Calendar = Calendar.getInstance().apply {
+            timeInMillis = System.currentTimeMillis()
+            set(Calendar.HOUR_OF_DAY,10)
+            set(Calendar.MINUTE, 15)
+        }
+
+        // alarmManager?.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime() +1000*60,pendingIntent)
+        //  alarmManager?.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime() + 1000*3,1000*6,pendingIntent)
+
+        alarmManager?.setRepeating(
+            AlarmManager.RTC_WAKEUP,
+            calendar.timeInMillis,
+            AlarmManager.INTERVAL_DAY,
+            pendingIntent
+        )
+    }
 
     fun scheduleDrinkInMorning(context: Context)
     {
@@ -70,9 +96,9 @@ object AlarmScheduler
         }
 
        // alarmManager?.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime() +1000*60,pendingIntent)
-      //  alarmManager?.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime() + 1000*3,1000*6,pendingIntent)
+       //  alarmManager?.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime() + 1000*3,1000*6,pendingIntent)
 
-        alarmManager?.setRepeating(
+      alarmManager?.setRepeating(
             AlarmManager.RTC_WAKEUP,
             calendar.timeInMillis,
             AlarmManager.INTERVAL_DAY,

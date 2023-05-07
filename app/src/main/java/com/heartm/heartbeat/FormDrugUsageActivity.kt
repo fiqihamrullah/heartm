@@ -1,13 +1,15 @@
 package com.heartm.heartbeat
 
 import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.MotionEvent
 import android.view.View
+import android.view.View.OnTouchListener
 import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import cn.pedant.SweetAlert.SweetAlertDialog
 import com.android.volley.Request
@@ -16,15 +18,17 @@ import com.android.volley.toolbox.JsonObjectRequest
 import com.github.loadingview.LoadingDialog
 import com.heartm.heartbeat.fragments.DateTimePickerFragment
 import com.heartm.heartbeat.notification.AlarmScheduler
+import com.heartm.heartbeat.util.MyDateConverter
 import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.activity_form_drug_usage.*
-import kotlinx.android.synthetic.main.activity_form_drug_usage.btnSave
-
 import org.json.JSONException
 import org.json.JSONObject
 
+
 class FormDrugUsageActivity : AppCompatActivity()
 {
+
+     var resep=0;
 
     private val URL_KONTROLOBAT =
         MyApplication.Companion.instance?.resources?.getString(R.string.online_url) + "kontrolobat"
@@ -48,10 +52,38 @@ class FormDrugUsageActivity : AppCompatActivity()
 
         btnSave.setOnClickListener(View.OnClickListener { saveDrugUsage() })
 
+        btnAdd.setOnClickListener(View.OnClickListener { resetToAdd() })
+
         initSpinnerDrugNames()
+
+        //btnAdd.isEnabled = false
+
+        resep = intent.getIntExtra("resep",1)+1
+        val tgl_ambil = intent.getStringExtra("tgl_ambil")
+        if (tgl_ambil.isNotEmpty())
+        {
+            val mydate = MyDateConverter()
+            val daymonth = mydate.convertfromShortDate(tgl_ambil, "dd/MM/yyyy")
+            edTglInput.setText(daymonth)
+            edTglInput.isEnabled = false
+        }
+
+        println("Resep Sekarang "  + resep.toString())
+
 
     }
 
+    fun resetToAdd()
+    {
+        swpagi.isChecked = false
+        swmalam.isChecked = false
+        swsiang.isChecked = false
+
+        edJumlah.setText("")
+        btnAdd.visibility = View.GONE
+        btnSave.visibility = View.VISIBLE
+
+    }
 
     fun initSpinnerDrugNames()
     {
@@ -59,15 +91,18 @@ class FormDrugUsageActivity : AppCompatActivity()
         var aa = ArrayAdapter(this, android.R.layout.simple_spinner_item, names)
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 
-        with(spDrugName)
-        {
-            adapter = aa
-            setSelection(0, false)
-            // onItemSelectedListener = this@MainActivity
-            prompt = "Silahkan Pilih"
+        acDrugName.setAdapter(aa)
 
+        acDrugName.setOnTouchListener(object : View.OnTouchListener {
+            override fun onTouch(v: View?, event: MotionEvent?): Boolean {
+                when (event?.action) {
+                    MotionEvent.ACTION_DOWN -> acDrugName.showDropDown()
+                }
 
-        }
+                return v?.onTouchEvent(event) ?: true
+            }
+        })
+
     }
 
 
@@ -75,6 +110,7 @@ class FormDrugUsageActivity : AppCompatActivity()
     {
         val newFragment = DateTimePickerFragment()
         newFragment.setHolder(edHolder)
+
         newFragment.show(supportFragmentManager, "date picker")
     }
 
@@ -85,7 +121,7 @@ class FormDrugUsageActivity : AppCompatActivity()
 
         val tgl = edTglInput.text.toString()
         val tgl_next = edTglPengambilanBerikut.text.toString()
-        val obat = spDrugName.selectedItem.toString()
+        val obat = acDrugName.text.toString()
         val jumlah = edJumlah.text.toString()
         val sbpagi : Boolean = swpagi.isChecked
         val sbsiang : Boolean = swsiang.isChecked
@@ -141,6 +177,7 @@ class FormDrugUsageActivity : AppCompatActivity()
             {
                 postparams.put("pasien_id",UserAccount.getID())
                 postparams.put("obat",obat)
+                postparams.put("resep",resep)
                 postparams.put("jumlah",jumlah)
                 postparams.put("tgl_ambil_obat",tgl)
                 postparams.put("tgl_ambil_obat_berikutnya",tgl_next)
@@ -188,7 +225,9 @@ class FormDrugUsageActivity : AppCompatActivity()
                             AlarmScheduler.scheduleNextDrugTaken(this@FormDrugUsageActivity)
 
                             it.hide()
-                            this.finish()
+                          //  this.finish()
+                            btnSave.visibility = View.GONE
+                            btnAdd.visibility = View.VISIBLE
 
                         }
 

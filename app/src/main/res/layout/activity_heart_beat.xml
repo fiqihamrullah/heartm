@@ -61,7 +61,7 @@
             android:fitsSystemWindows="true"
             android:textColor="@color/white"
             android:textSize="20sp"
-            android:text="Ukur Detak Jantung Anda" />
+            android:text="@string/measure_your_heartbeat" />
 
         <View
             android:layout_width="wrap_content"
@@ -76,7 +76,7 @@
             android:layout_marginTop="@dimen/spacing_medium"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
-            android:text="Riwayat"
+            android:text="@string/history"
             android:layout_gravity="right"
             />
 
@@ -113,10 +113,6 @@
             android:textStyle="italic" />
 
 
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"/>
 
 
         <TextView
@@ -142,6 +138,7 @@
             android:textAlignment="center"
             android:text="-- BPM"
             android:textSize="40sp"
+            android:visibility="gone"
             android:textColor="@color/white"
             android:textStyle="bold" />
 
@@ -149,6 +146,7 @@
             android:id="@+id/textureView2"
             android:layout_width="@dimen/camera_view_width"
             android:layout_height="@dimen/camera_view_height"
+            android:layout_marginTop="@dimen/spacing_large"
             android:layout_gravity="center_horizontal"
 
             />

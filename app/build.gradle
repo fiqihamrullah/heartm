@@ -10,8 +10,8 @@ android {
         applicationId "com.heartm.heartbeat"
         minSdkVersion 23
         targetSdkVersion 29
-        versionCode 135
-        versionName "1.3.5"
+        versionCode 176
+        versionName "1.7.6"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -23,8 +23,7 @@ android {
                 variant.outputs.all
                         {
                             def appName = "HeartM "
-                            if (outputFileName != null && outputFileName.endsWith('.apk'))
-                            {
+                            if (outputFileName != null && outputFileName.endsWith('.apk')) {
                                 outputFileName = appName + " " + defaultConfig.versionName + ".apk"
                             }
                         }
@@ -40,10 +39,14 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.0.2'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
     implementation 'com.google.android.material:material:1.2.1'
+    implementation 'com.github.kal72:RackMonthPicker:1.6.1'
 
     implementation "com.airbnb.android:lottie:4.0.0"
+    implementation 'com.github.devlight.navigationtabstrip:navigationtabstrip:1.0.4'
 
     implementation 'com.ismaeldivita.chipnavigation:chip-navigation-bar:1.3.4'
+
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation 'org.greenrobot:eventbus:3.1.1'
