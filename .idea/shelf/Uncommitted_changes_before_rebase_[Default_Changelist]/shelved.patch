@@ -1,0 +1,271 @@
+Index: app/src/main/res/layout/activity_dashboard_actvity.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:id=\"@+id/container\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    android:background=\"@color/home\"\r\n    android:orientation=\"horizontal\"\r\n    tools:background=\"@color/activity\"\r\n    tools:context=\".HeartBeatActivity\">\r\n\r\n    <LinearLayout\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"match_parent\"\r\n        android:background=\"@color/white\"\r\n        android:orientation=\"vertical\">\r\n\r\n        <com.ismaeldivita.chipnavigation.ChipNavigationBar\r\n            android:id=\"@+id/bottom_menu\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"0dp\"\r\n            android:layout_weight=\"1\"\r\n            android:elevation=\"16dp\"\r\n            app:cnb_minExpandedWidth=\"150dp\"\r\n            app:cnb_addTopInset=\"true\"\r\n            app:cnb_addLeftInset=\"true\"\r\n            app:cnb_menuResource=\"@menu/main\"\r\n            app:cnb_orientationMode=\"vertical\" />\r\n\r\n        <ImageView\r\n            android:id=\"@+id/expand_button\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_gravity=\"end\"\r\n            android:tint=\"#696969\"\r\n            android:padding=\"8dp\"\r\n            android:src=\"@drawable/ic_menu\" />\r\n\r\n    </LinearLayout>\r\n\r\n    <LinearLayout\r\n\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"match_parent\"\r\n        android:background=\"@color/home\"\r\n        android:orientation=\"vertical\"\r\n        tools:background=\"@color/activity\"\r\n        tools:context=\".DashboardActivity\">\r\n\r\n\r\n        <TextView\r\n            android:id=\"@+id/title\"\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_marginStart=\"24dp\"\r\n            android:fitsSystemWindows=\"true\"\r\n            android:textColor=\"@color/white\"\r\n            android:textSize=\"34sp\"\r\n            android:text=\"@string/dashboard\" />\r\n\r\n        <View\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"1dp\"\r\n            android:background=\"@color/white\" />\r\n\r\n\r\n            <LinearLayout\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:orientation=\"horizontal\"\r\n                android:gravity=\"center\"\r\n                android:layout_marginTop=\"5dp\">\r\n\r\n                    <TextView\r\n                        android:layout_width=\"wrap_content\"\r\n                        android:layout_height=\"wrap_content\"\r\n                        android:text=\"@string/prayer\"\r\n                        android:paddingLeft=\"3dp\"\r\n                        android:paddingRight=\"3dp\"\r\n                        android:textSize=\"18dp\"\r\n                        android:textAppearance=\"@style/TextAppearance.AppCompat.Caption\"\r\n                        android:textColor=\"@color/white\" />\r\n\r\n                    <TextView\r\n                        android:id=\"@+id/tvUser\"\r\n                        android:layout_width=\"wrap_content\"\r\n                        android:layout_height=\"wrap_content\"\r\n                        android:background=\"@drawable/rounded_corner\"\r\n\r\n                        android:paddingLeft=\"3dp\"\r\n                        android:paddingRight=\"3dp\"\r\n                        android:textSize=\"18dp\"\r\n                        android:textAppearance=\"@style/TextAppearance.AppCompat.Caption\"\r\n                        android:textColor=\"@color/white\" />\r\n\r\n            </LinearLayout>\r\n\r\n\r\n        <LinearLayout\r\n            android:id=\"@+id/LabelCard\"\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:orientation=\"horizontal\"\r\n            android:gravity=\"center\"\r\n            android:layout_marginTop=\"5dp\">\r\n\r\n\r\n\r\n            <TextView\r\n                android:id=\"@+id/tv1\"\r\n                android:layout_width=\"wrap_content\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:text=\"@string/latest_info\"\r\n                android:paddingLeft=\"3dp\"\r\n                android:paddingRight=\"3dp\"\r\n                android:textSize=\"12dp\"\r\n                android:textAppearance=\"@style/TextAppearance.AppCompat.Caption\"\r\n                android:textColor=\"@color/white\" />\r\n\r\n            <View\r\n                android:layout_width=\"wrap_content\"\r\n                android:layout_height=\"1dp\"\r\n                android:layout_weight=\"1\"\r\n                android:background=\"@color/grey_bg\" />\r\n\r\n\r\n\r\n\r\n\r\n        </LinearLayout>\r\n\r\n\r\n        <androidx.cardview.widget.CardView\r\n            android:id=\"@+id/cvrequest\"\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"wrap_content\"\r\n\r\n            android:layout_marginTop=\"5dp\"\r\n            android:layout_marginLeft=\"@dimen/spacing_regular\"\r\n            android:layout_marginRight=\"@dimen/spacing_regular\"\r\n\r\n            app:cardBackgroundColor=\"@android:color/white\"\r\n            app:cardCornerRadius=\"10dp\"\r\n            app:cardElevation=\"2dp\"\r\n            app:cardUseCompatPadding=\"true\">\r\n\r\n            <LinearLayout\r\n                android:id=\"@+id/lyt_parent\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:background=\"?attr/selectableItemBackground\"\r\n                android:clickable=\"true\"\r\n                android:orientation=\"vertical\"\r\n                android:padding=\"@dimen/spacing_large\">\r\n\r\n\r\n\r\n                <LinearLayout\r\n                    android:layout_width=\"match_parent\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:orientation=\"horizontal\">\r\n\r\n\r\n                    <LinearLayout\r\n                        android:layout_width=\"wrap_content\"\r\n                        android:layout_height=\"wrap_content\"\r\n                        android:orientation=\"vertical\">\r\n\r\n                        <TextView\r\n\r\n                            android:layout_width=\"wrap_content\"\r\n                            android:layout_height=\"wrap_content\"\r\n                            android:ellipsize=\"end\"\r\n                            android:maxLines=\"1\"\r\n                            android:singleLine=\"true\"\r\n                            android:text=\"@string/heart_beat\"\r\n                            android:textColor=\"@color/grey_text\"\r\n                            android:textSize=\"15sp\"\r\n                            />\r\n\r\n\r\n                        <TextView\r\n                            android:id=\"@+id/tvTimeofHeartBeat\"\r\n                            android:layout_width=\"wrap_content\"\r\n                            android:layout_height=\"wrap_content\"\r\n                            android:ellipsize=\"end\"\r\n                            android:maxLines=\"1\"\r\n                            android:singleLine=\"true\"\r\n                            android:text=\"\"\r\n                            android:textSize=\"8sp\"\r\n                            android:textColor=\"@color/grey_text\" />\r\n\r\n                    </LinearLayout>\r\n\r\n                    <Space\r\n                        android:layout_width=\"match_parent\"\r\n                        android:layout_height=\"wrap_content\"\r\n                        android:layout_weight=\"1\" />\r\n\r\n                    <TextView\r\n                        android:id=\"@+id/tvStatusHeartBeat\"\r\n                        android:layout_width=\"wrap_content\"\r\n                        android:layout_height=\"wrap_content\"\r\n                        android:ellipsize=\"end\"\r\n                        android:maxLines=\"1\"\r\n                        android:singleLine=\"true\"\r\n                        android:layout_gravity=\"center\"\r\n                        android:text=\"?\"\r\n                        android:textSize=\"10sp\"\r\n                        android:textColor=\"@color/grey_text\" />\r\n\r\n                    <Space\r\n                        android:layout_width=\"match_parent\"\r\n                        android:layout_height=\"wrap_content\"\r\n                        android:layout_weight=\"1\" />\r\n\r\n                    <LinearLayout\r\n                        android:layout_width=\"wrap_content\"\r\n                        android:layout_height=\"match_parent\"\r\n\r\n                        android:orientation=\"horizontal\">\r\n\r\n                        <TextView\r\n                            android:id=\"@+id/tvValue\"\r\n                            android:layout_width=\"wrap_content\"\r\n                            android:layout_height=\"wrap_content\"\r\n                            android:ellipsize=\"end\"\r\n                            android:maxLines=\"1\"\r\n                            android:singleLine=\"true\"\r\n                            android:text=\"--\"\r\n\r\n\r\n\r\n                            android:textColor=\"@color/main_blue_color\"\r\n                            android:textSize=\"20sp\"\r\n                            android:textStyle=\"bold\" />\r\n\r\n                        <TextView\r\n\r\n                            android:layout_width=\"wrap_content\"\r\n                            android:layout_height=\"match_parent\"\r\n                            android:ellipsize=\"end\"\r\n                            android:maxLines=\"1\"\r\n                            android:gravity=\"center_vertical\"\r\n                            android:singleLine=\"true\"\r\n                            android:text=\" BPM \"\r\n                            android:textColor=\"@color/grey_hard\"\r\n                            android:textSize=\"10sp\"\r\n                            />\r\n\r\n                    </LinearLayout>\r\n\r\n                </LinearLayout>\r\n\r\n\r\n\r\n\r\n            </LinearLayout>\r\n\r\n\r\n        </androidx.cardview.widget.CardView>\r\n\r\n\r\n        <androidx.cardview.widget.CardView\r\n\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"wrap_content\"\r\n\r\n            android:layout_marginTop=\"3dp\"\r\n            android:layout_marginLeft=\"@dimen/spacing_regular\"\r\n            android:layout_marginRight=\"@dimen/spacing_regular\"\r\n\r\n            app:cardBackgroundColor=\"@android:color/white\"\r\n            app:cardCornerRadius=\"10dp\"\r\n            app:cardElevation=\"2dp\"\r\n            app:cardUseCompatPadding=\"true\">\r\n\r\n            <LinearLayout\r\n\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"match_parent\"\r\n                android:background=\"?attr/selectableItemBackground\"\r\n                android:clickable=\"true\"\r\n                android:orientation=\"vertical\"\r\n                android:padding=\"@dimen/spacing_large\">\r\n\r\n\r\n\r\n                <LinearLayout\r\n                    android:layout_width=\"match_parent\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:orientation=\"horizontal\">\r\n\r\n\r\n                    <LinearLayout\r\n                        android:layout_width=\"wrap_content\"\r\n                        android:layout_height=\"wrap_content\"\r\n                        android:orientation=\"vertical\">\r\n\r\n                        <TextView\r\n\r\n                            android:layout_width=\"wrap_content\"\r\n                            android:layout_height=\"wrap_content\"\r\n                            android:ellipsize=\"end\"\r\n                            android:maxLines=\"1\"\r\n                            android:singleLine=\"true\"\r\n                            android:text=\"@string/step\"\r\n                            android:textColor=\"@color/grey_text\"\r\n                            android:textSize=\"15sp\"\r\n                            />\r\n\r\n\r\n                        <TextView\r\n                            android:id=\"@+id/tvTimeofStep\"\r\n                            android:layout_width=\"wrap_content\"\r\n                            android:layout_height=\"wrap_content\"\r\n                            android:ellipsize=\"end\"\r\n                            android:maxLines=\"1\"\r\n                            android:singleLine=\"true\"\r\n                            android:text=\"\"\r\n                            android:textSize=\"8sp\"\r\n                            android:textColor=\"@color/grey_text\" />\r\n\r\n                    </LinearLayout>\r\n\r\n                    <Space\r\n                        android:layout_width=\"match_parent\"\r\n                        android:layout_height=\"wrap_content\"\r\n                        android:layout_weight=\"1\" />\r\n\r\n                    <TextView\r\n\r\n                        android:layout_width=\"wrap_content\"\r\n                        android:layout_height=\"wrap_content\"\r\n                        android:ellipsize=\"end\"\r\n                        android:maxLines=\"1\"\r\n                        android:singleLine=\"true\"\r\n                        android:layout_gravity=\"center\"\r\n                        android:text=\"\"\r\n                        android:textSize=\"10sp\"\r\n                        android:textColor=\"@color/grey_text\" />\r\n\r\n                    <Space\r\n                        android:layout_width=\"match_parent\"\r\n                        android:layout_height=\"wrap_content\"\r\n                        android:layout_weight=\"1\" />\r\n\r\n                    <LinearLayout\r\n                        android:layout_width=\"wrap_content\"\r\n                        android:layout_height=\"match_parent\"\r\n\r\n                        android:orientation=\"horizontal\">\r\n\r\n                        <TextView\r\n                            android:id=\"@+id/tvStepCount\"\r\n                            android:layout_width=\"wrap_content\"\r\n                            android:layout_height=\"wrap_content\"\r\n                            android:ellipsize=\"end\"\r\n                            android:maxLines=\"1\"\r\n                            android:singleLine=\"true\"\r\n                            android:text=\"--\"\r\n\r\n\r\n\r\n                            android:textColor=\"@color/main_blue_color\"\r\n                            android:textSize=\"20sp\"\r\n                            android:textStyle=\"bold\" />\r\n\r\n                        <TextView\r\n\r\n                            android:layout_width=\"wrap_content\"\r\n                            android:layout_height=\"match_parent\"\r\n                            android:ellipsize=\"end\"\r\n                            android:maxLines=\"1\"\r\n                            android:gravity=\"center_vertical\"\r\n                            android:singleLine=\"true\"\r\n                            android:text=\"@string/step\"\r\n                            android:textColor=\"@color/grey_hard\"\r\n                            android:textSize=\"10sp\"\r\n                            />\r\n\r\n                    </LinearLayout>\r\n\r\n                </LinearLayout>\r\n\r\n\r\n\r\n\r\n            </LinearLayout>\r\n\r\n\r\n        </androidx.cardview.widget.CardView>\r\n\r\n\r\n        <androidx.cardview.widget.CardView\r\n\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_marginTop=\"3dp\"\r\n            android:layout_marginLeft=\"@dimen/spacing_regular\"\r\n            android:layout_marginRight=\"@dimen/spacing_regular\"\r\n\r\n            app:cardBackgroundColor=\"@android:color/white\"\r\n            app:cardCornerRadius=\"10dp\"\r\n            app:cardElevation=\"2dp\"\r\n            app:cardUseCompatPadding=\"true\">\r\n\r\n            <LinearLayout\r\n\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:background=\"?attr/selectableItemBackground\"\r\n                android:clickable=\"true\"\r\n                android:orientation=\"vertical\"\r\n                android:padding=\"@dimen/spacing_large\">\r\n\r\n\r\n\r\n                <LinearLayout\r\n                    android:layout_width=\"match_parent\"\r\n                    android:layout_height=\"65dp\"\r\n                    android:orientation=\"horizontal\">\r\n\r\n\r\n                    <LinearLayout\r\n                        android:layout_width=\"wrap_content\"\r\n                        android:layout_height=\"wrap_content\"\r\n                        android:layout_gravity=\"center_vertical\"\r\n                        android:orientation=\"vertical\"\r\n\r\n                        >\r\n\r\n                        <TextView\r\n                            android:layout_width=\"wrap_content\"\r\n                            android:layout_height=\"wrap_content\"\r\n                            android:ellipsize=\"end\"\r\n                            android:maxLines=\"1\"\r\n                            android:singleLine=\"true\"\r\n                            android:text=\"@string/medicine\"\r\n                            android:textColor=\"@color/grey_text\"\r\n                            android:textSize=\"15sp\"\r\n                            />\r\n\r\n\r\n                        <TextView\r\n                            android:id=\"@+id/tvTimeofDrug\"\r\n                            android:layout_width=\"wrap_content\"\r\n                            android:layout_height=\"wrap_content\"\r\n                            android:ellipsize=\"end\"\r\n                            android:maxLines=\"1\"\r\n                            android:singleLine=\"true\"\r\n                            android:text=\"\"\r\n                            android:textSize=\"8sp\"\r\n                            android:textColor=\"@color/grey_text\" />\r\n\r\n                    </LinearLayout>\r\n\r\n                    <Space\r\n                        android:layout_width=\"match_parent\"\r\n                        android:layout_height=\"wrap_content\"\r\n                        android:layout_weight=\"1\" />\r\n\r\n\r\n                    <LinearLayout\r\n                        android:layout_width=\"wrap_content\"\r\n                        android:layout_height=\"match_parent\"\r\n                        android:orientation=\"vertical\">\r\n\r\n                        <TextView\r\n                            android:id=\"@+id/tvNameOfDrug\"\r\n                            android:layout_width=\"wrap_content\"\r\n                            android:layout_height=\"wrap_content\"\r\n                            android:ellipsize=\"end\"\r\n                            android:maxLines=\"1\"\r\n                            android:singleLine=\"true\"\r\n                            android:text=\"-----\"\r\n                            android:textColor=\"@color/main_blue_color\"\r\n                            android:textSize=\"15sp\"\r\n                            android:textStyle=\"bold\" />\r\n\r\n\r\n\r\n                        <TextView\r\n                            android:id=\"@+id/tvStatusOfDrug\"\r\n                            android:layout_width=\"wrap_content\"\r\n                            android:layout_height=\"wrap_content\"\r\n                            android:ellipsize=\"end\"\r\n                            android:maxLines=\"1\"\r\n                            android:singleLine=\"true\"\r\n                            android:layout_gravity=\"center_horizontal\"\r\n                            android:text=\"@string/per_day\"\r\n                            android:textSize=\"10sp\"\r\n                            android:textColor=\"@color/grey_text\" />\r\n\r\n                        <TextView\r\n                            android:id=\"@+id/tvAmount\"\r\n                            android:layout_width=\"wrap_content\"\r\n                            android:layout_height=\"wrap_content\"\r\n                            android:ellipsize=\"end\"\r\n                            android:maxLines=\"1\"\r\n                            android:singleLine=\"true\"\r\n                            android:layout_gravity=\"center_horizontal\"\r\n                            android:text=\"\\?\"\r\n                            android:textSize=\"10sp\"\r\n                            android:textColor=\"@color/grey_text\" />\r\n\r\n\r\n\r\n                    </LinearLayout>\r\n\r\n                </LinearLayout>\r\n\r\n\r\n\r\n\r\n            </LinearLayout>\r\n\r\n\r\n        </androidx.cardview.widget.CardView>\r\n\r\n\r\n        <LinearLayout\r\n\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:orientation=\"horizontal\"\r\n            android:gravity=\"center\"\r\n            android:layout_marginTop=\"5dp\">\r\n\r\n\r\n\r\n            <TextView\r\n\r\n                android:layout_width=\"wrap_content\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:text=\"@string/discuss\"\r\n                android:paddingLeft=\"3dp\"\r\n                android:paddingRight=\"3dp\"\r\n                android:textSize=\"12dp\"\r\n                android:textAppearance=\"@style/TextAppearance.AppCompat.Caption\"\r\n                android:textColor=\"@color/white\" />\r\n\r\n            <View\r\n                android:layout_width=\"wrap_content\"\r\n                android:layout_height=\"1dp\"\r\n                android:layout_weight=\"1\"\r\n                android:background=\"@color/grey_bg\" />\r\n\r\n\r\n\r\n\r\n\r\n        </LinearLayout>\r\n\r\n        <androidx.cardview.widget.CardView\r\n\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_marginTop=\"10dp\"\r\n            android:layout_marginLeft=\"@dimen/spacing_regular\"\r\n            android:layout_marginRight=\"@dimen/spacing_regular\"\r\n            app:cardBackgroundColor=\"@color/settings\"\r\n            app:cardCornerRadius=\"2dp\"\r\n            app:cardElevation=\"2dp\"\r\n            app:cardUseCompatPadding=\"true\">\r\n\r\n        <LinearLayout\r\n\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:background=\"?attr/selectableItemBackground\"\r\n            android:clickable=\"true\"\r\n            android:orientation=\"vertical\"\r\n            android:padding=\"@dimen/spacing_large\">\r\n\r\n\r\n\r\n\r\n            <LinearLayout\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:orientation=\"horizontal\">\r\n\r\n                <ImageView\r\n                    android:id=\"@+id/imageView2\"\r\n                    android:layout_width=\"wrap_content\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    app:srcCompat=\"@drawable/doctor\" />\r\n\r\n                <TextView\r\n                    android:id=\"@+id/tvDoctorName\"\r\n                    android:layout_width=\"wrap_content\"\r\n                    android:layout_height=\"match_parent\"\r\n                    android:text=\"Dr. \"\r\n                    android:paddingLeft=\"3dp\"\r\n                    android:paddingRight=\"3dp\"\r\n                    android:gravity=\"center_vertical\"\r\n                    android:textSize=\"14sp\"\r\n                    android:textAppearance=\"@style/TextAppearance.AppCompat.Caption\"\r\n                    android:textColor=\"@color/red_btn_bg_color\" />\r\n\r\n\r\n            </LinearLayout>\r\n\r\n\r\n\r\n\r\n        </LinearLayout>\r\n\r\n\r\n    </androidx.cardview.widget.CardView>\r\n\r\n\r\n\r\n        <LinearLayout\r\n\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:orientation=\"horizontal\"\r\n            android:gravity=\"center\"\r\n            android:padding=\"@dimen/spacing_medium\"\r\n            android:layout_marginTop=\"5dp\">\r\n\r\n\r\n            <TextView\r\n\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:text=\"@string/send_msg\"\r\n                android:paddingLeft=\"3dp\"\r\n                android:paddingRight=\"3dp\"\r\n                android:textSize=\"20sp\"\r\n                android:layout_weight=\"1\"\r\n                android:textAppearance=\"@style/TextAppearance.AppCompat.Caption\"\r\n                android:textColor=\"@color/white\" />\r\n\r\n\r\n            <ImageView\r\n                android:id=\"@+id/imgVBtnSendMsg\"\r\n                android:layout_width=\"wrap_content\"\r\n                android:layout_height=\"wrap_content\"\r\n\r\n                app:srcCompat=\"@drawable/whatsapp\" />\r\n\r\n\r\n\r\n        </LinearLayout>\r\n\r\n\r\n    </LinearLayout>\r\n\r\n\r\n\r\n\r\n\r\n\r\n</LinearLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_dashboard_actvity.xml b/app/src/main/res/layout/activity_dashboard_actvity.xml
+--- a/app/src/main/res/layout/activity_dashboard_actvity.xml	(revision 9613afe28a83edeb2f1cffe58945ded79fbb09de)
++++ b/app/src/main/res/layout/activity_dashboard_actvity.xml	(date 1683467608204)
+@@ -8,7 +8,7 @@
+     android:background="@color/home"
+     android:orientation="horizontal"
+     tools:background="@color/activity"
+-    tools:context=".HeartBeatActivity">
++    tools:context=".DashboardActivity">
+ 
+     <LinearLayout
+         android:layout_width="wrap_content"
+Index: app/src/main/java/com/heartm/heartbeat/DashboardActivity.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.heartm.heartbeat\r\n\r\nimport android.content.Intent\r\nimport android.net.Uri\r\nimport android.os.Bundle\r\nimport android.util.Log\r\nimport android.view.View\r\nimport android.view.ViewGroup\r\nimport android.widget.ImageView\r\nimport android.widget.TextView\r\nimport androidx.appcompat.app.AppCompatActivity\r\nimport com.android.volley.Request\r\nimport com.android.volley.Response\r\nimport com.android.volley.toolbox.StringRequest\r\nimport com.github.loadingview.LoadingDialog\r\nimport com.google.gson.Gson\r\nimport com.google.gson.reflect.TypeToken\r\nimport com.heartm.heartbeat.models.DrugUsage\r\nimport com.heartm.heartbeat.models.HeartBeatRecord\r\nimport com.heartm.heartbeat.models.WalkingSport\r\nimport com.heartm.heartbeat.notification.AlarmScheduler\r\nimport com.heartm.heartbeat.util.Menu\r\nimport com.heartm.heartbeat.util.MyDateConverter\r\nimport com.ismaeldivita.chipnavigation.ChipNavigationBar\r\nimport kotlinx.android.synthetic.main.activity_dashboard_actvity.*\r\nimport org.json.JSONException\r\nimport org.json.JSONObject\r\nimport java.util.*\r\n\r\nclass DashboardActivity : AppCompatActivity()\r\n{\r\n\r\n    private val container by lazy { findViewById<ViewGroup>(R.id.container) }\r\n    private val tvUser by lazy { findViewById<TextView>(R.id.tvUser) }\r\n\r\n    private val button by lazy { findViewById<ImageView>(R.id.expand_button) }\r\n    private val menu by lazy { findViewById<ChipNavigationBar>(R.id.bottom_menu) }\r\n\r\n\r\n    private val URL_SUMMARY =\r\n        MyApplication.Companion.instance?.resources?.getString(R.string.online_url) + \"summary?pasien_id=\" + UserAccount.getID()\r\n\r\n\r\n\r\n    override fun onCreate(savedInstanceState: Bundle?)\r\n    {\r\n        super.onCreate(savedInstanceState)\r\n        setContentView(R.layout.activity_dashboard_actvity)\r\n        tvUser.text = UserAccount.getUsername()\r\n\r\n\r\n        val menuNav = Menu(this@DashboardActivity)\r\n        menuNav.initMenu(container,button,menu)\r\n\r\n        loadSummary()\r\n\r\n        initDoctor()\r\n\r\n        imgVBtnSendMsg.setOnClickListener(View.OnClickListener {\r\n            var phone: String = UserAccount.getDoctorPhoneNumber().toString()\r\n          //  phone = phone.substring(1)\r\n            phone = \"+$phone\"\r\n            // Toast.makeText(getContext(),phone,Toast.LENGTH_LONG).show();\r\n            // Toast.makeText(getContext(),phone,Toast.LENGTH_LONG).show();\r\n            startActivity(\r\n                Intent(\r\n                    Intent.ACTION_VIEW,\r\n                    Uri.parse(\r\n                        \"https://api.whatsapp.com/send?phone=$phone&text=Halo Dok\"\r\n                    )\r\n                )\r\n            )\r\n        })\r\n\r\n       //AlarmScheduler.scheduleNextDrugTaken(this@DashboardActivity)\r\n       //  AlarmScheduler.scheduleDrinkInMorning(this@DashboardActivity)\r\n        AlarmScheduler.scheduleDailyUsage(this@DashboardActivity)\r\n      // AlarmScheduler.cancelSchedule(this@DashboardActivity)\r\n\r\n\r\n\r\n    }\r\n\r\n    fun initDoctor()\r\n    {\r\n        tvDoctorName.setText(UserAccount.getDoctorName())\r\n    }\r\n\r\n    fun loadSummary()\r\n    {\r\n        System.out.println(URL_SUMMARY)\r\n        val dialog = LoadingDialog.get(this).show()\r\n        val jsonObjReq =\r\n            StringRequest(\r\n                Request.Method.GET, URL_SUMMARY,\r\n                Response.Listener { response -> //Success Callback\r\n                    Log.i(\"HASIL GET \", response)\r\n                    dialog.hide()\r\n                    var jsonObject: JSONObject? = null\r\n                    try {\r\n                        jsonObject = JSONObject(response)\r\n                        val gson = Gson()\r\n\r\n                        val mydate = MyDateConverter()\r\n\r\n                        if (!jsonObject.getJSONObject(\"result\").isNull(\"rekam_jantung\"))\r\n                        {\r\n\r\n                            val heartbeat: HeartBeatRecord = gson.fromJson<HeartBeatRecord>(\r\n                                jsonObject.getJSONObject(\"result\").getString(\"rekam_jantung\"),\r\n                                object : TypeToken<HeartBeatRecord?>() {}.type\r\n                            )\r\n                            val fullDayOfMonth = mydate.convertfromLongDate(\r\n                                heartbeat.created_at,\r\n                                \"dd MMM yyyy HH:ss\"\r\n                            )\r\n\r\n                            tvTimeofHeartBeat.text = fullDayOfMonth\r\n                            tvValue.text = heartbeat.bpm.toString()\r\n\r\n                            if (heartbeat.bpm in 60..100) {\r\n                                tvStatusHeartBeat.setText(getString(R.string.healthy))\r\n                            } else {\r\n                                tvStatusHeartBeat.setText(getString(R.string.sick))\r\n                            }\r\n\r\n                        }\r\n\r\n\r\n                        if (!jsonObject.getJSONObject(\"result\").isNull(\"langkah_pasien\"))\r\n                        {\r\n                            val stepsport: WalkingSport = gson.fromJson<WalkingSport>(\r\n                                jsonObject.getJSONObject(\"result\").getString(\"langkah_pasien\"),\r\n                                object : TypeToken<WalkingSport?>() {}.type\r\n                            )\r\n                            val fullDayOfMonth2 = mydate.convertfromLongDate(\r\n                                stepsport.created_at,\r\n                                \"dd MMM yyyy HH:ss\"\r\n                            )\r\n                            tvTimeofStep.text = fullDayOfMonth2\r\n                            tvStepCount.text = stepsport.jumlah_langkah.toString()\r\n                        }\r\n\r\n\r\n                        if (!jsonObject.getJSONObject(\"result\").isNull(\"kontrol_obat\")) {\r\n\r\n                            val drugusage: DrugUsage = gson.fromJson<DrugUsage>(\r\n                                jsonObject.getJSONObject(\"result\").getString(\"kontrol_obat\"),\r\n                                object : TypeToken<DrugUsage?>() {}.type\r\n                            )\r\n                            val nextdateofdrugtaken = mydate.convertfromShortDate(\r\n                                drugusage.tgl_ambil_selanjutnya,\r\n                                \"dd MMM yyyy\"\r\n                            )\r\n                            tvTimeofDrug.text = String.format(\r\n                                Locale.getDefault(),\r\n                                \" %s %s\",\r\n                                getString(R.string.next_on),\r\n                                nextdateofdrugtaken\r\n                            )\r\n                            tvNameOfDrug.text = drugusage.obat\r\n                            val arrsplit: List<String> = drugusage.waktu_makan.split(\",\")\r\n                            tvStatusOfDrug.text = String.format(\r\n                                Locale.getDefault(),\r\n                                \"%sx/ %s\",\r\n                                arrsplit.size.toString(),\r\n                                getString(R.string.per_day)\r\n                            )\r\n                            tvAmount.text = drugusage.jumlah.toString() + \" Pcs\"\r\n                        }\r\n\r\n\r\n\r\n\r\n\r\n\r\n                    } catch (ex: JSONException) {\r\n                    }\r\n\r\n\r\n\r\n                    dialog.hide()\r\n                },\r\n                Response.ErrorListener {\r\n                    //Failure Callback\r\n                })\r\n        MyApplication.Companion.instance?.addToRequestQueue(jsonObjReq, \"getRequest_getSummary\")\r\n\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/heartm/heartbeat/DashboardActivity.kt b/app/src/main/java/com/heartm/heartbeat/DashboardActivity.kt
+--- a/app/src/main/java/com/heartm/heartbeat/DashboardActivity.kt	(revision 9613afe28a83edeb2f1cffe58945ded79fbb09de)
++++ b/app/src/main/java/com/heartm/heartbeat/DashboardActivity.kt	(date 1683467586575)
+@@ -22,7 +22,7 @@
+ import com.heartm.heartbeat.util.Menu
+ import com.heartm.heartbeat.util.MyDateConverter
+ import com.ismaeldivita.chipnavigation.ChipNavigationBar
+-import kotlinx.android.synthetic.main.activity_dashboard_actvity.*
++import com.heartm.heartbeat.databinding.ActivityMainBinding
+ import org.json.JSONException
+ import org.json.JSONObject
+ import java.util.*
+@@ -38,7 +38,7 @@
+ 
+ 
+     private val URL_SUMMARY =
+-        MyApplication.Companion.instance?.resources?.getString(R.string.online_url) + "summary?pasien_id=" + UserAccount.getID()
++        MyApplication.instance?.resources?.getString(R.string.online_url) + "summary?pasien_id=" + UserAccount.getID()
+ 
+ 
+ 
+@@ -184,7 +184,7 @@
+                 Response.ErrorListener {
+                     //Failure Callback
+                 })
+-        MyApplication.Companion.instance?.addToRequestQueue(jsonObjReq, "getRequest_getSummary")
++        MyApplication.instance?.addToRequestQueue(jsonObjReq, "getRequest_getSummary")
+ 
+     }
+ }
+Index: settings.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>include ':app'\r\nrootProject.name='heartbeatm'\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/settings.gradle b/settings.gradle
+--- a/settings.gradle	(revision 9613afe28a83edeb2f1cffe58945ded79fbb09de)
++++ b/settings.gradle	(date 1683507587176)
+@@ -1,2 +1,17 @@
+-include ':app'
++pluginManagement {
++    repositories {
++        google()
++        mavenCentral()
++        gradlePluginPortal()
++    }
++}
++dependencyResolutionManagement {
++    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
++    repositories {
++        google()
++        mavenCentral()
++    }
++}
+ rootProject.name='heartbeatm'
++include ':app'
++
+Index: app/build.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>apply plugin: 'com.android.application'\r\n\r\napply plugin: 'kotlin-android'\r\n\r\napply plugin: 'kotlin-android-extensions'\r\n\r\nandroid {\r\n    compileSdkVersion 29\r\n    defaultConfig {\r\n        applicationId \"com.heartm.heartbeat\"\r\n        minSdkVersion 23\r\n        targetSdkVersion 29\r\n        versionCode 176\r\n        versionName \"1.7.6\"\r\n        testInstrumentationRunner \"androidx.test.runner.AndroidJUnitRunner\"\r\n    }\r\n    buildTypes {\r\n        release {\r\n            minifyEnabled false\r\n            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'\r\n\r\n            applicationVariants.all { variant ->\r\n                variant.outputs.all\r\n                        {\r\n                            def appName = \"HeartM \"\r\n                            if (outputFileName != null && outputFileName.endsWith('.apk')) {\r\n                                outputFileName = appName + \" \" + defaultConfig.versionName + \".apk\"\r\n                            }\r\n                        }\r\n            }\r\n        }\r\n    }\r\n}\r\n\r\ndependencies {\r\n    implementation fileTree(dir: 'libs', include: ['*.jar'])\r\n    implementation \"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version\"\r\n    implementation 'androidx.appcompat:appcompat:1.0.2'\r\n    implementation 'androidx.core:core-ktx:1.0.2'\r\n    implementation 'androidx.constraintlayout:constraintlayout:2.0.1'\r\n    implementation 'com.google.android.material:material:1.2.1'\r\n    implementation 'com.github.kal72:RackMonthPicker:1.6.1'\r\n\r\n    implementation \"com.airbnb.android:lottie:4.0.0\"\r\n    implementation 'com.github.devlight.navigationtabstrip:navigationtabstrip:1.0.4'\r\n\r\n    implementation 'com.ismaeldivita.chipnavigation:chip-navigation-bar:1.3.4'\r\n\r\n    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'\r\n\r\n    implementation 'com.google.code.gson:gson:2.8.5'\r\n    implementation 'org.greenrobot:eventbus:3.1.1'\r\n    implementation 'com.android.volley:volley:1.1.1'\r\n    implementation 'com.github.f0ris.sweetalert:library:1.6.2'\r\n    implementation 'com.samigehi:loadingview:1.1'\r\n    implementation 'com.github.GrenderG:Toasty:1.4.2'\r\n\r\n    implementation 'com.balysv:material-ripple:1.0.2'\r\n\r\n\r\n    implementation 'androidx.legacy:legacy-support-v4:1.0.0'\r\n    testImplementation 'junit:junit:4.12'\r\n    androidTestImplementation 'androidx.test.ext:junit:1.1.0'\r\n    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/build.gradle b/app/build.gradle
+--- a/app/build.gradle	(revision 9613afe28a83edeb2f1cffe58945ded79fbb09de)
++++ b/app/build.gradle	(date 1683477424683)
+@@ -1,19 +1,28 @@
+-apply plugin: 'com.android.application'
+-
+-apply plugin: 'kotlin-android'
+-
+-apply plugin: 'kotlin-android-extensions'
++plugins {
++    id 'com.android.application'
++    id 'org.jetbrains.kotlin.android'
++}
+ 
+ android {
+-    compileSdkVersion 29
++    compileSdk 33
+     defaultConfig {
+         applicationId "com.heartm.heartbeat"
+-        minSdkVersion 23
+-        targetSdkVersion 29
++        minSdkVersion 29
++        targetSdkVersion 33
+         versionCode 176
+         versionName "1.7.6"
+         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+     }
++    compileOptions {
++        sourceCompatibility JavaVersion.VERSION_1_8
++        targetCompatibility JavaVersion.VERSION_1_8
++    }
++    kotlinOptions {
++        jvmTarget = '1.8'
++    }
++    buildFeatures {
++        viewBinding true
++    }
+     buildTypes {
+         release {
+             minifyEnabled false
+@@ -30,13 +39,13 @@
+             }
+         }
+     }
++    namespace 'com.heartm.heartbeat'
+ }
+ 
+ dependencies {
+     implementation fileTree(dir: 'libs', include: ['*.jar'])
+-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+     implementation 'androidx.appcompat:appcompat:1.0.2'
+-    implementation 'androidx.core:core-ktx:1.0.2'
++    implementation 'androidx.core:core-ktx:1.7.0'
+     implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
+     implementation 'com.google.android.material:material:1.2.1'
+     implementation 'com.github.kal72:RackMonthPicker:1.6.1'
+Index: build.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>// Top-level build file where you can add configuration options common to all sub-projects/modules.\r\n\r\nbuildscript {\r\n    ext.kotlin_version = '1.3.50'\r\n    repositories {\r\n        google()\r\n        jcenter()\r\n        \r\n    }\r\n    dependencies {\r\n        classpath 'com.android.tools.build:gradle:3.5.3'\r\n        classpath \"org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version\"\r\n        // NOTE: Do not place your application dependencies here; they belong\r\n        // in the individual module build.gradle files\r\n    }\r\n}\r\n\r\nallprojects {\r\n    repositories {\r\n        google()\r\n        jcenter()\r\n        maven { url 'https://jitpack.io' }\r\n        \r\n    }\r\n}\r\n\r\ntask clean(type: Delete) {\r\n    delete rootProject.buildDir\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/build.gradle b/build.gradle
+--- a/build.gradle	(revision 9613afe28a83edeb2f1cffe58945ded79fbb09de)
++++ b/build.gradle	(date 1683509329343)
+@@ -1,26 +1,15 @@
+ // Top-level build file where you can add configuration options common to all sub-projects/modules.
+ 
+-buildscript {
+-    ext.kotlin_version = '1.3.50'
+-    repositories {
+-        google()
+-        jcenter()
+-        
+-    }
+-    dependencies {
+-        classpath 'com.android.tools.build:gradle:3.5.3'
+-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+-        // NOTE: Do not place your application dependencies here; they belong
+-        // in the individual module build.gradle files
+-    }
++plugins {
++    id 'com.android.application' version '7.4.0' apply false
++    id 'com.android.library' version '7.4.0' apply false
++    id 'org.jetbrains.kotlin.android' version '1.7.21' apply false
+ }
+ 
+ allprojects {
+     repositories {
+         google()
+-        jcenter()
+-        maven { url 'https://jitpack.io' }
+-        
++        mavenCentral()
+     }
+ }
+ 
+Index: gradle/wrapper/gradle-wrapper.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>#Tue Apr 13 11:22:29 ICT 2021\r\ndistributionBase=GRADLE_USER_HOME\r\ndistributionPath=wrapper/dists\r\nzipStoreBase=GRADLE_USER_HOME\r\nzipStorePath=wrapper/dists\r\ndistributionUrl=https\\://services.gradle.org/distributions/gradle-5.4.1-all.zip\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>ISO-8859-1
+===================================================================
+diff --git a/gradle/wrapper/gradle-wrapper.properties b/gradle/wrapper/gradle-wrapper.properties
+--- a/gradle/wrapper/gradle-wrapper.properties	(revision 9613afe28a83edeb2f1cffe58945ded79fbb09de)
++++ b/gradle/wrapper/gradle-wrapper.properties	(date 1683509792602)
+@@ -1,6 +1,7 @@
+ #Tue Apr 13 11:22:29 ICT 2021
+ distributionBase=GRADLE_USER_HOME
++distributionUrl=https\://services.gradle.org/distributions/gradle-7.4-bin.zip
+ distributionPath=wrapper/dists
+-zipStoreBase=GRADLE_USER_HOME
+ zipStorePath=wrapper/dists
+-distributionUrl=https\://services.gradle.org/distributions/gradle-5.4.1-all.zip
++zipStoreBase=GRADLE_USER_HOME
++
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    package=\"com.heartm.heartbeat\">\r\n\r\n    <uses-permission android:name=\"android.permission.INTERNET\" />\r\n    <uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />\r\n    <uses-permission android:name=\"android.permission.READ_EXTERNAL_STORAGE\" />\r\n    <uses-permission android:name=\"android.permission.CAMERA\" />\r\n    <uses-permission android:name=\"android.permission.WAKE_LOCK\" />\r\n    <uses-permission android:name=\"android.permission.RECEIVE_BOOT_COMPLETED\" />\r\n\r\n    <application\r\n        android:name=\".MyApplication\"\r\n        android:allowBackup=\"true\"\r\n        android:icon=\"@drawable/heartm_logo\"\r\n        android:label=\"@string/app_name\"\r\n        android:roundIcon=\"@mipmap/ic_launcher_round\"\r\n        android:supportsRtl=\"true\"\r\n        android:theme=\"@style/AppTheme\"\r\n        tools:ignore=\"GoogleAppIndexingWarning\">\r\n        <activity android:name=\".ViewWebFormActivity\"  android:theme=\"@style/AppTheme.NoActionBar\"  ></activity>\r\n        <activity android:name=\".SettingActivity\"  android:theme=\"@style/AppTheme.NoActionBar\" />\r\n        <activity android:name=\".AboutActivity\"  android:theme=\"@style/AppTheme.NoActionBar\" />\r\n        <activity\r\n            android:name=\".HeartBeatHistoryActivity\"\r\n            android:label=\"@string/title_activity_heart_beat_history\"\r\n            android:theme=\"@style/AppTheme.NoActionBar\" />\r\n        <activity\r\n            android:name=\".TesActivity\"\r\n            android:label=\"@string/title_activity_tes\"\r\n            android:theme=\"@style/AppTheme.NoActionBar\" />\r\n        <activity android:name=\".DashboardActivity\"  android:theme=\"@style/AppTheme.NoActionBar\" />\r\n        <activity android:name=\".DrugUsageActivity\"  android:theme=\"@style/AppTheme.NoActionBar\" />\r\n        <activity android:name=\".FormDrugUsageActivity\"  android:theme=\"@style/AppTheme.NoActionBar\" />\r\n        <activity android:name=\".StepSportActivity\"  android:theme=\"@style/AppTheme.NoActionBar\" />\r\n        <activity android:name=\".FormStepSportActivity\"  android:theme=\"@style/AppTheme.NoActionBar\" />\r\n        <activity android:name=\".HeartBeatActivity\"  android:theme=\"@style/AppTheme.NoActionBar\" />\r\n        <activity\r\n            android:name=\".LoginActivity\"\r\n            android:label=\"@string/title_activity_login\"\r\n            android:theme=\"@style/AppTheme.NoActionBar\" />\r\n        <activity\r\n            android:name=\".SplashActivity\"\r\n            android:theme=\"@style/AppTheme.NoActionBar\">\r\n            <intent-filter>\r\n                <action android:name=\"android.intent.action.MAIN\" />\r\n\r\n                <category android:name=\"android.intent.category.LAUNCHER\" />\r\n            </intent-filter>\r\n        </activity>\r\n\r\n        <receiver\r\n            android:name=\".notification.AlarmReceiver\"\r\n            android:enabled=\"true\"\r\n            android:exported=\"true\">\r\n            <intent-filter>\r\n                <action android:name=\"android.intent.action.BOOT_COMPLETED\" />\r\n            </intent-filter>\r\n        </receiver>\r\n    </application>\r\n\r\n</manifest>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/AndroidManifest.xml b/app/src/main/AndroidManifest.xml
+--- a/app/src/main/AndroidManifest.xml	(revision 9613afe28a83edeb2f1cffe58945ded79fbb09de)
++++ b/app/src/main/AndroidManifest.xml	(date 1683468741913)
+@@ -1,7 +1,6 @@
+ <?xml version="1.0" encoding="utf-8"?>
+ <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+-    xmlns:tools="http://schemas.android.com/tools"
+-    package="com.heartm.heartbeat">
++    xmlns:tools="http://schemas.android.com/tools">
+ 
+     <uses-permission android:name="android.permission.INTERNET" />
+     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+@@ -19,28 +18,32 @@
+         android:supportsRtl="true"
+         android:theme="@style/AppTheme"
+         tools:ignore="GoogleAppIndexingWarning">
+-        <activity android:name=".ViewWebFormActivity"  android:theme="@style/AppTheme.NoActionBar"  ></activity>
+-        <activity android:name=".SettingActivity"  android:theme="@style/AppTheme.NoActionBar" />
+-        <activity android:name=".AboutActivity"  android:theme="@style/AppTheme.NoActionBar" />
++        <activity android:exported="true" android:name=".ViewWebFormActivity"  android:theme="@style/AppTheme.NoActionBar"  />
++        <activity android:exported="true" android:name=".SettingActivity"  android:theme="@style/AppTheme.NoActionBar" />
++        <activity android:exported="true" android:name=".AboutActivity"  android:theme="@style/AppTheme.NoActionBar" />
+         <activity
++            android:exported="true"
+             android:name=".HeartBeatHistoryActivity"
+             android:label="@string/title_activity_heart_beat_history"
+             android:theme="@style/AppTheme.NoActionBar" />
+         <activity
++            android:exported="true"
+             android:name=".TesActivity"
+             android:label="@string/title_activity_tes"
+             android:theme="@style/AppTheme.NoActionBar" />
+-        <activity android:name=".DashboardActivity"  android:theme="@style/AppTheme.NoActionBar" />
+-        <activity android:name=".DrugUsageActivity"  android:theme="@style/AppTheme.NoActionBar" />
+-        <activity android:name=".FormDrugUsageActivity"  android:theme="@style/AppTheme.NoActionBar" />
+-        <activity android:name=".StepSportActivity"  android:theme="@style/AppTheme.NoActionBar" />
+-        <activity android:name=".FormStepSportActivity"  android:theme="@style/AppTheme.NoActionBar" />
+-        <activity android:name=".HeartBeatActivity"  android:theme="@style/AppTheme.NoActionBar" />
++        <activity android:exported="true" android:name=".DashboardActivity"  android:theme="@style/AppTheme.NoActionBar" />
++        <activity android:exported="true" android:name=".DrugUsageActivity"  android:theme="@style/AppTheme.NoActionBar" />
++        <activity android:exported="true" android:name=".FormDrugUsageActivity"  android:theme="@style/AppTheme.NoActionBar" />
++        <activity android:exported="true" android:name=".StepSportActivity"  android:theme="@style/AppTheme.NoActionBar" />
++        <activity android:exported="true" android:name=".FormStepSportActivity"  android:theme="@style/AppTheme.NoActionBar" />
++        <activity android:exported="true" android:name=".HeartBeatActivity"  android:theme="@style/AppTheme.NoActionBar" />
+         <activity
++            android:exported="true"
+             android:name=".LoginActivity"
+             android:label="@string/title_activity_login"
+             android:theme="@style/AppTheme.NoActionBar" />
+         <activity
++            android:exported="true"
+             android:name=".SplashActivity"
+             android:theme="@style/AppTheme.NoActionBar">
+             <intent-filter>

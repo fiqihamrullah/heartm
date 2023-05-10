@@ -59,7 +59,7 @@ class FormDrugUsageActivity : AppCompatActivity()
         //btnAdd.isEnabled = false
 
         resep = intent.getIntExtra("resep",1)+1
-        val tgl_ambil = intent.getStringExtra("tgl_ambil")
+        val tgl_ambil = intent.getStringExtra("tgl_ambil").toString();
         if (tgl_ambil.isNotEmpty())
         {
             val mydate = MyDateConverter()
@@ -134,7 +134,7 @@ class FormDrugUsageActivity : AppCompatActivity()
         {
             Toasty.warning(this@FormDrugUsageActivity, "Data masih ada yang kosong!.", Toast.LENGTH_SHORT, true)
                 .show()
-        } else if (sbpagi==false && sbsiang==false && sbmalam==false)
+        } else if (!sbpagi && !sbsiang && !sbmalam)
         {
             Toasty.warning(this@FormDrugUsageActivity, "Waktu Pemakaian Obat belum ditentukan!.", Toast.LENGTH_SHORT, true)
                 .show()
@@ -261,7 +261,7 @@ class FormDrugUsageActivity : AppCompatActivity()
     }
 
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean
+    override fun onOptionsItemSelected(item: MenuItem): Boolean
     {
         if (item?.itemId==android.R.id.home)
         {

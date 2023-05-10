@@ -107,7 +107,7 @@ class CameraService(private val activity: Activity, private val handler: Handler
                                             Log.println(
                                                 Log.ERROR,
                                                 "camera",
-                                                e.message
+                                                e.message.toString()
                                             )
                                         }
                                     }
@@ -133,7 +133,7 @@ class CameraService(private val activity: Activity, private val handler: Handler
                                 Log.println(
                                     Log.ERROR,
                                     "camera",
-                                    e.message
+                                    e.message.toString()
                                 )
                             }
                         }
@@ -144,7 +144,7 @@ class CameraService(private val activity: Activity, private val handler: Handler
                 }, null)
         } catch (e: CameraAccessException) {
             if (e.message != null) {
-                Log.println(Log.ERROR, "camera", e.message)
+                Log.println(Log.ERROR, "camera", e.message.toString())
                 handler.sendMessage(
                     Message.obtain(
                         handler,
@@ -155,7 +155,7 @@ class CameraService(private val activity: Activity, private val handler: Handler
             }
         } catch (e: SecurityException) {
             if (e.message != null) {
-                Log.println(Log.ERROR, "camera", e.message)
+                Log.println(Log.ERROR, "camera", e.message.toString())
                 handler.sendMessage(
                     Message.obtain(
                         handler,

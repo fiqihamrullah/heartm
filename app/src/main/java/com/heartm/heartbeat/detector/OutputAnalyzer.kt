@@ -67,7 +67,7 @@ class OutputAnalyzer(
                     val pixelCount = textureView.width * textureView.height
                     var measurement = 0
                     val pixels = IntArray(pixelCount)
-                    currentBitmap.getPixels(
+                    currentBitmap?.getPixels(
                         pixels,
                         0,
                         textureView.width,

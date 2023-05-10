@@ -19,33 +19,36 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ViewWebFormActivity"  android:theme="@style/AppTheme.NoActionBar"  ></activity>
-        <activity android:name=".SettingActivity"  android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".AboutActivity"  android:theme="@style/AppTheme.NoActionBar" />
+        <activity   android:exported="true" android:name=".ViewWebFormActivity"  android:theme="@style/AppTheme.NoActionBar"  />
+        <activity   android:exported="true" android:name=".SettingActivity"  android:theme="@style/AppTheme.NoActionBar" />
+        <activity   android:exported="true" android:name=".AboutActivity"  android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".HeartBeatHistoryActivity"
             android:label="@string/title_activity_heart_beat_history"
+            android:exported="true"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".TesActivity"
             android:label="@string/title_activity_tes"
+            android:exported="true"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".DashboardActivity"  android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".DrugUsageActivity"  android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".FormDrugUsageActivity"  android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".StepSportActivity"  android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".FormStepSportActivity"  android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".HeartBeatActivity"  android:theme="@style/AppTheme.NoActionBar" />
+        <activity   android:exported="true" android:name=".DashboardActivity"  android:theme="@style/AppTheme.NoActionBar" />
+        <activity   android:exported="true" android:name=".DrugUsageActivity"  android:theme="@style/AppTheme.NoActionBar" />
+        <activity   android:exported="true" android:name=".FormDrugUsageActivity"  android:theme="@style/AppTheme.NoActionBar" />
+        <activity   android:exported="true" android:name=".StepSportActivity"  android:theme="@style/AppTheme.NoActionBar" />
+        <activity   android:exported="true" android:name=".FormStepSportActivity"  android:theme="@style/AppTheme.NoActionBar" />
+        <activity   android:exported="true" android:name=".HeartBeatActivity"  android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login"
+            android:exported="true"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".SplashActivity"
+            android:exported="true"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
