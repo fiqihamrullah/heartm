@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">HeartM</string>
-    <string name="online_url">https://heartmcp.000webhostapp.com/api/</string>
-    <string name="online_base_url">https://heartmcp.000webhostapp.com/</string>
+    <string name="online_url">http://heartmcp.atwebpages.com/api/</string>
+    <string name="online_base_url">http://heartmcp.atwebpages.com/</string>
     <string name="title_activity_login">LoginActivity</string>
 
     <string name="by_using_this_ui_ux_you_agree">by using this ui/ux you agree to our</string>
