@@ -12,22 +12,24 @@ import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.github.loadingview.LoadingDialog
 import com.google.gson.Gson
+import com.heartm.heartbeat.databinding.ActivityLoginBinding
 import com.heartm.heartbeat.models.Patient
 
-import kotlinx.android.synthetic.main.activity_login.*
+
 import org.json.JSONException
 import org.json.JSONObject
 
 class LoginActivity : AppCompatActivity()
 {
-
+    private lateinit var binding : ActivityLoginBinding
     private val URL_LOGIN_POST =
         MyApplication.Companion.instance?.resources?.getString(R.string.online_url) + "auth"
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        binding = ActivityLoginBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         initComponent()
 
     }
@@ -36,18 +38,17 @@ class LoginActivity : AppCompatActivity()
 
     fun initComponent()
     {
-        id_Signin_Button.setOnClickListener(View.OnClickListener {
+        binding.idSigninButton.setOnClickListener(View.OnClickListener {
              login()
         })
 
-        id_ForgetPassword_TextView.setOnClickListener(View.OnClickListener {
+        binding.idForgetPasswordTextView.setOnClickListener(View.OnClickListener {
             startActivity(Intent(this,ViewWebFormActivity::class.java).putExtra("pil",1))
         })
 
-        id_SignUp_TextView.setOnClickListener(View.OnClickListener {
+        binding.idSignUpTextView.setOnClickListener(View.OnClickListener {
             startActivity(Intent(this,ViewWebFormActivity::class.java).putExtra("pil",2))
         })
-
 
     }
 
@@ -81,8 +82,8 @@ class LoginActivity : AppCompatActivity()
     fun login()
     {
 
-        val email = edPhoneNumber.getText().toString()
-        val password = edPassword.getText().toString()
+        val email = binding.edPhoneNumber.getText().toString()
+        val password = binding.edPassword.getText().toString()
         if (email == "")
         {
             SweetAlertDialog(this@LoginActivity, SweetAlertDialog.WARNING_TYPE)
@@ -121,12 +122,7 @@ class LoginActivity : AppCompatActivity()
                                 Patient::class.java!!
                             )
 
-
-
-
                             registerSession(user, response.getString("api_token"))
-
-
                             startActivity(Intent(this,DashboardActivity::class.java))
                         } else {
 

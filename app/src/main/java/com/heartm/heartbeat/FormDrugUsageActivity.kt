@@ -16,18 +16,18 @@ import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.github.loadingview.LoadingDialog
+import com.heartm.heartbeat.databinding.ActivityFormDrugUsageBinding
 import com.heartm.heartbeat.fragments.DateTimePickerFragment
 import com.heartm.heartbeat.notification.AlarmScheduler
 import com.heartm.heartbeat.util.MyDateConverter
 import es.dmoral.toasty.Toasty
-import kotlinx.android.synthetic.main.activity_form_drug_usage.*
 import org.json.JSONException
 import org.json.JSONObject
 
 
 class FormDrugUsageActivity : AppCompatActivity()
 {
-
+     private lateinit var binding : ActivityFormDrugUsageBinding
      var resep=0;
 
     private val URL_KONTROLOBAT =
@@ -36,23 +36,24 @@ class FormDrugUsageActivity : AppCompatActivity()
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_form_drug_usage)
+        binding =ActivityFormDrugUsageBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         initToolbar()
 
-        edTglInput.setOnClickListener(View.OnClickListener {
+        binding.edTglInput.setOnClickListener(View.OnClickListener {
 
-            showDatePicker(edTglInput)
+            showDatePicker(binding.edTglInput)
 
         })
 
-        edTglPengambilanBerikut.setOnClickListener {
-            showDatePicker(edTglPengambilanBerikut)
+        binding.edTglPengambilanBerikut.setOnClickListener {
+            showDatePicker(binding.edTglPengambilanBerikut)
         }
 
-        btnSave.setOnClickListener(View.OnClickListener { saveDrugUsage() })
+        binding.btnSave.setOnClickListener(View.OnClickListener { saveDrugUsage() })
 
-        btnAdd.setOnClickListener(View.OnClickListener { resetToAdd() })
+        binding.btnAdd.setOnClickListener(View.OnClickListener { resetToAdd() })
 
         initSpinnerDrugNames()
 
@@ -64,8 +65,8 @@ class FormDrugUsageActivity : AppCompatActivity()
         {
             val mydate = MyDateConverter()
             val daymonth = mydate.convertfromShortDate(tgl_ambil, "dd/MM/yyyy")
-            edTglInput.setText(daymonth)
-            edTglInput.isEnabled = false
+            binding.edTglInput.setText(daymonth)
+            binding.edTglInput.isEnabled = false
         }
 
         println("Resep Sekarang "  + resep.toString())
@@ -75,13 +76,13 @@ class FormDrugUsageActivity : AppCompatActivity()
 
     fun resetToAdd()
     {
-        swpagi.isChecked = false
-        swmalam.isChecked = false
-        swsiang.isChecked = false
+        binding.swpagi.isChecked = false
+        binding.swmalam.isChecked = false
+        binding.swsiang.isChecked = false
 
-        edJumlah.setText("")
-        btnAdd.visibility = View.GONE
-        btnSave.visibility = View.VISIBLE
+        binding.edJumlah.setText("")
+        binding.btnAdd.visibility = View.GONE
+        binding.btnSave.visibility = View.VISIBLE
 
     }
 
@@ -91,12 +92,12 @@ class FormDrugUsageActivity : AppCompatActivity()
         var aa = ArrayAdapter(this, android.R.layout.simple_spinner_item, names)
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 
-        acDrugName.setAdapter(aa)
+        binding.acDrugName.setAdapter(aa)
 
-        acDrugName.setOnTouchListener(object : View.OnTouchListener {
+        binding.acDrugName.setOnTouchListener(object : View.OnTouchListener {
             override fun onTouch(v: View?, event: MotionEvent?): Boolean {
                 when (event?.action) {
-                    MotionEvent.ACTION_DOWN -> acDrugName.showDropDown()
+                    MotionEvent.ACTION_DOWN -> binding.acDrugName.showDropDown()
                 }
 
                 return v?.onTouchEvent(event) ?: true
@@ -119,13 +120,13 @@ class FormDrugUsageActivity : AppCompatActivity()
     {
 
 
-        val tgl = edTglInput.text.toString()
-        val tgl_next = edTglPengambilanBerikut.text.toString()
-        val obat = acDrugName.text.toString()
-        val jumlah = edJumlah.text.toString()
-        val sbpagi : Boolean = swpagi.isChecked
-        val sbsiang : Boolean = swsiang.isChecked
-        val sbmalam : Boolean = swmalam.isChecked
+        val tgl = binding.edTglInput.text.toString()
+        val tgl_next = binding.edTglPengambilanBerikut.text.toString()
+        val obat = binding.acDrugName.text.toString()
+        val jumlah = binding.edJumlah.text.toString()
+        val sbpagi : Boolean = binding.swpagi.isChecked
+        val sbsiang : Boolean = binding.swsiang.isChecked
+        val sbmalam : Boolean = binding.swmalam.isChecked
 
 
 
@@ -226,8 +227,8 @@ class FormDrugUsageActivity : AppCompatActivity()
 
                             it.hide()
                           //  this.finish()
-                            btnSave.visibility = View.GONE
-                            btnAdd.visibility = View.VISIBLE
+                            binding.btnSave.visibility = View.GONE
+                            binding.btnAdd.visibility = View.VISIBLE
 
                         }
 

@@ -31,13 +31,14 @@ import com.google.android.material.chip.ChipGroup
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.heartm.heartbeat.adapters.HeartBeatAdapter
+import com.heartm.heartbeat.databinding.ActivityHeartBeatHistoryBinding
 import com.heartm.heartbeat.fragments.DateTimePickerFragment
 import com.heartm.heartbeat.models.HeartBeatRecord
 import com.heartm.heartbeat.util.Menu
 import com.ismaeldivita.chipnavigation.ChipNavigationBar
 import com.kal.rackmonthpicker.RackMonthPicker
 import es.dmoral.toasty.Toasty
-import kotlinx.android.synthetic.main.activity_heart_beat_history.*
+
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
@@ -46,6 +47,7 @@ import kotlin.collections.ArrayList
 
 class HeartBeatHistoryActivity : AppCompatActivity() {
 
+    private lateinit var binding : ActivityHeartBeatHistoryBinding
     private val MODE_DAY= 1001
     private val MODE_WEEK= 1002
     private val MODE_MONTH= 1003
@@ -69,7 +71,8 @@ class HeartBeatHistoryActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_heart_beat_history)
+        binding = ActivityHeartBeatHistoryBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         val menuNav = Menu(this@HeartBeatHistoryActivity)
         menuNav.initMenu(container,button,menu)
@@ -77,7 +80,7 @@ class HeartBeatHistoryActivity : AppCompatActivity() {
 
         init()
 
-        fab_share.setOnClickListener(View.OnClickListener {
+        binding.fabShare.setOnClickListener(View.OnClickListener {
 
             if (textToShare.isNullOrBlank())
             {
@@ -167,9 +170,9 @@ class HeartBeatHistoryActivity : AppCompatActivity() {
 
         // use a linear layout manager
         val mLayoutManager = LinearLayoutManager(this@HeartBeatHistoryActivity)
-        recyclerView.setLayoutManager(mLayoutManager)
-        recyclerView.setHasFixedSize(true)
-        recyclerView.addItemDecoration(
+        binding.recyclerView.setLayoutManager(mLayoutManager)
+        binding.recyclerView.setHasFixedSize(true)
+        binding.recyclerView.addItemDecoration(
             DividerItemDecoration(
                 this@HeartBeatHistoryActivity,
                 DividerItemDecoration.VERTICAL
@@ -327,7 +330,7 @@ class HeartBeatHistoryActivity : AppCompatActivity() {
             set1.setDrawIcons(false)
 
 
-            val startColor: Int = ContextCompat.getColor(this, R.color.material_blue_grey_80)
+            val startColor: Int = ContextCompat.getColor(this, cn.pedant.SweetAlert.R.color.material_blue_grey_80)
             val endColor: Int = ContextCompat.getColor(this, android.R.color.holo_blue_bright)
             set1.setGradientColor(startColor, endColor)
 
@@ -418,13 +421,13 @@ class HeartBeatHistoryActivity : AppCompatActivity() {
 
                         if (heartBeatList.size > 0)
                         {
-                            recyclerView.visibility = View.VISIBLE
-                            animationView.visibility = View.GONE
+                            binding.recyclerView.visibility = View.VISIBLE
+                            binding.animationView.visibility = View.GONE
                             heartBeatAdapter = HeartBeatAdapter(heartBeatList)
-                            recyclerView.setAdapter(heartBeatAdapter)
+                            binding.recyclerView.setAdapter(heartBeatAdapter)
                         }else{
-                            recyclerView.visibility = View.GONE
-                            animationView.visibility = View.VISIBLE
+                            binding.recyclerView.visibility = View.GONE
+                            binding.animationView.visibility = View.VISIBLE
                         }
 
                     }

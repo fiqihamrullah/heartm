@@ -14,30 +14,29 @@ import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.github.loadingview.LoadingDialog
+import com.heartm.heartbeat.databinding.ActivityFormStepSportBinding
 import com.heartm.heartbeat.util.MyDateConverter
 import es.dmoral.toasty.Toasty
-import kotlinx.android.synthetic.main.activity_form_drug_usage.*
-import kotlinx.android.synthetic.main.activity_form_drug_usage.btnSave
-import kotlinx.android.synthetic.main.activity_form_step_sport.*
 import org.json.JSONException
 import org.json.JSONObject
 
 class FormStepSportActivity : AppCompatActivity() {
-
+    private lateinit var binding : ActivityFormStepSportBinding
     private val URL_STEPSPORT =
         MyApplication.Companion.instance?.resources?.getString(R.string.online_url) + "langkahpasien"
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_form_step_sport)
+        binding = ActivityFormStepSportBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         initToolbar()
 
         init()
 
 
-       edStepCount.addTextChangedListener(object : TextWatcher{
+       binding.edStepCount.addTextChangedListener(object : TextWatcher{
            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
 
            }
@@ -52,12 +51,12 @@ class FormStepSportActivity : AppCompatActivity() {
                {
                    val sessmgr = SessionManager(this@FormStepSportActivity)
 
-                   val itarget = if (sessmgr.getStepTarget()>0) sessmgr.getStepTarget() else edTargetCount.text.toString().toInt()
+                   val itarget = if (sessmgr.getStepTarget()>0) sessmgr.getStepTarget() else binding.edTargetCount.text.toString().toInt()
 
                    val sisa = itarget - (sessmgr.getTotalStep() + step.toInt())
                    if (sisa >= 0)
                    {
-                       tvStepRest.text = sisa.toString()
+                       binding.tvStepRest.text = sisa.toString()
                    }
 
                }
@@ -67,7 +66,7 @@ class FormStepSportActivity : AppCompatActivity() {
            }
        })
 
-        btnSave.setOnClickListener(View.OnClickListener { saveStep() })
+        binding.btnSave.setOnClickListener(View.OnClickListener { saveStep() })
 
     }
 
@@ -76,11 +75,11 @@ class FormStepSportActivity : AppCompatActivity() {
     {
         val sessmgr = SessionManager(this@FormStepSportActivity)
 
-         edTargetCount.setText(sessmgr.getStepTarget().toString())
+        binding.edTargetCount.setText(sessmgr.getStepTarget().toString())
 
         val sisa = sessmgr.getStepTarget() - sessmgr.getTotalStep()
         if (sisa >= 0) {
-            tvStepRest.text = sisa.toString()
+            binding.tvStepRest.text = sisa.toString()
         }
     }
 
@@ -88,8 +87,8 @@ class FormStepSportActivity : AppCompatActivity() {
     fun saveStep()
     {
 
-        val step = edStepCount.text.toString()
-        val target = edTargetCount.text.toString()
+        val step = binding.edStepCount.text.toString()
+        val target = binding.edTargetCount.text.toString()
 
 
 

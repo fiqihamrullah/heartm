@@ -16,17 +16,17 @@ import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.github.loadingview.LoadingDialog
+import com.heartm.heartbeat.databinding.ActivitySettingBinding
 import com.heartm.heartbeat.util.LocaleHelper.setLocale
 import com.heartm.heartbeat.util.Menu
 import com.ismaeldivita.chipnavigation.ChipNavigationBar
 import es.dmoral.toasty.Toasty
-import kotlinx.android.synthetic.main.activity_setting.*
 import org.json.JSONException
 import org.json.JSONObject
 
 
 class SettingActivity : AppCompatActivity() {
-
+    private lateinit var binding : ActivitySettingBinding
     private val container by lazy { findViewById<ViewGroup>(R.id.container) }
     private val btnIndonesia by lazy { findViewById<TextView>(R.id.btnIndonesia) }
     private val btnEnglish by lazy { findViewById<TextView>(R.id.btnEnglish) }
@@ -41,15 +41,14 @@ class SettingActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_setting)
+        binding = ActivitySettingBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-
-
-        btnChangePassword.setOnClickListener {
+        binding.btnChangePassword.setOnClickListener {
             showDialogInputPassword()
         }
 
-        btnLogout.setOnClickListener {
+        binding.btnLogout.setOnClickListener {
             val sm = SessionManager(this@SettingActivity)
             sm.logout()
             this.finish()

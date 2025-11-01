@@ -21,12 +21,12 @@ import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.github.loadingview.LoadingDialog
 import com.google.android.material.snackbar.Snackbar
+import com.heartm.heartbeat.databinding.ActivityHeartBeatBinding
 import com.heartm.heartbeat.detector.CameraService
 import com.heartm.heartbeat.detector.OutputAnalyzer
 import com.heartm.heartbeat.util.Menu
 import com.ismaeldivita.chipnavigation.ChipNavigationBar
 import es.dmoral.toasty.Toasty
-import kotlinx.android.synthetic.main.activity_heart_beat.*
 import org.json.JSONException
 import org.json.JSONObject
 import java.util.*
@@ -34,7 +34,7 @@ import java.util.*
 
 class HeartBeatActivity : AppCompatActivity()
 {
-
+    private lateinit var binding : ActivityHeartBeatBinding
     private  var analyzer: OutputAnalyzer? = null
 
     private val REQUEST_CODE_CAMERA = 0
@@ -117,30 +117,6 @@ class HeartBeatActivity : AppCompatActivity()
             cameraService.start(previewSurface)
             analyzer?.measurePulse(cameraTextureView, cameraService)
         }
-
-
-        /*
-        labelIndicator.setOnClickListener(View.OnClickListener {
-            if (labelIndicator.text.equals(getString(R.string.healthy)))
-            {
-                val content = String.format(Locale.getDefault(),"%s %s 60 Bpm & 100 Bpm",getString(R.string.healthy),"Antara")
-
-                SweetAlertDialog(this@HeartBeatActivity, SweetAlertDialog.SUCCESS_TYPE)
-                    .setTitleText("Selamat")
-                    .setContentText(content)
-                    .show()
-            }else
-            {
-                val content = String.format(Locale.getDefault(),"%s %s 60 Bpm",getString(R.string.sick),"Dibawah")
-
-                SweetAlertDialog(this@HeartBeatActivity, SweetAlertDialog.WARNING_TYPE)
-                    .setTitleText("Ups!")
-                    .setContentText(content)
-                    .show()
-
-            }
-        })*/
-
     }
 
     override fun onPause() {
@@ -157,7 +133,8 @@ class HeartBeatActivity : AppCompatActivity()
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_heart_beat)
+        binding = ActivityHeartBeatBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         initMenu()
 
@@ -167,7 +144,7 @@ class HeartBeatActivity : AppCompatActivity()
             REQUEST_CODE_CAMERA
         )
 
-        btnShowHistory.setOnClickListener(View.OnClickListener {
+        binding.btnShowHistory.setOnClickListener(View.OnClickListener {
             startActivity(Intent(this, HeartBeatHistoryActivity::class.java))
         })
     }

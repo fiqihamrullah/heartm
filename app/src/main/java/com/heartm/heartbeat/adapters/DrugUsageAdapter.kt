@@ -12,7 +12,6 @@ import com.heartm.heartbeat.R
 import com.heartm.heartbeat.models.DrugUsage
 
 import com.heartm.heartbeat.util.MyDateConverter
-import kotlinx.android.synthetic.main.activity_dashboard_actvity.*
 import java.util.*
 
 class DrugUsageAdapter(

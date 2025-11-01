@@ -76,10 +76,7 @@ class DrugUsageActivity : AppCompatActivity()
 
         init()
 
-
-
-
-        binding.fab_share.setOnClickListener(View.OnClickListener
+        binding.fabShare.setOnClickListener(View.OnClickListener
         {
 
             if (textToShare.isNullOrBlank())
@@ -114,9 +111,9 @@ class DrugUsageActivity : AppCompatActivity()
 
         // use a linear layout manager
         val mLayoutManager = LinearLayoutManager(this@DrugUsageActivity)
-        recyclerView.setLayoutManager(mLayoutManager)
-        recyclerView.setHasFixedSize(true)
-        recyclerView.addItemDecoration(
+        binding.recyclerView.setLayoutManager(mLayoutManager)
+        binding.recyclerView.setHasFixedSize(true)
+        binding.recyclerView.addItemDecoration(
             DividerItemDecoration(
                 this@DrugUsageActivity,
                 DividerItemDecoration.VERTICAL
@@ -159,13 +156,13 @@ class DrugUsageActivity : AppCompatActivity()
     {
         val strinB = StringBuilder()
 
-        strinB.appendln("Tanggal :" + drugTakenDate.tgl_pengambilan_obat)
-        strinB.appendln("Jumlah :" + drugTakenDate.jumlah_obat.toString())
-        strinB.appendln("----------------------------")
+        strinB.appendLine("Tanggal :" + drugTakenDate.tgl_pengambilan_obat)
+        strinB.appendLine("Jumlah :" + drugTakenDate.jumlah_obat.toString())
+        strinB.appendLine("----------------------------")
 
         for(obat in drugTakenDate.obat!!)
         {
-            strinB.appendln(obat.obat + " Berjumlah " + obat.jumlah + " dimakan Pada Waktu " +  obat.waktu_makan)
+            strinB.appendLine(obat.obat + " Berjumlah " + obat.jumlah + " dimakan Pada Waktu " +  obat.waktu_makan)
         }
 
         textToShare = strinB.toString()
@@ -211,7 +208,7 @@ class DrugUsageActivity : AppCompatActivity()
                         {
 
                             drugUsageTakenDateAdapter = DrugTakenDateAdapter(drugUsageTakenDateList)
-                            recyclerView.setAdapter(drugUsageTakenDateAdapter)
+                            binding.recyclerView.setAdapter(drugUsageTakenDateAdapter)
 
                             drugUsageTakenDateAdapter?.setOnItemClickListener(object:DrugTakenDateAdapter.OnItemClickListener{
                                 override fun onItemClick(
@@ -257,8 +254,8 @@ class DrugUsageActivity : AppCompatActivity()
 
 
                                         drugReceiptAdapter = DrugReceiptAdapter(items)
-                                        recyclerView.setAdapter(drugReceiptAdapter)
-                                        fab_share.visibility = View.VISIBLE
+                                        binding.recyclerView.setAdapter(drugReceiptAdapter)
+                                        binding.fabShare.visibility = View.VISIBLE
 
                                         createTextToShare(obj)
 
@@ -270,8 +267,8 @@ class DrugUsageActivity : AppCompatActivity()
 
 
                         }else{
-                            recyclerView.visibility = View.GONE
-                            animationView.visibility = View.VISIBLE
+                            binding.recyclerView.visibility = View.GONE
+                            binding.animationView.visibility = View.VISIBLE
                         }
 
                         initResep =0
@@ -316,10 +313,10 @@ class DrugUsageActivity : AppCompatActivity()
                          {
 
                             drugUsageAdapter = DrugUsageAdapter(drugUsageList)
-                            recyclerView.setAdapter(drugUsageAdapter)
+                            binding.recyclerView.setAdapter(drugUsageAdapter)
                         }else{
-                            recyclerView.visibility = View.GONE
-                            animationView.visibility = View.VISIBLE
+                            binding.recyclerView.visibility = View.GONE
+                            binding.animationView.visibility = View.VISIBLE
                         }
 
                     } catch (ex: JSONException) {

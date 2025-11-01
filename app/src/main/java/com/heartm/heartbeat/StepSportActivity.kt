@@ -33,14 +33,13 @@ import com.google.android.material.chip.ChipGroup
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.heartm.heartbeat.adapters.WalkingSportAdapter
+import com.heartm.heartbeat.databinding.ActivityStepSportBinding
 import com.heartm.heartbeat.fragments.DateTimePickerFragment
 import com.heartm.heartbeat.models.WalkingSport
 import com.heartm.heartbeat.util.Menu
 import com.ismaeldivita.chipnavigation.ChipNavigationBar
 import com.kal.rackmonthpicker.RackMonthPicker
 import es.dmoral.toasty.Toasty
-import kotlinx.android.synthetic.main.activity_step_sport.*
-import kotlinx.android.synthetic.main.activity_tes.fab
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
@@ -48,7 +47,7 @@ import java.util.*
 import kotlin.math.roundToInt
 
 class StepSportActivity : AppCompatActivity() {
-
+    private lateinit var binding : ActivityStepSportBinding
     private val MODE_DAY= 1001
     private val MODE_WEEK= 1002
     private val MODE_MONTH= 1003
@@ -74,12 +73,13 @@ class StepSportActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_step_sport)
+        binding = ActivityStepSportBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         val menuNav = Menu(this@StepSportActivity)
         menuNav.initMenu(container,button,menu)
 
-        fab.setOnClickListener { view ->
+        binding.fab.setOnClickListener { view ->
            // Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
              //   .setAction("Action", null).show()
             startActivityForResult(Intent(this, FormStepSportActivity::class.java),REQUESTCODE_ADDSTEP)
@@ -89,7 +89,7 @@ class StepSportActivity : AppCompatActivity() {
 
         init()
 
-        fab_share.setOnClickListener(View.OnClickListener
+        binding.fabShare.setOnClickListener(View.OnClickListener
         {
 
             if (textToShare.isNullOrBlank())
@@ -245,7 +245,7 @@ class StepSportActivity : AppCompatActivity() {
             set1.setDrawIcons(false)
 
 
-            val startColor: Int = ContextCompat.getColor(this, R.color.material_blue_grey_80)
+            val startColor: Int = ContextCompat.getColor(this, cn.pedant.SweetAlert.R.color.material_blue_grey_80)
             val endColor: Int = ContextCompat.getColor(this, android.R.color.holo_blue_bright)
             set1.setGradientColor(startColor, endColor)
 
@@ -267,9 +267,9 @@ class StepSportActivity : AppCompatActivity() {
 
         // use a linear layout manager
         val mLayoutManager = LinearLayoutManager(this@StepSportActivity)
-        recyclerView.setLayoutManager(mLayoutManager)
-        recyclerView.setHasFixedSize(true)
-        recyclerView.addItemDecoration(
+        binding.recyclerView.setLayoutManager(mLayoutManager)
+        binding.recyclerView.setHasFixedSize(true)
+        binding.recyclerView.addItemDecoration(
             DividerItemDecoration(
                 this@StepSportActivity,
                 DividerItemDecoration.VERTICAL
@@ -457,8 +457,8 @@ class StepSportActivity : AppCompatActivity() {
                      if (stepSportList.size > 0)
                      {
                          System.out.println("Masukkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk")
-                         animationView.visibility =  View.GONE
-                         recyclerView.visibility = View.VISIBLE
+                         binding.animationView.visibility =  View.GONE
+                         binding.recyclerView.visibility = View.VISIBLE
                         walkingSportAdapter = WalkingSportAdapter(stepSportList)
                         walkingSportAdapter?.setOnItemClickListener(object:WalkingSportAdapter.OnItemClickListener{
                             override fun onItemClick(
@@ -470,10 +470,10 @@ class StepSportActivity : AppCompatActivity() {
                             }
                         })
 
-                        recyclerView.setAdapter(walkingSportAdapter)
+                         binding.recyclerView.setAdapter(walkingSportAdapter)
                     }else{
-                        recyclerView.visibility = View.GONE
-                        animationView.visibility = View.VISIBLE
+                         binding.recyclerView.visibility = View.GONE
+                         binding.animationView.visibility = View.VISIBLE
                     }
 
 
