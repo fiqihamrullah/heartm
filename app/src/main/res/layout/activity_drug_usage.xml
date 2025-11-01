@@ -44,13 +44,12 @@
     </LinearLayout>
 
 
-
     <LinearLayout
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/drugs"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         tools:background="@color/activity"
         tools:context=".DrugUsageActivity">
 
@@ -61,9 +60,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:fitsSystemWindows="true"
+            android:text="@string/history_of_medicine"
             android:textColor="@color/white"
-            android:textSize="30sp"
-            android:text="@string/history_of_medicine" />
+            android:textSize="30sp" />
 
         <View
             android:layout_width="wrap_content"
@@ -76,9 +75,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="top|end"
+            android:layout_marginLeft="@dimen/spacing_middle"
             android:layout_marginTop="@dimen/spacing_xsmall"
             android:layout_marginBottom="@dimen/spacing_small"
-            android:layout_marginLeft="@dimen/spacing_middle"
             android:visibility="gone"
             app:chipSpacing="@dimen/spacing_small"
             app:singleSelection="true"
@@ -90,10 +89,10 @@
                 style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="@string/per_day"
                 android:textColor="@color/blue_btn_bg_color"
-                app:chipBackgroundColor="@color/chip_bg_states"
 
-                android:text="@string/per_day"/>
+                app:chipBackgroundColor="@color/chip_bg_states" />
 
 
             <com.google.android.material.chip.Chip
@@ -101,10 +100,10 @@
                 style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="@string/week"
                 android:textColor="@color/blue_btn_bg_color"
-                app:chipBackgroundColor="@color/chip_bg_states"
 
-                android:text="@string/week"/>
+                app:chipBackgroundColor="@color/chip_bg_states" />
 
 
             <com.google.android.material.chip.Chip
@@ -112,10 +111,10 @@
                 style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="@string/month"
                 android:textColor="@color/blue_btn_bg_color"
-                app:chipBackgroundColor="@color/chip_bg_states"
 
-                android:text="@string/month"/>
+                app:chipBackgroundColor="@color/chip_bg_states" />
 
 
         </com.google.android.material.chip.ChipGroup>
@@ -124,16 +123,16 @@
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scrollbars="vertical"/>
+            android:scrollbars="vertical" />
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/animationView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:lottie_rawRes="@raw/no_data_animation"
-            app:lottie_autoPlay="true"
             android:visibility="gone"
-            app:lottie_loop="true"/>
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/no_data_animation" />
 
 
     </LinearLayout>

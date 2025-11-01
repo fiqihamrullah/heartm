@@ -15,6 +15,7 @@ import com.android.volley.toolbox.StringRequest
 import com.github.loadingview.LoadingDialog
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import com.heartm.heartbeat.databinding.ActivityDashboardActvityBinding
 import com.heartm.heartbeat.models.DrugUsage
 import com.heartm.heartbeat.models.HeartBeatRecord
 import com.heartm.heartbeat.models.WalkingSport
@@ -22,13 +23,14 @@ import com.heartm.heartbeat.notification.AlarmScheduler
 import com.heartm.heartbeat.util.Menu
 import com.heartm.heartbeat.util.MyDateConverter
 import com.ismaeldivita.chipnavigation.ChipNavigationBar
-import kotlinx.android.synthetic.main.activity_dashboard_actvity.*
 import org.json.JSONException
 import org.json.JSONObject
 import java.util.*
 
+
 class DashboardActivity : AppCompatActivity()
 {
+    private lateinit var binding: ActivityDashboardActvityBinding
 
     private val container by lazy { findViewById<ViewGroup>(R.id.container) }
     private val tvUser by lazy { findViewById<TextView>(R.id.tvUser) }
@@ -45,7 +47,8 @@ class DashboardActivity : AppCompatActivity()
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_dashboard_actvity)
+        binding = ActivityDashboardActvityBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         tvUser.text = UserAccount.getUsername()
 
 
@@ -53,10 +56,9 @@ class DashboardActivity : AppCompatActivity()
         menuNav.initMenu(container,button,menu)
 
         loadSummary()
-
         initDoctor()
 
-        imgVBtnSendMsg.setOnClickListener(View.OnClickListener {
+        binding.imgVBtnSendMsg.setOnClickListener(View.OnClickListener {
             var phone: String = UserAccount.getDoctorPhoneNumber().toString()
           //  phone = phone.substring(1)
             phone = "+$phone"
@@ -83,7 +85,7 @@ class DashboardActivity : AppCompatActivity()
 
     fun initDoctor()
     {
-        tvDoctorName.setText(UserAccount.getDoctorName())
+        binding.tvDoctorName.setText(UserAccount.getDoctorName())
     }
 
     fun loadSummary()
@@ -115,13 +117,13 @@ class DashboardActivity : AppCompatActivity()
                                 "dd MMM yyyy HH:ss"
                             )
 
-                            tvTimeofHeartBeat.text = fullDayOfMonth
-                            tvValue.text = heartbeat.bpm.toString()
+                            binding.tvTimeofHeartBeat.text = fullDayOfMonth
+                            binding.tvValue.text = heartbeat.bpm.toString()
 
                             if (heartbeat.bpm in 60..100) {
-                                tvStatusHeartBeat.setText(getString(R.string.healthy))
+                                binding.tvStatusHeartBeat.setText(getString(R.string.healthy))
                             } else {
-                                tvStatusHeartBeat.setText(getString(R.string.sick))
+                                binding.tvStatusHeartBeat.setText(getString(R.string.sick))
                             }
 
                         }
@@ -137,8 +139,8 @@ class DashboardActivity : AppCompatActivity()
                                 stepsport.created_at,
                                 "dd MMM yyyy HH:ss"
                             )
-                            tvTimeofStep.text = fullDayOfMonth2
-                            tvStepCount.text = stepsport.jumlah_langkah.toString()
+                            binding.tvTimeofStep.text = fullDayOfMonth2
+                            binding.tvStepCount.text = stepsport.jumlah_langkah.toString()
                         }
 
 
@@ -152,21 +154,21 @@ class DashboardActivity : AppCompatActivity()
                                 drugusage.tgl_ambil_selanjutnya,
                                 "dd MMM yyyy"
                             )
-                            tvTimeofDrug.text = String.format(
+                            binding.tvTimeofDrug.text = String.format(
                                 Locale.getDefault(),
                                 " %s %s",
                                 getString(R.string.next_on),
                                 nextdateofdrugtaken
                             )
-                            tvNameOfDrug.text = drugusage.obat
+                            binding.tvNameOfDrug.text = drugusage.obat
                             val arrsplit: List<String> = drugusage.waktu_makan.split(",")
-                            tvStatusOfDrug.text = String.format(
+                            binding.tvStatusOfDrug.text = String.format(
                                 Locale.getDefault(),
                                 "%sx/ %s",
                                 arrsplit.size.toString(),
                                 getString(R.string.per_day)
                             )
-                            tvAmount.text = drugusage.jumlah.toString() + " Pcs"
+                            binding.tvAmount.text = drugusage.jumlah.toString() + " Pcs"
                         }
 
 
@@ -188,3 +190,5 @@ class DashboardActivity : AppCompatActivity()
 
     }
 }
+
+

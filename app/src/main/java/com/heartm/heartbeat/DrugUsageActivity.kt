@@ -19,18 +19,11 @@ import com.google.android.material.chip.ChipGroup
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.heartm.heartbeat.adapters.*
+import com.heartm.heartbeat.databinding.ActivityDrugUsageBinding
 import com.heartm.heartbeat.models.*
 import com.heartm.heartbeat.util.Menu
 import com.ismaeldivita.chipnavigation.ChipNavigationBar
 import es.dmoral.toasty.Toasty
-import kotlinx.android.synthetic.main.activity_drug_usage.*
-import kotlinx.android.synthetic.main.activity_heart_beat_history.*
-import kotlinx.android.synthetic.main.activity_drug_usage.fab_share
-import kotlinx.android.synthetic.main.activity_step_sport.*
-import kotlinx.android.synthetic.main.activity_step_sport.animationView
-import kotlinx.android.synthetic.main.activity_step_sport.recyclerView
-import kotlinx.android.synthetic.main.activity_tes.*
-import kotlinx.android.synthetic.main.activity_tes.fab
 import org.json.JSONException
 import org.json.JSONObject
 
@@ -61,18 +54,21 @@ class DrugUsageActivity : AppCompatActivity()
 
     private var textToShare:String?= null
 
+    private lateinit var binding: ActivityDrugUsageBinding;
 
     private val URL_KONTROLOBAT =
         MyApplication.Companion.instance?.resources?.getString(R.string.online_url) + "kontrolobat?pasien_id=" + UserAccount.getID()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_drug_usage)
+
+        binding = ActivityDrugUsageBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         val menuNav = Menu(this@DrugUsageActivity)
         menuNav.initMenu(container,button,menu)
 
-        fab.setOnClickListener { view ->
+        binding.fab.setOnClickListener { view ->
             // Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
             //   .setAction("Action", null).show()
             startActivityForResult(Intent(this, FormDrugUsageActivity::class.java).putExtra("resep",initResep).putExtra("tgl_ambil",tgl_pengambilan),REQUESTCODE_ADDDRUGUSAGE)
@@ -83,7 +79,7 @@ class DrugUsageActivity : AppCompatActivity()
 
 
 
-        fab_share.setOnClickListener(View.OnClickListener
+        binding.fab_share.setOnClickListener(View.OnClickListener
         {
 
             if (textToShare.isNullOrBlank())
